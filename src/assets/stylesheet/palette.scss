@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+.background {
+  background-color: map_get($mat-blue, 300);
+}
+
+.danger {
+  color: map_get($mat-red, 500);
+}

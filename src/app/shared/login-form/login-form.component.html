@@ -1,0 +1,19 @@
+<h3>Iniciar Sesión</h3>
+<form [formGroup]="loginForm" *ngIf="loginForm" class="flex flex-column">
+    <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Nombre de usuario o mail" formControlName="usuario">
+        <mat-error *ngIf="!loginForm.get('usuario').valid && (loginForm.get('usuario').dirty || loginForm.get('usuario').touched)">
+            Debes completar un usuario o contraseña
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="UnAContrAseñ@" formControlName="password">
+        <mat-error *ngIf="!loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            Tu contraseña debe ser superior a 8 caracteres
+        </mat-error>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()">Iniciar Sesión
+    </button>
+</form>
