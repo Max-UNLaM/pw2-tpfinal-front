@@ -29,6 +29,11 @@ export class LoginFormComponent implements OnInit {
         alert('lele');
     }
 
+    redirect(address: string) {
+        this._location.replaceState('/');
+        this._router.navigate([address]);
+    }
+
     ngOnInit() {
     }
 

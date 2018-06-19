@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit {
             throw new Error('Not Implemented');
         } else {
             this.location.replaceState('/');
-            this.router.navigate(['login']);
+            this.router.navigate(['portal/login']);
         }
     }
 

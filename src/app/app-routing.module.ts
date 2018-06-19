@@ -1,27 +1,26 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {HomepageComponent} from './pages/homepage/homepage.component';
-
+import {SelectivePreloadingStrategy} from './selective-preloading-strategy';
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/homepage',
-    pathMatch: 'full',
-    data: {}
-  },
-  {
-    path: 'homepage',
-    component: HomepageComponent
-  },
-  {
-    path: 'login',
-    loadChildren: './pages/login/login.module#LoginModule'
-  }
+    {
+        path: 'portal',
+        loadChildren: './pages/portal/portal.module#PortalModule',
+        data: {
+            preload: true
+        }
+    },
+    {
+        path: '',
+        redirectTo: '/homepage',
+        pathMatch: 'full',
+        data: {}
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {preloadingStrategy: SelectivePreloadingStrategy})],
+    exports: [RouterModule],
+    providers: [SelectivePreloadingStrategy]
 })
 export class AppRoutingModule {
 }

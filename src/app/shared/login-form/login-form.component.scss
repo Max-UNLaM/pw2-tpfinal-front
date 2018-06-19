@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
 }
+
 .container > * {
-  widht: 100%
+  width: 100%
+}
+
+form {
+  mat-form-field {
+    color: blue
+  }
 }
