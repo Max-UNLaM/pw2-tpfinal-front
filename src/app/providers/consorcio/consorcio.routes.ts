@@ -12,6 +12,10 @@ export const ConsorcioUsuarioRutas = {
     register: `${ConsorcioAuthRutas.auth}/register`
 };
 
+export const ConsorcioUnidadRutas = {
+    list: `${ConsorcioApiRutas.v1}/unidad`
+};
+
 export const ConsorcioOptions = {
     post: {
 

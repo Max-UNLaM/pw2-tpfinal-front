@@ -3,6 +3,13 @@ import {Routes, RouterModule} from '@angular/router';
 import {SelectivePreloadingStrategy} from './selective-preloading-strategy';
 const routes: Routes = [
     {
+        path: 'admin',
+        loadChildren: './pages/admin/admin.module#AdminModule',
+        data: {
+            preload: true
+        }
+    },
+    {
         path: 'portal',
         loadChildren: './pages/portal/portal.module#PortalModule',
         data: {
