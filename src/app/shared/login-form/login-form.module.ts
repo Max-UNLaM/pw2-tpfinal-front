@@ -5,6 +5,7 @@ import {LoginFormRoutingModule} from './login-form-routing.module';
 import {LoginFormComponent} from './login-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {LoginService} from '../../providers/consorcio/login/login.service';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {MatFormFieldModule, MatInputModule} from '@angular/material';
         MatInputModule
     ],
     declarations: [LoginFormComponent],
-    exports: [LoginFormComponent]
+    exports: [LoginFormComponent],
+    providers: [LoginService]
 })
 export class LoginFormModule {
 }

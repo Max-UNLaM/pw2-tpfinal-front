@@ -1,7 +1,8 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from '../../providers/consorcio/login/login.service';
 
 @Component({
     selector: 'app-login-form',
@@ -11,8 +12,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginFormComponent implements OnInit {
 
     loginForm: FormGroup;
+    accessError = false;
+    accessErrorText: string;
 
-    constructor(private _router: Router, private _location: Location, protected formBuilder: FormBuilder) {
+    constructor(private _router: Router, private _location: Location, protected formBuilder: FormBuilder, protected loginSrv: LoginService) {
         this.createForm();
     }
 
@@ -26,7 +29,17 @@ export class LoginFormComponent implements OnInit {
     }
 
     public setLogin() {
-        alert('lele');
+        this.accessError = !this.accessError;
+        this.loginSrv.login({
+            email: this.loginForm.get('usuario').value,
+            password: this.loginForm.get('password').value
+        }).subscribe(
+            token => console.log(token),
+            error => {
+                this.accessError = true;
+                this.accessErrorText = error.statusText;
+            }
+        );
     }
 
     redirect(address: string) {

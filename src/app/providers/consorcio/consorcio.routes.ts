@@ -16,6 +16,10 @@ export const ConsorcioUnidadRutas = {
     list: `${ConsorcioApiRutas.v1}/unidad`
 };
 
+export const ConsorcioLoginRutas = {
+    login: `${ConsorcioApiRutas.v1}/oauth/login`
+}
+
 export const ConsorcioOptions = {
     post: {
 

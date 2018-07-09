@@ -21,7 +21,7 @@ export class UnidadTablaComponent implements OnInit {
     ngOnInit() {
         this.unidadService.list()
             .subscribe(
-                data => this.unidades = data
+                data => this.unidades = data.body
             );
     }
 
