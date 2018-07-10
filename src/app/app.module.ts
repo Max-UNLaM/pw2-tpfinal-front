@@ -7,6 +7,7 @@ import {HomepageModule} from './pages/homepage/homepage.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import {MatButtonModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import {NavbarService} from './shared/navbar/navbar.service';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
         MatButtonModule,
         MatMenuModule
     ],
-    providers: [],
+    providers: [NavbarService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

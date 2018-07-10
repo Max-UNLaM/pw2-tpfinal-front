@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
+import {NavbarService} from './navbar.service';
 import {ToolbarItem} from './navbar.interface';
 
 @Component({
@@ -10,16 +11,17 @@ import {ToolbarItem} from './navbar.interface';
 })
 export class NavbarComponent implements OnInit {
 
-    constructor(private _router: Router, private _location: Location) {
+    toolbarItems: ToolbarItem[];
+
+    constructor(private _router: Router, private _location: Location, protected navbarSrv: NavbarService) {
+        navbarSrv.toolBar$.subscribe(
+            items => this.toolbarItems = items
+        );
+        console.log(this.toolbarItems);
     }
 
-    @Input('items') toolbarItems: ToolbarItem[];
 
     ngOnInit() {
     }
 
-    redirect(address: string) {
-        this._location.replaceState('/');
-        this._router.navigate([address]);
-    }
 }
