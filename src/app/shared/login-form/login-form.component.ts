@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../providers/consorcio/login/login.service';
+import {OauthLoginSuccess} from '../../providers/consorcio/login/login.interface';
+import {LoginStorageService} from '../../providers/local/login/login-storage.service';
 
 @Component({
     selector: 'app-login-form',
@@ -15,7 +17,11 @@ export class LoginFormComponent implements OnInit {
     accessError = false;
     accessErrorText: string;
 
-    constructor(private _router: Router, private _location: Location, protected formBuilder: FormBuilder, protected loginSrv: LoginService) {
+    constructor(private _router: Router,
+                private _location: Location,
+                protected formBuilder: FormBuilder,
+                protected loginSrv: LoginService,
+                protected loginStorageSrv: LoginStorageService) {
         this.createForm();
     }
 
@@ -33,13 +39,18 @@ export class LoginFormComponent implements OnInit {
         this.loginSrv.login({
             email: this.loginForm.get('usuario').value,
             password: this.loginForm.get('password').value
-        }).subscribe(
-            token => console.log(token),
-            error => {
-                this.accessError = true;
-                this.accessErrorText = error.statusText;
-            }
-        );
+        })
+            .subscribe(
+                (token) => {
+                    const logIn = token.body as OauthLoginSuccess;
+                    this.loginStorageSrv.saveToken(logIn.success.token);
+                    this._router.navigate(['/homepage']);
+                },
+                error => {
+                    this.accessError = true;
+                    this.accessErrorText = error.statusText;
+                }
+            );
     }
 
     redirect(address: string) {

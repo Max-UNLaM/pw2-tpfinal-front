@@ -4,7 +4,7 @@ export interface OauthLogin {
 }
 
 export interface OauthLoginResponse {
-  success?: string;
+  success?: OauthLoginToken;
 }
 
 export interface OauthLoginSuccess {

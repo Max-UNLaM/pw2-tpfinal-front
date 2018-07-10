@@ -3,7 +3,7 @@
         <mat-label>Usuario</mat-label>
         <input matInput placeholder="Email" formControlName="usuario">
         <mat-error
-                *ngIf="!loginForm.get('usuario').valid && (loginForm.get('usuario').dirty || loginForm.get('usuario').touched)">
+            *ngIf="!loginForm.get('usuario').valid && (loginForm.get('usuario').dirty || loginForm.get('usuario').touched)">
             Debes completar tu correo
         </mat-error>
     </mat-form-field>
@@ -11,13 +11,12 @@
         <mat-label>Contraseña</mat-label>
         <input matInput placeholder="UnAContrAseñ@" formControlName="password" type="password">
         <mat-error
-                *ngIf="!loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            *ngIf="!loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
             Tu contraseña debe ser superior a 6 caracteres
         </mat-error>
     </mat-form-field>
+    <button mat-raised-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()">Iniciar Sesión</button>
     <button mat-button (click)="redirect('portal/register')">Crear una cuenta</button>
-    <button mat-raised-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()">Iniciar Sesión
-    </button>
     <mat-error *ngIf="accessError">{{accessErrorText}}
     </mat-error>
 </form>

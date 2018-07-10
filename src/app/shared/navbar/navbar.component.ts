@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
+import {ToolbarItem} from './navbar.interface';
 
 @Component({
     selector: 'app-navbar',
@@ -11,6 +12,8 @@ export class NavbarComponent implements OnInit {
 
     constructor(private _router: Router, private _location: Location) {
     }
+
+    @Input('items') toolbarItems: ToolbarItem[];
 
     ngOnInit() {
     }
