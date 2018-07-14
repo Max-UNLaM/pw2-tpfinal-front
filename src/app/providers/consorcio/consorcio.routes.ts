@@ -13,12 +13,13 @@ export const ConsorcioUsuarioRutas = {
 };
 
 export const ConsorcioUnidadRutas = {
-    list: `${ConsorcioApiRutas.v1}/unidad`
+    list: `${ConsorcioApiRutas.v1}/unidad`,
+    page: `${ConsorcioApiRutas.v1}/unidad?page=`
 };
 
 export const ConsorcioLoginRutas = {
     login: `${ConsorcioApiRutas.v1}/oauth/login`
-}
+};
 
 export const ConsorcioOptions = {
     post: {
