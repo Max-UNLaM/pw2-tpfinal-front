@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AdminRoutingModule, routedComponents} from './admin-routing.module';
 import {MatCardModule} from '@angular/material';
-import {UnidadTablaModule} from '../../shared/unidad-tabla/unidad-tabla.module';
+import {UnidadTablaModule} from '../../shared/unidad/unidad-tabla/unidad-tabla.module';
 
 @NgModule({
     imports: [
@@ -11,7 +11,7 @@ import {UnidadTablaModule} from '../../shared/unidad-tabla/unidad-tabla.module';
         MatCardModule,
         UnidadTablaModule
     ],
-    declarations: [...routedComponents]
+    declarations: [...routedComponents],
 })
 export class AdminModule {
 }

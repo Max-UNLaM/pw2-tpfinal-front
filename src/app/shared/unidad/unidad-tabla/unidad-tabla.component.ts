@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UnidadService} from '../../providers/consorcio/unidad/unidad.service';
-import {UnidadPaginatorResponse, UnidadResponse} from '../../providers/consorcio/unidad/unidad.interface';
-import {MatPaginator} from '@angular/material';
+import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
+import {UnidadPaginatorResponse, UnidadResponse} from '../../../providers/consorcio/unidad/unidad.interface';
+import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {UnidadFormComponent} from '../unidad-form/unidad-form.component';
 
 @Component({
     selector: 'app-unidad-tabla',
@@ -14,10 +15,10 @@ export class UnidadTablaComponent implements OnInit {
 
     data: UnidadResponse[] = [];
     resultLenght = 0;
-    columnas = ['nombre', 'direccion'];
+    columnas = ['nombre', 'direccion', 'consorcio_id'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(protected unidadService: UnidadService) {
+    constructor(public dialog: MatDialog, protected unidadService: UnidadService) {
     }
 
     ngOnInit() {
@@ -38,9 +39,19 @@ export class UnidadTablaComponent implements OnInit {
             .subscribe(
                 (data: UnidadPaginatorResponse) => {
                     this.resultLenght = data.total;
+                    console.log(data.data);
                     this.data = data.data;
                 }
             );
+    }
+
+    altaUnidad(id: number): void {
+        const dialogRef = this.dialog.open(UnidadFormComponent, {
+            width: '600px'
+        });
+        dialogRef.afterClosed().subscribe(
+            (res) => console.log(res)
+        );
     }
 
 }

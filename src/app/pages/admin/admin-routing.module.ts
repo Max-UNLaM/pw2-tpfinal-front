@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {AdminComponent} from './admin.component';
 import {UnidadComponent} from './unidad/unidad.component';
 import {AuthGuardService} from '../../auth-guard.service';
+import {UnidadFormComponent} from '../../shared/unidad/unidad-form/unidad-form.component';
 
 const routes: Routes = [
     {

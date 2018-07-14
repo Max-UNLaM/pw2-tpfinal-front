@@ -1,16 +1,19 @@
 import {PaginatorResponse} from '../paginator.interface';
 
-export interface UnidadResponse {
+export interface UnidadResponse extends Unidad {
     id: number;
-    nombre: string;
-    direccion: string;
-    localidad: string;
-    provincia: string;
-    telefono: string;
     created_at: string;
     updated_at: string;
 }
 
-export interface UnidadPaginatorResponse extends PaginatorResponse   {
+export interface UnidadPaginatorResponse extends PaginatorResponse {
     data: UnidadResponse[];
+}
+
+export interface Unidad {
+    nombre: string;
+    direccion: string;
+    localidad: string;
+    provincia: string;
+    consorcio_id: number;
 }
