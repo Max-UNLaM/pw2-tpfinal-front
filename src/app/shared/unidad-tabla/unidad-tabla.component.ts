@@ -30,14 +30,13 @@ export class UnidadTablaComponent implements OnInit {
                 map(data => {
                     return data.body;
                 }),
-                catchError(() => {
-                    console.error('lele');
+                catchError((error) => {
+                    console.error(error);
                     return of([]);
                 })
             )
             .subscribe(
                 (data: UnidadPaginatorResponse) => {
-                    console.log('DATA', data);
                     this.resultLenght = data.total;
                     this.data = data.data;
                 }
