@@ -1,11 +1,34 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ConsorcioTablaComponent } from './consorcio-tabla.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ConsorcioTablaComponent} from './consorcio-tabla.component';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatTableModule
+} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio.service';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ConsorcioTablaComponent]
+    imports: [
+        CommonModule,
+        MatTableModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatPaginatorModule
+
+    ],
+    declarations: [ConsorcioTablaComponent],
+    exports: [ConsorcioTablaComponent],
+    providers: [ConsorcioService]
 })
-export class ConsorcioTablaModule { }
+export class ConsorcioTablaModule {
+}

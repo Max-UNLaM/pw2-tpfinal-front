@@ -8,7 +8,7 @@ export interface PaginatorResponse {
     next_page_url?: null;
     path: string;
     per_page: string;
-    prev_page_url:string;
+    prev_page_url: string;
     to: number;
     total: number;
 }

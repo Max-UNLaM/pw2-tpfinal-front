@@ -17,6 +17,11 @@ export const ConsorcioUnidadRutas = {
     page: `${ConsorcioApiRutas.v1}/unidad?page=`
 };
 
+export const ConsorcioConsorcioRutas = {
+    list: `${ConsorcioApiRutas.v1}/consorcio`,
+    page: `${ConsorcioApiRutas.v1}/consorcio?page=`
+};
+
 export const ConsorcioLoginRutas = {
     login: `${ConsorcioApiRutas.v1}/oauth/login`
 };

@@ -1,24 +1,24 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {UnidadPaginatorResponse, UnidadResponse} from '../../../providers/consorcio/unidad/unidad.interface';
-import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {UnidadFormComponent} from '../../unidad/unidad-form/unidad-form.component';
+import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio.service';
+import {ConsorcioPaginatorResponse, ConsorcioResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
 
 @Component({
-  selector: 'app-consorcio-tabla',
-  templateUrl: './consorcio-tabla.component.html',
-  styleUrls: ['./consorcio-tabla.component.scss']
+    selector: 'app-consorcio-tabla',
+    templateUrl: './consorcio-tabla.component.html',
+    styleUrls: ['./consorcio-tabla.component.scss']
 })
 export class ConsorcioTablaComponent implements OnInit {
 
-    data: UnidadResponse[] = [];
+    data: ConsorcioResponse[] = [];
     resultLenght = 0;
-    columnas = ['nombre', 'direccion', 'consorcio_id'];
+    columnas = ['nombre', 'direccion', 'localidad', 'provincia', 'telefono'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(public dialog: MatDialog, protected unidadService: UnidadService) {
+    constructor(public dialog: MatDialog, protected consorcioService: ConsorcioService) {
     }
 
     ngOnInit() {
@@ -26,7 +26,7 @@ export class ConsorcioTablaComponent implements OnInit {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                    return this.unidadService.page(this.paginator.pageIndex + 1);
+                    return this.consorcioService.page(this.paginator.pageIndex + 1);
                 }),
                 map(data => {
                     return data.body;
@@ -37,7 +37,7 @@ export class ConsorcioTablaComponent implements OnInit {
                 })
             )
             .subscribe(
-                (data: UnidadPaginatorResponse) => {
+                (data: ConsorcioPaginatorResponse) => {
                     this.resultLenght = data.total;
                     console.log(data.data);
                     this.data = data.data;
