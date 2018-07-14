@@ -3,7 +3,7 @@ import {ToolbarItem} from '../../shared/navbar/navbar.interface';
 export class HomepageModel {
     menu: ToolbarItem[] = [
         {
-            link: '/unidad',
+            link: 'admin/unidad',
             text: 'Unidades'
         }
     ];

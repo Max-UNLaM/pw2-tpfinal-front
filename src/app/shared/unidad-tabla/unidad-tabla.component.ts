@@ -1,7 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UnidadService} from '../../providers/consorcio/unidad/unidad.service';
 import {UnidadResponse} from '../../providers/consorcio/unidad/unidad.interface';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator} from '@angular/material';
+import {merge, of} from 'rxjs';
+import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'app-unidad-tabla',
@@ -10,18 +12,36 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class UnidadTablaComponent implements OnInit {
 
-    unidades: UnidadResponse[] = [];
+    data: UnidadResponse[] = [];
+    resultLenght = 0;
     columnas = ['nombre', 'direccion'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
-
 
     constructor(protected unidadService: UnidadService) {
     }
 
     ngOnInit() {
-        this.unidadService.list()
+        console.log('pagi', this.paginator.page);
+        merge(this.paginator.page)
+            .pipe(
+                startWith({}),
+                switchMap(() => {
+                    return this.unidadService.list();
+                }),
+                map(data => {
+                    return data.body;
+                }),
+                catchError(() => {
+                    console.error('lele');
+                    return of([]);
+                })
+            )
             .subscribe(
-                data => this.unidades = data.body
+                data => {
+                    console.log('DATA', data);
+                    this.resultLenght = data.length;
+                    this.data = data;
+                }
             );
     }
 

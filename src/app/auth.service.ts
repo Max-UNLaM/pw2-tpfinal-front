@@ -12,10 +12,12 @@ export class AuthService {
 
     constructor() {
         this.loginStorageService = new LoginStorageService();
+        this.login();
     }
 
     login() {
         this.loginToken = this.loginStorageService.getToken() ? this.loginStorageService.getToken() : null;
+        console.log(this.loginToken);
         if (this.loginToken) {
             this.isLoggedIn = true;
         }
