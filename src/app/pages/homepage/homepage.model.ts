@@ -5,6 +5,10 @@ export class HomepageModel {
         {
             link: 'admin/unidad',
             text: 'Unidades'
+        },
+        {
+            link: 'admin/consorcio',
+            text: 'Consorcios'
         }
     ];
 }

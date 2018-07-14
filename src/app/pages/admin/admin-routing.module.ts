@@ -1,19 +1,24 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
 import {UnidadComponent} from './unidad/unidad.component';
 import {AuthGuardService} from '../../auth-guard.service';
-import {UnidadFormComponent} from '../../shared/unidad/unidad-form/unidad-form.component';
+import {ConsorcioComponent} from './consorcio/consorcio.component';
 
 const routes: Routes = [
     {
         path: '',
         component: AdminComponent,
         canActivate: [AuthGuardService],
-        children: [{
-            path: 'unidad',
-            component: UnidadComponent
-        }]
+        children: [
+            {
+                path: 'unidad',
+                component: UnidadComponent
+            },
+            {
+                path: 'consorcio',
+                component: ConsorcioComponent
+            }]
     }
 ];
 

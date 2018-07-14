@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {AdminRoutingModule, routedComponents} from './admin-routing.module';
 import {MatCardModule} from '@angular/material';
 import {UnidadTablaModule} from '../../shared/unidad/unidad-tabla/unidad-tabla.module';
+import { ConsorcioComponent } from './consorcio/consorcio.component';
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import {UnidadTablaModule} from '../../shared/unidad/unidad-tabla/unidad-tabla.m
         MatCardModule,
         UnidadTablaModule
     ],
-    declarations: [...routedComponents],
+    declarations: [...routedComponents, ConsorcioComponent],
 })
 export class AdminModule {
 }
