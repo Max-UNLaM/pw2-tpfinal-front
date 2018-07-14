@@ -45,13 +45,4 @@ export class UnidadTablaComponent implements OnInit {
             );
     }
 
-    altaUnidad(id: number): void {
-        const dialogRef = this.dialog.open(UnidadFormComponent, {
-            width: '600px'
-        });
-        dialogRef.afterClosed().subscribe(
-            (res) => console.log(res)
-        );
-    }
-
 }

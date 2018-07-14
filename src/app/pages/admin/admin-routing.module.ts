@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
-import {UnidadComponent} from './unidad/unidad.component';
 import {AuthGuardService} from '../../auth-guard.service';
 import {ConsorcioComponent} from './consorcio/consorcio.component';
 
@@ -13,7 +12,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'unidad',
-                component: UnidadComponent
+                loadChildren: './unidad/unidad.module#UnidadModule',
+                data: {
+                    preload: true
+                }
             },
             {
                 path: 'consorcio',
@@ -30,7 +32,6 @@ export class AdminRoutingModule {
 }
 
 export const routedComponents = [
-    AdminComponent,
-    UnidadComponent
+    AdminComponent
 ];
 

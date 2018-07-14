@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {SelectivePreloadingStrategy} from './selective-preloading-strategy';
+
 const routes: Routes = [
     {
         path: 'admin',
