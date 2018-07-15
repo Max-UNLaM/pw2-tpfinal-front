@@ -1,0 +1,7 @@
+<div class="loading-shade"
+     *ngIf="isLoadingResults || errorMessage">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</div>

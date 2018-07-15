@@ -18,6 +18,9 @@ export class UnidadTablaComponent implements OnInit {
     columnas = ['nombre', 'direccion', 'consorcio_id'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
+    error: string;
+    tableLoading: boolean;
+
     constructor(public dialog: MatDialog, protected unidadService: UnidadService) {
     }
 
@@ -26,12 +29,16 @@ export class UnidadTablaComponent implements OnInit {
             .pipe(
                 startWith({}),
                 switchMap(() => {
+                    this.tableLoading = true;
                     return this.unidadService.page(this.paginator.pageIndex + 1);
                 }),
                 map(data => {
+                    this.tableLoading = false;
                     return data.body;
                 }),
                 catchError((error) => {
+                    this.error = error;
+                    this.tableLoading = false;
                     console.error(error);
                     return of([]);
                 })

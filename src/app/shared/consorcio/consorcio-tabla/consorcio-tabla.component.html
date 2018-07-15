@@ -1,4 +1,5 @@
-<div class="container-full flex-column">
+<div class="container-full flex-column table-10-rows">
+    <app-loader-shade [isLoadingResults]="loadingTabla" [errorMessage]="errorMessage"></app-loader-shade>
     <table mat-table [dataSource]="data">
         <ng-container matColumnDef="nombre">
             <th mat-header-cell *matHeaderCellDef>Nombre</th>

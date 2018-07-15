@@ -12,6 +12,7 @@ import {
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio.service';
+import {LoaderShadeModule} from '../../ui/loader-shade/loader-shade.module';
 
 @NgModule({
     imports: [
@@ -23,8 +24,8 @@ import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPaginatorModule
-
+        MatPaginatorModule,
+        LoaderShadeModule
     ],
     declarations: [ConsorcioTablaComponent],
     exports: [ConsorcioTablaComponent],

@@ -11,6 +11,7 @@ import {
     MatTableModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
+import {LoaderShadeModule} from '../../ui/loader-shade/loader-shade.module';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {ReactiveFormsModule} from '@angular/forms';
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        LoaderShadeModule
     ],
     declarations: [UnidadTablaComponent],
     exports: [UnidadTablaComponent]

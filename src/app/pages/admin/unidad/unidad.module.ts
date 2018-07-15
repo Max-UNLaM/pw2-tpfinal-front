@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {routedComponents, UnidadRoutingModule} from './unidad-routing.module';
-import {MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCardModule} from '@angular/material';
 import {UnidadTablaModule} from '../../../shared/unidad/unidad-tabla/unidad-tabla.module';
 import {ConsorcioFiltroModule} from '../../../shared/consorcio/consorcio-filtro/consorcio-filtro.module';
 
@@ -11,7 +11,8 @@ import {ConsorcioFiltroModule} from '../../../shared/consorcio/consorcio-filtro/
         UnidadRoutingModule,
         MatCardModule,
         UnidadTablaModule,
-        ConsorcioFiltroModule
+        ConsorcioFiltroModule,
+        MatButtonModule
     ],
     declarations: [...routedComponents]
 })
