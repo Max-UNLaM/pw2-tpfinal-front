@@ -2,11 +2,13 @@ import {PaginatorResponse} from '../paginator.interface';
 
 
 export interface ExpensaCreate {
-    nombre: string;
-    direccion: string;
-    localidad: string;
-    provincia: string;
-    consorcio_id: number;
+    unidad_id: number;
+    año: number;
+    mes: number;
+    estado: string;
+    vencimiento: string;
+    emision: string;
+    importe: number;
 }
 
 export interface ExpensaResponse extends ExpensaCreate {
