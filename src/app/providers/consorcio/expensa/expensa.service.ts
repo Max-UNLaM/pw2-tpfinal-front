@@ -1,26 +1,26 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {ConsorcioConsorcioRutas, ConsorcioUnidadRutas} from '../consorcio.routes';
-import {ExpensaPaginatorResponse, ExpensaResponse} from '../unidad/unidad.interface';
-import {LoginStorageService} from '../../local/login/login-storage.service';
 import {Observable} from 'rxjs';
-import {ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interface';
+import {ConsorcioUnidadRutas} from '../consorcio.routes';
+import {LoginStorageService} from '../../local/login/login-storage.service';
+import {ExpensaPaginatorResponse, ExpensaResponse} from './expensa.interface';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ConsorcioService {
+export class ExpensaService {
 
-
-    protected userToken: string;
+    protected userToken: String;
 
     constructor(private _httpClient: HttpClient, protected loginStorage: LoginStorageService) {
         this.userToken = this.loginStorage.getToken();
     }
 
-    public list(): Observable<HttpResponse<ConsorcioResponse[]>> {
-        return this._httpClient.get<ConsorcioResponse[]>(
-            ConsorcioConsorcioRutas.list,
+
+    public list(): Observable<HttpResponse<ExpensaResponse[]>> {
+        console.log(ConsorcioUnidadRutas.list);
+        return this._httpClient.get<ExpensaResponse[]>(
+            ConsorcioUnidadRutas.list,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
@@ -31,9 +31,9 @@ export class ConsorcioService {
         );
     }
 
-    public page(pageNumber: number): Observable<HttpResponse<ConsorcioPaginatorResponse>> {
-        return this._httpClient.get<ConsorcioPaginatorResponse>(
-            `${ConsorcioConsorcioRutas.page}${pageNumber}&size=10`,
+    public page(pageNumber: number): Observable<HttpResponse<ExpensaPaginatorResponse>> {
+        return this._httpClient.get<ExpensaPaginatorResponse>(
+            `${ConsorcioUnidadRutas.page}${pageNumber}&size=10`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
@@ -42,8 +42,5 @@ export class ConsorcioService {
                 })
             }
         );
-    }
-
-    public create() {
     }
 }

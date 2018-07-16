@@ -1,17 +1,16 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
-import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/unidad/unidad.interface';
+import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {UnidadFormComponent} from '../unidad-form/unidad-form.component';
+import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/unidad/unidad.interface';
+import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
 
 @Component({
-    selector: 'app-unidad-tabla',
-    templateUrl: './unidad-tabla.component.html',
-    styleUrls: ['./unidad-tabla.component.scss']
+    selector: 'app-expensa-table',
+    templateUrl: './expensa-table.component.html',
+    styleUrls: ['./expensa-table.component.scss']
 })
-export class UnidadTablaComponent implements OnInit {
+export class ExpensaTableComponent implements OnInit {
 
     data: ExpensaResponse[] = [];
     resultLenght = 0;

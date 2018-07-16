@@ -1,5 +1,3 @@
-import {HttpHeaders} from '@angular/common/http';
-
 const ConsorcioApiRutas = {
     v1: 'http://api.consorcioloco.local/api'
 };
@@ -22,12 +20,15 @@ export const ConsorcioConsorcioRutas = {
     page: `${ConsorcioApiRutas.v1}/consorcio?page=`
 };
 
+export const ConsorcioExpensaRutas = {
+    list: `${ConsorcioApiRutas.v1}/expensa`,
+    page: `${ConsorcioApiRutas.v1}/expensa?page=`
+};
+
 export const ConsorcioLoginRutas = {
     login: `${ConsorcioApiRutas.v1}/oauth/login`
 };
 
 export const ConsorcioOptions = {
-    post: {
-
-    }
+    post: {}
 };

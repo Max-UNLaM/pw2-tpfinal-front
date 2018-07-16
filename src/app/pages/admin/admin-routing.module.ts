@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
 import {AuthGuardService} from '../../auth-guard.service';
 import {ConsorcioComponent} from './consorcio/consorcio.component';
+import {ExpensaComponent} from './expensa/expensa.component';
 
 const routes: Routes = [
     {
@@ -20,7 +21,12 @@ const routes: Routes = [
             {
                 path: 'consorcio',
                 component: ConsorcioComponent
-            }]
+            },
+            {
+                path: 'expensa',
+                component: ExpensaComponent
+            }
+        ]
     }
 ];
 
@@ -32,6 +38,8 @@ export class AdminRoutingModule {
 }
 
 export const routedComponents = [
-    AdminComponent
+    AdminComponent,
+    ConsorcioComponent,
+    ExpensaComponent
 ];
 
