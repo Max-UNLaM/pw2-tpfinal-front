@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ConsorcioUnidadRutas} from '../consorcio.routes';
+import {ConsorcioExpensaRutas} from '../consorcio.routes';
 import {LoginStorageService} from '../../local/login/login-storage.service';
 import {ExpensaPaginatorResponse, ExpensaResponse} from './expensa.interface';
 
@@ -18,9 +18,8 @@ export class ExpensaService {
 
 
     public list(): Observable<HttpResponse<ExpensaResponse[]>> {
-        console.log(ConsorcioUnidadRutas.list);
         return this._httpClient.get<ExpensaResponse[]>(
-            ConsorcioUnidadRutas.list,
+            ConsorcioExpensaRutas.list,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
@@ -33,7 +32,7 @@ export class ExpensaService {
 
     public page(pageNumber: number): Observable<HttpResponse<ExpensaPaginatorResponse>> {
         return this._httpClient.get<ExpensaPaginatorResponse>(
-            `${ConsorcioUnidadRutas.page}${pageNumber}&size=10`,
+            `${ConsorcioExpensaRutas.page}${pageNumber}&size=10`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({

@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
-import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/unidad/unidad.interface';
-import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
+import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/expensa/expensa.interface';
+import {ExpensaService} from '../../../providers/consorcio/expensa/expensa.service';
 
 @Component({
     selector: 'app-expensa-table',
@@ -14,13 +14,13 @@ export class ExpensaTableComponent implements OnInit {
 
     data: ExpensaResponse[] = [];
     resultLenght = 0;
-    columnas = ['nombre', 'direccion', 'consorcio_id'];
+    columnas = ['unidad_id', 'emision', 'vencimiento', 'estado'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     error: string;
     tableLoading: boolean;
 
-    constructor(public dialog: MatDialog, protected unidadService: UnidadService) {
+    constructor(public dialog: MatDialog, protected unidadService: ExpensaService) {
     }
 
     ngOnInit() {

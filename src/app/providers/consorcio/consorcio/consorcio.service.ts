@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {ConsorcioConsorcioRutas, ConsorcioUnidadRutas} from '../consorcio.routes';
-import {ExpensaPaginatorResponse, ExpensaResponse} from '../unidad/unidad.interface';
+import {ConsorcioConsorcioRutas} from '../consorcio.routes';
 import {LoginStorageService} from '../../local/login/login-storage.service';
 import {Observable} from 'rxjs';
 import {ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interface';

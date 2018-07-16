@@ -1,10 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
-import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/unidad/unidad.interface';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {UnidadFormComponent} from '../unidad-form/unidad-form.component';
+import {UnidadPaginatorResponse, UnidadResponse} from '../../../providers/consorcio/unidad/unidad.interface';
 
 @Component({
     selector: 'app-unidad-tabla',
@@ -13,7 +12,7 @@ import {UnidadFormComponent} from '../unidad-form/unidad-form.component';
 })
 export class UnidadTablaComponent implements OnInit {
 
-    data: ExpensaResponse[] = [];
+    data: UnidadResponse[] = [];
     resultLenght = 0;
     columnas = ['nombre', 'direccion', 'consorcio_id'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -44,7 +43,7 @@ export class UnidadTablaComponent implements OnInit {
                 })
             )
             .subscribe(
-                (data: ExpensaPaginatorResponse) => {
+                (data: UnidadPaginatorResponse) => {
                     this.resultLenght = data.total;
                     console.log(data.data);
                     this.data = data.data;
