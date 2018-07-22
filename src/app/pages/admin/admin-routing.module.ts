@@ -12,6 +12,10 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
         children: [
             {
+                path: '',
+                component: ConsorcioComponent
+            },
+            {
                 path: 'unidad',
                 loadChildren: './unidad/unidad.module#UnidadModule',
                 data: {

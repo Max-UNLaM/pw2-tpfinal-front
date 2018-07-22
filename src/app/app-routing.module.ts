@@ -18,8 +18,15 @@ const routes: Routes = [
         }
     },
     {
-        path: '',
-        redirectTo: '/homepage',
+        path: 'user',
+        loadChildren: './pages/user/user.module#UserModule',
+        data: {
+            preload: true
+        }
+    },
+    {
+        path: '*',
+        redirectTo: '/portal',
         pathMatch: 'full',
         data: {}
     }

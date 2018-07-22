@@ -44,7 +44,7 @@ export class LoginFormComponent implements OnInit {
                 (token) => {
                     const logIn = token.body as OauthLoginSuccess;
                     this.loginStorageSrv.saveToken(logIn.success.token);
-                    this._router.navigate(['/homepage']);
+                    this.redirect('user');
                 },
                 error => {
                     this.accessError = true;
@@ -55,7 +55,10 @@ export class LoginFormComponent implements OnInit {
 
     redirect(address: string) {
         this._location.replaceState('/');
-        this._router.navigate([address]);
+        this._router.onSameUrlNavigation = 'reload';
+        this._router.navigate([address], {
+            replaceUrl: true
+        });
     }
 
     ngOnInit() {

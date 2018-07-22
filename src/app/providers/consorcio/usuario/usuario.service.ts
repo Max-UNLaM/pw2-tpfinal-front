@@ -13,7 +13,7 @@ export class UsuarioService {
 
     public create(usuario: UserCreate): Observable<HttpResponse<UserCreateResponse>> {
         return this._httpClient.post<HttpResponse<UserCreateResponse>>(
-            ConsorcioUsuarioRutas.register,
+            ConsorcioUsuarioRutas.create,
             usuario,
             {
                 observe: 'body',

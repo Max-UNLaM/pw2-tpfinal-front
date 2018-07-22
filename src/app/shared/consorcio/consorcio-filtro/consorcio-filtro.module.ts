@@ -4,9 +4,12 @@ import {ConsorcioFiltroComponent} from './consorcio-filtro.component';
 import {
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatDialogModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
     MatPaginatorModule,
     MatTableModule
 } from '@angular/material';
@@ -20,11 +23,14 @@ import {UnidadFormComponent} from '../../unidad/unidad-form/unidad-form.componen
         MatTableModule,
         MatCardModule,
         MatButtonModule,
-        MatDialogModule,
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPaginatorModule
+        MatChipsModule,
+        MatExpansionModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatListModule
     ],
     declarations: [ConsorcioFiltroComponent, UnidadFormComponent],
     exports: [ConsorcioFiltroComponent],

@@ -30,9 +30,9 @@ export class ConsorcioService {
         );
     }
 
-    public page(pageNumber: number): Observable<HttpResponse<ConsorcioPaginatorResponse>> {
+    public page(pageNumber: number, pageSize: number): Observable<HttpResponse<ConsorcioPaginatorResponse>> {
         return this._httpClient.get<ConsorcioPaginatorResponse>(
-            `${ConsorcioConsorcioRutas.page}${pageNumber}&size=10`,
+            `${ConsorcioConsorcioRutas.page}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({

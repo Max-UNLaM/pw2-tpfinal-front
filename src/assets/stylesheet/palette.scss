@@ -1,9 +1,30 @@
 @import '~@angular/material/theming';
 
-.background {
-  background-color: map_get($mat-indigo, 300);
+.background-amber {
+    background-color: map_get($mat-amber, 100);
+}
+
+.background-light-gray {
+
+}
+
+.background-amber-contrast {
+    color: map_get($mat-deep-purple, 900);
+    background-color: map_get($mat-amber, 100);
+    table {
+        background-color: map_get($mat-deep-purple, A100);
+    }
 }
 
 .danger {
-  color: map_get($mat-red, 500);
+    color: map_get($mat-red, 500);
+}
+
+
+.deep-purple {
+    color: map_get($mat-deep-purple, 900)
+}
+
+.deep-purple-a {
+    color: map_get($mat-deep-purple, A700)
 }

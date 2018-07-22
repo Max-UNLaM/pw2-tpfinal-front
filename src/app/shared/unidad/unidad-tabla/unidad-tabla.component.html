@@ -1,4 +1,4 @@
-<div class="container-full flex-column table-10-rows">
+<div class="container-full flex-column table-10-rows background-amber-contrast">
     <app-loader-shade [errorMessage]="error" [isLoadingResults]="tableLoading"></app-loader-shade>
     <table mat-table [dataSource]="data">
         <ng-container matColumnDef="nombre">
@@ -18,5 +18,5 @@
         <tr mat-header-row *matHeaderRowDef="columnas"></tr>
         <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
     </table>
-    <mat-paginator [length]="resultLenght" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [length]="resultLenght" [showFirstLastButtons]="true" [pageSize]="10"></mat-paginator>
 </div>

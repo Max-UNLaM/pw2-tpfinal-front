@@ -1,24 +1,28 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio.service';
 import {ConsorcioPaginatorResponse, ConsorcioResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {UnidadFormComponent} from '../../unidad/unidad-form/unidad-form.component';
+import {UnidadCreate} from '../../../providers/consorcio/unidad/unidad.interface';
 
 @Component({
-  selector: 'app-consorcio-filtro',
-  templateUrl: './consorcio-filtro.component.html',
-  styleUrls: ['./consorcio-filtro.component.scss']
+    selector: 'app-consorcio-filtro',
+    templateUrl: './consorcio-filtro.component.html',
+    styleUrls: ['./consorcio-filtro.component.scss']
 })
 export class ConsorcioFiltroComponent implements OnInit {
 
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @Input('page-size') localPageSize = 10;
     data: ConsorcioResponse[] = [];
     resultLenght = 0;
-    columnas = ['nombre', 'direccion', 'alta'];
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    columnas = ['nombre', 'direccion', 'localidad', 'provincia'];
 
-    constructor(public dialog: MatDialog, protected consorcioService: ConsorcioService) {
+    constructor(
+        public dialog: MatDialog,
+        protected consorcioService: ConsorcioService) {
     }
 
     ngOnInit() {
@@ -26,7 +30,7 @@ export class ConsorcioFiltroComponent implements OnInit {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                    return this.consorcioService.page(this.paginator.pageIndex + 1);
+                    return this.consorcioService.page(this.paginator.pageIndex + 1, this.localPageSize);
                 }),
                 map(data => {
                     return data.body;
@@ -45,12 +49,13 @@ export class ConsorcioFiltroComponent implements OnInit {
             );
     }
 
-    altaUnidad(id: number): void {
+    create(consorcio: ConsorcioResponse): void {
         const dialogRef = this.dialog.open(UnidadFormComponent, {
-            width: '600px'
+            width: '700px',
+            data: consorcio
         });
         dialogRef.afterClosed().subscribe(
-            (res) => console.log(res)
+            (res: UnidadCreate) => console.log(res)
         );
     }
 

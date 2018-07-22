@@ -16,6 +16,8 @@ export class UnidadTablaComponent implements OnInit {
     resultLenght = 0;
     columnas = ['nombre', 'direccion', 'consorcio_id'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    pageSize = 10;
+    pageSizeOptions = [5, 10, 20];
 
     error: string;
     tableLoading: boolean;
@@ -29,7 +31,8 @@ export class UnidadTablaComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.unidadService.page(this.paginator.pageIndex + 1);
+                    console.log(this.paginator);
+                    return this.unidadService.page(this.paginator.pageIndex + 1, 10);
                 }),
                 map(data => {
                     this.tableLoading = false;

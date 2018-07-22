@@ -1,6 +1,6 @@
 import {ToolbarItem} from '../../shared/navbar/navbar.interface';
 
-export class HomepageModel {
+export class AdminModel {
     menu: ToolbarItem[] = [
         {
             link: 'admin/unidad',

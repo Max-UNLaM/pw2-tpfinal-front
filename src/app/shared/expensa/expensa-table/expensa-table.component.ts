@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
@@ -12,15 +12,18 @@ import {ExpensaService} from '../../../providers/consorcio/expensa/expensa.servi
 })
 export class ExpensaTableComponent implements OnInit {
 
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @Input('page-size') pageSize = 10;
+
     data: ExpensaResponse[] = [];
     resultLenght = 0;
     columnas = ['unidad_id', 'emision', 'vencimiento', 'estado'];
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-
     error: string;
     tableLoading: boolean;
+    userToken: string;
 
     constructor(public dialog: MatDialog, protected unidadService: ExpensaService) {
+        this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
@@ -29,7 +32,7 @@ export class ExpensaTableComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.unidadService.page(this.paginator.pageIndex + 1);
+                    return this.unidadService.page(this.paginator.pageIndex + 1, this.userToken, this.pageSize);
                 }),
                 map(data => {
                     this.tableLoading = false;

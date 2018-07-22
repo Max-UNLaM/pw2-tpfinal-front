@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {ConsorcioCreate, ConsorcioResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
 
 @Component({
     selector: 'app-unidad-form',
@@ -11,7 +13,11 @@ export class UnidadFormComponent implements OnInit {
 
     unidadForm: FormGroup;
 
-    constructor(protected formBuilder: FormBuilder) {
+    constructor(
+        protected formBuilder: FormBuilder,
+        public dialogRef: MatDialogRef<UnidadFormComponent>,
+        @Inject(MAT_DIALOG_DATA) public consorcio: ConsorcioResponse
+    ) {
         this.createForm();
     }
 
@@ -22,11 +28,17 @@ export class UnidadFormComponent implements OnInit {
         this.unidadForm = this.formBuilder.group(
             {
                 nombre: ['', [Validators.required]],
-                direccion: ['', [Validators.required]],
-                localidad: ['', [Validators.required]],
-                provincia: ['', [Validators.required]],
-                consorcio_id: ['', [Validators.required, Validators.pattern(new RegExp('^[0-9]*$'))]],
             }
         );
+    }
+
+    crearUnidad() {
+        this.dialogRef.close({
+            nombre: this.unidadForm.get('nombre').value,
+            direccion: this.consorcio.direccion,
+            localidad: this.consorcio.localidad,
+            provincia: this.consorcio.provincia,
+            consorcio_id: this.consorcio.id
+        });
     }
 }

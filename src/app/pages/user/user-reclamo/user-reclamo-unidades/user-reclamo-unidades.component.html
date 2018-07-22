@@ -1,0 +1,16 @@
+<div class="container-full flex-column table-10-rows">
+    <app-loader-shade [isLoadingResults]="loadingTabla" [errorMessage]="errorMessage"></app-loader-shade>
+    <table mat-table [dataSource]="data">
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}}</td>
+        </ng-container>
+        <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef>Dirección</th>
+            <td mat-cell *matCellDef="let element"> {{element.direccion}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;" (click)="seleccionar(row)"></tr>
+    </table>
+    <mat-paginator [length]="resultLenght" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+</div>

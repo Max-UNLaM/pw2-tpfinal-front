@@ -1,46 +1,26 @@
 <mat-card-title>Alta de Unidad</mat-card-title>
 <form [formGroup]="unidadForm" *ngIf="unidadForm" class="flex flex-column">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="deep-purple">Consorcio</mat-panel-title>
+                <mat-panel-description class="deep-purple-a">Consorcio {{consorcio.nombre}}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list>
+                <mat-list-item><span class="deep-purple">Ubicación: </span> {{consorcio.direccion}}</mat-list-item>
+                <mat-list-item><span class="deep-purple">Localidad: </span> {{consorcio.localidad}}</mat-list-item>
+            </mat-list>
+        </mat-expansion-panel>
+    </mat-accordion>
     <mat-form-field>
         <mat-label>Nombre</mat-label>
         <input matInput placeholder="Nombre" formControlName="nombre">
         <mat-error
             *ngIf="!unidadForm.get('nombre').valid && (unidadForm.get('nombre').dirty || unidadForm.get('nombre').touched)">
-            Debes escribir un nombre
+            Debes escribir un nombre ejemplo: "1°B" o "Unidad 25"
         </mat-error>
     </mat-form-field>
-    <mat-form-field>
-        <mat-label>Direccion</mat-label>
-        <input matInput placeholder="Dirección" formControlName="direccion">
-        <mat-error
-            *ngIf="!unidadForm.get('direccion').valid && (unidadForm.get('direccion').dirty || unidadForm.get('direccion').touched)">
-            Debes escribir una dirección
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Localidad</mat-label>
-        <input matInput placeholder="Localidad" formControlName="localidad">
-        <mat-error
-            *ngIf="!unidadForm.get('localidad').valid && (unidadForm.get('localidad').dirty || unidadForm.get('localidad').touched)">
-            Debes escribir una localidad
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Provincia</mat-label>
-        <input matInput placeholder="Provincia" formControlName="provincia">
-        <mat-error
-            *ngIf="!unidadForm.get('provincia').valid && (unidadForm.get('provincia').dirty || unidadForm.get('provincia').touched)">
-            Debes escribir una Provincia
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Consorcio</mat-label>
-        <input matInput placeholder="Consorcio ID" formControlName="consorcio_id" type="number">
-        <mat-error
-            *ngIf="!unidadForm.get('consorcio_id').valid && (unidadForm.get('consorcio_id').dirty || unidadForm.get('consorcio_id').touched)">
-            Debes escribir un número de ID de una localidad
-        </mat-error>
-    </mat-form-field>
-    <button mat-raised-button [disabled]="!unidadForm.valid" color="primary" (click)="setLogin()">Crear</button>
+    <button mat-raised-button [disabled]="!unidadForm.valid" color="primary" (click)="crearUnidad()">Crear</button>
     <mat-error *ngIf="accessError">{{accessErrorText}}
     </mat-error>
 </form>

@@ -10,6 +10,11 @@ export interface UnidadCreate {
 }
 
 export interface UnidadResponse extends UnidadCreate {
+    nombre: string;
+    direccion: string;
+    localidad: string;
+    provincia: string;
+    consorcio_id: number;
     id: number;
     created_at: string;
     updated_at: string;

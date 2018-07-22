@@ -1,3 +1,4 @@
+<mat-panel-title>Elija un consorcio para la nueva unidad</mat-panel-title>
 <div class="container-full flex-column">
     <table mat-table [dataSource]="data">
         <ng-container matColumnDef="nombre">
@@ -8,14 +9,20 @@
             <th mat-header-cell *matHeaderCellDef>Dirección</th>
             <td mat-cell *matCellDef="let element"> {{element.direccion}}</td>
         </ng-container>
-        <ng-container matColumnDef="alta">
-            <th mat-header-cell *matHeaderCellDef>Alta</th>
+        <ng-container matColumnDef="localidad">
+            <th mat-header-cell *matHeaderCellDef>Localidad</th>
             <td mat-cell *matCellDef="let element">
-                <button mat-button (click)="altaUnidad(element.consorcio_id)">+</button>
+                {{element.localidad}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="provincia">
+            <th mat-header-cell *matHeaderCellDef>Provincia</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.provincia}}
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;" (click)="create(row)"></tr>
     </table>
-    <mat-paginator [length]="resultLenght" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [length]="resultLenght" [showFirstLastButtons]="true" [pageSize]="localPageSize"></mat-paginator>
 </div>

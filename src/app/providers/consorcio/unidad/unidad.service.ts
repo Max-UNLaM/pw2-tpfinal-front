@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {ConsorcioUnidadRutas} from '../consorcio.routes';
+import {ConsorcioUnidadRutasAdmin} from '../consorcio.routes';
 import {Observable} from 'rxjs';
-import {UnidadPaginatorResponse, UnidadResponse} from './unidad.interface';
+import {UnidadCreate, UnidadPaginatorResponse, UnidadResponse} from './unidad.interface';
 import {LoginStorageService} from '../../local/login/login-storage.service';
 
 @Injectable({
@@ -17,9 +17,9 @@ export class UnidadService {
     }
 
     public list(): Observable<HttpResponse<UnidadResponse[]>> {
-        console.log(ConsorcioUnidadRutas.list);
+        console.log(ConsorcioUnidadRutasAdmin.list);
         return this._httpClient.get<UnidadResponse[]>(
-            ConsorcioUnidadRutas.list,
+            ConsorcioUnidadRutasAdmin.list,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
@@ -30,11 +30,22 @@ export class UnidadService {
         );
     }
 
-    public page(pageNumber: number): Observable<HttpResponse<UnidadPaginatorResponse>> {
-        console.log(ConsorcioUnidadRutas.list);
-        console.log(`${ConsorcioUnidadRutas.page}${pageNumber}&size=10`);
+    public pagelistByUser(userToken: string, pageNumber, size = 10): Observable<HttpResponse<UnidadPaginatorResponse>> {
         return this._httpClient.get<UnidadPaginatorResponse>(
-            `${ConsorcioUnidadRutas.page}${pageNumber}&size=10`,
+            `${ConsorcioUnidadRutasAdmin.page}${pageNumber}&size=${size}`,
+            {
+                observe: 'response',
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userToken}`
+                })
+            }
+        );
+    }
+
+    public page(pageNumber: number, pageSize: number): Observable<HttpResponse<UnidadPaginatorResponse>> {
+        return this._httpClient.get<UnidadPaginatorResponse>(
+            `${ConsorcioUnidadRutasAdmin.page}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
@@ -45,7 +56,18 @@ export class UnidadService {
         );
     }
 
-    public create() {
+    public create(unidad: UnidadCreate): Observable<HttpResponse<UnidadCreate>> {
+        return this._httpClient.post<UnidadCreate>(
+            ConsorcioUnidadRutasAdmin.create,
+            unidad,
+            {
+                observe: 'response',
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.userToken}`
+                })
+            }
+        );
     }
 
 }

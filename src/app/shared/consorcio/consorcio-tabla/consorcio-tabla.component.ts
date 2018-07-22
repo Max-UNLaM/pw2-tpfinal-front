@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
@@ -12,10 +12,11 @@ import {ConsorcioPaginatorResponse, ConsorcioResponse} from '../../../providers/
 })
 export class ConsorcioTablaComponent implements OnInit {
 
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @Input('page-size') localPageSize = 10;
     data: ConsorcioResponse[] = [];
     resultLenght = 0;
     columnas = ['nombre', 'direccion', 'localidad', 'provincia', 'telefono'];
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     loadingTabla: boolean;
     errorMessage: string;
 
@@ -28,7 +29,7 @@ export class ConsorcioTablaComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.loadingTabla = true;
-                    return this.consorcioService.page(this.paginator.pageIndex + 1);
+                    return this.consorcioService.page(this.paginator.pageIndex + 1, this.localPageSize);
                 }),
                 map(data => {
                     this.loadingTabla = false;
