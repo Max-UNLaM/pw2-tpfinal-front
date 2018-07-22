@@ -14,6 +14,7 @@ export class ExpensaTableComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @Input('page-size') pageSize = 10;
+    @Input('user-type') userType = 'user';
 
     data: ExpensaResponse[] = [];
     resultLenght = 0;
@@ -27,12 +28,17 @@ export class ExpensaTableComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.userType);
+        let listaExpensas = this.unidadService.pageUser(this.paginator.pageIndex + 1, this.userToken, this.pageSize);
+        if (this.userType === 'admin') {
+            listaExpensas = this.unidadService.pageAdmin(this.paginator.pageIndex + 1, this.userToken, this.pageSize);
+        }
         merge(this.paginator.page)
             .pipe(
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.unidadService.page(this.paginator.pageIndex + 1, this.userToken, this.pageSize);
+                    return listaExpensas;
                 }),
                 map(data => {
                     this.tableLoading = false;

@@ -15,7 +15,7 @@ import {UnidadCreate} from '../../../providers/consorcio/unidad/unidad.interface
 export class ConsorcioFiltroComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @Input('page-size') localPageSize = 10;
+    @Input('page    -size') localPageSize = 10;
     data: ConsorcioResponse[] = [];
     resultLenght = 0;
     columnas = ['nombre', 'direccion', 'localidad', 'provincia'];

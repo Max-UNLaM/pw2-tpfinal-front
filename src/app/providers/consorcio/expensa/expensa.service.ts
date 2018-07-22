@@ -82,7 +82,7 @@ export class ExpensaService {
         );
     }
 
-    public page(pageNumber: number, userToken: string, pageSize: number): Observable<HttpResponse<ExpensaPaginatorResponse>> {
+    public pageAdmin(pageNumber: number, userToken: string, pageSize: number): Observable<HttpResponse<ExpensaPaginatorResponse>> {
         return this._httpClient.get<ExpensaPaginatorResponse>(
             `${ConsorcioExpensaRutasAdmin.page}${pageNumber}&size=${pageSize}`,
             {
@@ -94,4 +94,18 @@ export class ExpensaService {
             }
         );
     }
+
+    public pageUser(pageNumber: number, userToken: string, pageSize: number): Observable<HttpResponse<ExpensaPaginatorResponse>> {
+        return this._httpClient.get<ExpensaPaginatorResponse>(
+            `${ConsorcioExpensaRutasUser.page}${pageNumber}&size=${pageSize}`,
+            {
+                observe: 'response',
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userToken}`
+                })
+            }
+        );
+    }
+
 }

@@ -34,7 +34,7 @@ export class ReclamoTableComponent implements OnInit {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                    this.tableLoading = true;
+                     this.tableLoading = true;
                     return this.reclamo.page(userToken, this.paginator.pageIndex + 1, this.localPageSize);
                 }),
                 map(data => {
