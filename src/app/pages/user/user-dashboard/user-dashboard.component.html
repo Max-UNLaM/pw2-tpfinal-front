@@ -1,11 +1,14 @@
 <div class="subpage-container-full flex justify-content-around align-content-center">
-    <mat-card class="card-medium table-5-rows margin-auto background-amber-contrast"
-              [style.background]="primary">
-        <mat-card-title>Resumen de expensas</mat-card-title>
+    <mat-card class="card-medium table-5-rows margin-auto background-amber-contrast">
+        <mat-card-title>Lista de expensas</mat-card-title>
         <app-expensa-table [page-size]="5" [user-type]="'user'"></app-expensa-table>
     </mat-card>
     <mat-card class="card-medium table-5-rows margin-auto background-amber-contrast">
-        <mat-card-title>Resumen de reclamos</mat-card-title>
+        <mat-card-title>Lista de facturas</mat-card-title>
+        <app-factura-filtro [page-size]="5"></app-factura-filtro>
+    </mat-card>
+    <mat-card class="card-medium table-5-rows margin-auto background-amber-contrast">
+        <mat-card-title>Lista de reclamos</mat-card-title>
         <app-reclamo-table [page-size]="5"></app-reclamo-table>
         <mat-card-actions>
             <button mat-flat-button routerLink="/reclamo">Nuevo reclamo</button>

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ReclamoCreate, ReclamoCreateResponse, ReclamoPaginatorResponse} from './reclamo.interface.';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {ConsorcioReclamoRutasUser, ConsorcioUnidadRutasAdmin} from '../consorcio.routes';
+import {ConsorcioReclamoRutasAdmin, ConsorcioReclamoRutasUser} from '../consorcio.routes';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -27,10 +27,14 @@ export class ReclamoService {
         );
     }
 
-    public page(userToken: string, pageNumber: number, pageSize: number): Observable<HttpResponse<ReclamoPaginatorResponse>> {
-        console.log(`${ConsorcioReclamoRutasUser.page}${pageNumber}&size=${pageSize}`);
+    public pageList(
+        userToken: string,
+        pageNumber: number,
+        pageSize: number,
+        admin?: boolean): Observable<HttpResponse<ReclamoPaginatorResponse>> {
+        const root = admin ? ConsorcioReclamoRutasAdmin.page : ConsorcioReclamoRutasUser.page;
         return this._httpClient.get<ReclamoPaginatorResponse>(
-            `${ConsorcioReclamoRutasUser.page}${pageNumber}&size=${pageSize}`,
+            `${root}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({

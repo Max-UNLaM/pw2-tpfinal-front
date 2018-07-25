@@ -15,6 +15,7 @@ export class ReclamoTableComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @Input('page-size') localPageSize: number;
+    @Input('user-admin') userAdmin = false;
 
 
     data: ReclamoResponse[] = [];
@@ -35,7 +36,7 @@ export class ReclamoTableComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                      this.tableLoading = true;
-                    return this.reclamo.page(userToken, this.paginator.pageIndex + 1, this.localPageSize);
+                    return this.reclamo.pageList(userToken, this.paginator.pageIndex + 1, this.localPageSize, this.userAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;
@@ -44,6 +45,7 @@ export class ReclamoTableComponent implements OnInit {
                 catchError((error) => {
                     this.error = error.statusText;
                     this.tableLoading = false;
+                    console.error(error);
                     return of([]);
                 })
             )

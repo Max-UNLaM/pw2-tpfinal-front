@@ -5,6 +5,7 @@ import {ExpensaTableModule} from '../../shared/expensa/expensa-table/expensa-tab
 import {MatButtonModule, MatCardModule} from '@angular/material';
 import {LoaderShadeModule} from '../../shared/ui/loader-shade/loader-shade.module';
 import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-table.module';
+import {FacturaFiltroModule} from '../../shared/factura/factura-filtro/factura-filtro.module';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-tab
         MatCardModule,
         MatButtonModule,
         LoaderShadeModule,
-        ReclamoTableModule
+        ReclamoTableModule,
+        FacturaFiltroModule
     ],
     declarations: [...routedComponents]
 })

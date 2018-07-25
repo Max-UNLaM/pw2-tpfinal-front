@@ -4,6 +4,8 @@ import {AdminComponent} from './admin.component';
 import {AuthGuardService} from '../../auth-guard.service';
 import {ConsorcioComponent} from './consorcio/consorcio.component';
 import {ExpensaComponent} from './expensa/expensa.component';
+import {AdminDashoardComponent} from './admin-dashoard/admin-dashoard.component';
+import {ReclamoComponent} from './reclamo/reclamo.component';
 
 const routes: Routes = [
     {
@@ -13,7 +15,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: ConsorcioComponent
+                component: AdminDashoardComponent
             },
             {
                 path: 'unidad',
@@ -29,6 +31,10 @@ const routes: Routes = [
             {
                 path: 'expensa',
                 component: ExpensaComponent
+            },
+            {
+                path: 'reclamo',
+                component: ReclamoComponent
             }
         ]
     }
@@ -44,6 +50,8 @@ export class AdminRoutingModule {
 export const routedComponents = [
     AdminComponent,
     ConsorcioComponent,
-    ExpensaComponent
+    ExpensaComponent,
+    AdminDashoardComponent,
+    ReclamoComponent
 ];
 

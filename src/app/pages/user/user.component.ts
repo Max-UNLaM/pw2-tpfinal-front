@@ -23,7 +23,8 @@ export class UserComponent implements OnInit {
         this.expensaSrv.accessCheck(userToken).subscribe(
             () => {
             },
-            () => {
+            (err) => {
+                console.error(err);
                 this._location.replaceState('/');
                 window.localStorage.clear();
                 this._router.navigate(['portal/login'], {

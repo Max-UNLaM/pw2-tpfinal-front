@@ -55,13 +55,13 @@ export const ConsorcioExpensaRutasAdmin = {
     listByUnidad: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa?unidad_id=`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa?page=`,
     show: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa?id=`,
-    check: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa?puerta`,
+    check: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa?puerta=hola`,
 };
 
 // EXPENSA
 // user
 export const ConsorcioExpensaRutasUser = {
-    check: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?puerta`,
+    check: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?puerta=hola`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?page=`,
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa`,
     listByUnidad: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?unidad_id=`
@@ -75,6 +75,26 @@ export const ConsorcioReclamoRutasUser = {
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/reclamo?page=`
 };
 
-export const ConsorcioOptions = {
-    post: {}
+
+// RECLAMO
+// admin
+export const ConsorcioReclamoRutasAdmin = {
+    create: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo`,
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo?page=`
+};
+
+// CONSORCIO
+// user
+export const ConsorcioFacturaRutasUser = {
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/factura`,
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/factura?page=`
+};
+
+
+// CONSORCIO
+// admin
+
+export const ConsorcioFacturaRutasAdmin = {
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`,
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura?page=`
 };

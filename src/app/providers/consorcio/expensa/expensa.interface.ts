@@ -20,3 +20,11 @@ export interface ExpensaResponse extends ExpensaCreate {
 export interface ExpensaPaginatorResponse extends PaginatorResponse {
     data: ExpensaResponse[];
 }
+
+export interface ExpensaConceptoResponse {
+    unidad: string;
+    concepto: string;
+    valor_total: number;
+    participacion: string;
+    valor: number;
+}
