@@ -1,39 +1,38 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SelectivePreloadingStrategy} from './selective-preloading-strategy';
+import {AuthGuardService} from './auth-guard.service';
 
 const routes: Routes = [
     {
         path: 'admin',
         loadChildren: './pages/admin/admin.module#AdminModule',
-        data: {
-            preload: true
-        }
+        canLoad: [AuthGuardService]
     },
     {
         path: 'portal',
-        loadChildren: './pages/portal/portal.module#PortalModule',
-        data: {
-            preload: true
-        }
+        loadChildren: './pages/portal/portal.module#PortalModule'
     },
     {
         path: 'user',
         loadChildren: './pages/user/user.module#UserModule',
+        canLoad: [AuthGuardService],
+    },
+    {
+        path: '',
+        redirectTo: '/portal',
+        pathMatch: 'full',
         data: {
             preload: true
         }
-    },
-    {
-        path: '*',
-        redirectTo: '/portal',
-        pathMatch: 'full',
-        data: {}
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {preloadingStrategy: SelectivePreloadingStrategy})],
+    imports: [RouterModule.forRoot(routes, {
+        enableTracing: true,
+        preloadingStrategy: SelectivePreloadingStrategy
+    })],
     exports: [RouterModule],
     providers: [SelectivePreloadingStrategy]
 })

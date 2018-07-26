@@ -25,6 +25,13 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'gasto',
+                loadChildren: './admin-gasto/admin-gasto.module#AdminGastoModule',
+                data: {
+                    preload: true
+                }
+            },
+            {
                 path: 'consorcio',
                 component: ConsorcioComponent
             },

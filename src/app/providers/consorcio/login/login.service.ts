@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpRequest, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {OauthLogin, OauthLoginResponse} from './login.interface';
 import {ConsorcioLoginRutas} from '../consorcio.routes';
 import {headersMain} from '../../headers.model';
-import {catchError} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'

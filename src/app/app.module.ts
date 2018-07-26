@@ -18,8 +18,8 @@ import {PortalModule} from './pages/portal/portal.module';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        HttpClientModule,
         PortalModule,
+        HttpClientModule,
         MatToolbarModule,
         MatButtonModule,
         MatMenuModule

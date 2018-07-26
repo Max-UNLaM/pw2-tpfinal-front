@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ConsorcioConsorcioRutasAdmin, ConsorcioConsorcioRutasUser} from '../consorcio.routes';
-import {LoginStorageService} from '../../local/login/login-storage.service';
 import {Observable} from 'rxjs';
 import {ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interface';
 
@@ -13,8 +12,8 @@ export class ConsorcioService {
 
     protected userToken: string;
 
-    constructor(private _httpClient: HttpClient, protected loginStorage: LoginStorageService) {
-        this.userToken = this.loginStorage.getToken();
+    constructor(private _httpClient: HttpClient) {
+        this.userToken = window.localStorage.getItem('userToken');
     }
 
     public list(isAdmin?: boolean): Observable<HttpResponse<ConsorcioResponse[]>> {

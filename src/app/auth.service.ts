@@ -15,7 +15,7 @@ export class AuthService {
     }
 
     login(): boolean {
-        this.loginToken = this.loginStorageService.getToken() ? this.loginStorageService.getToken() : null;
+        this.loginToken = window.localStorage.getItem('userToken');
         if (this.loginToken) {
             return this.isLoggedIn = true;
         }

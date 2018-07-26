@@ -27,6 +27,10 @@ export class UserModel {
             text: 'Expensas'
         },
         {
+            link: 'admin/gasto',
+            text: 'Gastos'
+        },
+        {
             link: 'admin/consorcio',
             text: 'Consorcios'
         }

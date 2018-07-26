@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
                 private _router: Router,
                 private _location: Location) {
         this.navbarSrv.set(this.userModel.adminMenuAdmin);
+        console.error('entre a admin');
     }
 
     ngOnInit() {
@@ -28,11 +29,9 @@ export class AdminComponent implements OnInit {
             () => {
                 this.certifiedAdmin = true;
             },
-            (err) => {
-                console.error(err);
+            () => {
                 this._location.replaceState('/');
-                window.localStorage.clear();
-                this._router.navigate(['portal/login'], {
+                this._router.navigate(['/'], {
                     replaceUrl: true
                 });
             }

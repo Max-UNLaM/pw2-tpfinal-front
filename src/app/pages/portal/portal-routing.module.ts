@@ -10,15 +10,13 @@ const routes: Routes = [
         component: PortalComponent,
         children: [
             {
-                path: '',
-                loadChildren: './../user/user.module#UserModule',
-                data: {
-                    preload: true
-                }
-            },
-            {
                 path: 'login',
                 component: LoginComponent
+            },
+            {
+                path: '',
+                redirectTo: '/login',
+                pathMatch: 'full',
             },
             {
                 path: 'register',

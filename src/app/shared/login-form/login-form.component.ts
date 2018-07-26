@@ -43,8 +43,8 @@ export class LoginFormComponent implements OnInit {
             .subscribe(
                 (token) => {
                     const logIn = token.body as OauthLoginSuccess;
-                    this.loginStorageSrv.saveToken(logIn.success.token);
-                    this.redirect('user');
+                    window.localStorage.setItem('userToken', logIn.success.token);
+                    this.redirect('/user');
                 },
                 error => {
                     this.accessError = true;
@@ -55,10 +55,7 @@ export class LoginFormComponent implements OnInit {
 
     redirect(address: string) {
         this._location.replaceState('/');
-        this._router.onSameUrlNavigation = 'reload';
-        this._router.navigate([address], {
-            replaceUrl: true
-        });
+        this._router.navigate([address]);
     }
 
     ngOnInit() {

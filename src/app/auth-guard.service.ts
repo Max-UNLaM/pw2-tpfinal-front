@@ -1,12 +1,22 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthService} from './auth.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService implements CanActivate, CanLoad, CanActivateChild {
     constructor(private authService: AuthService, private router: Router) {
+    }
+
+    canLoad(route: Route): boolean {
+        const url = `/${route.path}`;
+
+        return this.checkLogin(url);
+    }
+
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        return this.canActivate(route, state);
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -19,7 +29,7 @@ export class AuthGuardService implements CanActivate {
             return true;
         }
         this.authService.redirectUrl = url;
-        this.router.navigate(['/portal/login']);
+        this.router.navigate(['/portal']);
         return false;
     }
 }

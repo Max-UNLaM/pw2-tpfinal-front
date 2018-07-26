@@ -30,6 +30,7 @@ export class UserDashboardComponent implements OnInit {
     };
 
     constructor() {
+        console.error('entre a user-dashboard');
     }
 
     ngOnInit() {
