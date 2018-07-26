@@ -37,7 +37,21 @@ table {
     margin: auto;
 }
 
+.bastante-grande {
+    max-width: 1300px
+}
+
+.bastante-grande-posta {
+    min-width: 900px;
+    max-width: 1300px
+}
+
 .novecientos {
+    max-width: 900px;
+}
+
+.novecientos-posta {
+    width: 900px;
     max-width: 900px;
 }
 

@@ -1,19 +1,24 @@
-<div class="subpage-container-full flex justify-content-around align-content-center">
-    <mat-card class="novecientos margin-auto background-teal-contrast">
+<div class="subpage-container-full flex justify-content-around align-content-center background-grey-light">
+    <mat-card class="novecientos margin-auto background-gray-light-contrast">
         <mat-card-title>Reclamos</mat-card-title>
         <mat-card-subtitle>Abiertos por consorcios</mat-card-subtitle>
         <ngx-charts-pie-chart
-            [view]="view"
-            [labels]="true"
+            [view]="chartsView"
+            [labels]="chartsLabels"
             [scheme]="colorScheme"
-            [results]="datos"
-            [animations]="true"
+            [results]="reclamosChartsDatos"
             (select)="onSelect($event)">
         </ngx-charts-pie-chart>
     </mat-card>
-    <mat-card class="card-medium table-5-rows margin-auto background-teal-contrast">
+    <mat-card class="card-medium margin-auto background-gray-light-contrast">
         <mat-card-title>Facturas</mat-card-title>
         <mat-card-subtitle>Impagas por consorcio</mat-card-subtitle>
-
+        <ngx-charts-pie-chart
+            [view]="chartsView"
+            [labels]="chartsLabels"
+            [scheme]="colorScheme"
+            [results]="facturasChartsDatos"
+            (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
     </mat-card>
 </div>

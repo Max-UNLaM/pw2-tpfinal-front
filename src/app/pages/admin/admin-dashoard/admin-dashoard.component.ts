@@ -16,14 +16,15 @@ export class AdminDashoardComponent implements OnInit {
     colorScheme = {
         domain: ChartsPalletes.deepPurple
     };
-    title = `Reclamos sin responder`;
-    datos: PieChart[];
-    view: any[] = [400, 300];
-    showLegend = true;
-    showLabels = true;
-    explodeSlices = false;
-    doughnut = false;
-    gradient = false;
+    reclamosTitle = `Reclamos sin responder`;
+    reclamosChartsDatos: PieChart[];
+    facturasChartsTitle = `Reclamos sin responder`;
+    facturasChartsDatos: PieChart[];
+    chartsView: any[] = [400, 300];
+    chartsShowLegend = true;
+    chartsLabels = true;
+    chartsShowLabels = true;
+    chartsExplodeSlices = false;
 
     constructor(private _estadisticasService: EstadisticasService) {
 
@@ -38,7 +39,12 @@ export class AdminDashoardComponent implements OnInit {
             .subscribe(
                 (data) => {
                     const stats = data.body as ConsorcioStatsResponse[];
-                    this.datos = ChartsHelperService.pieChartBuilder(stats, 'consorcio_nombre', 'reclamos_esperando_respuesta');
+                    this.reclamosChartsDatos = ChartsHelperService.pieChartBuilder(stats,
+                        'consorcio_nombre',
+                        'reclamos_esperando_respuesta');
+                    this.facturasChartsDatos = ChartsHelperService.pieChartBuilder(stats,
+                        'consorcio_nombre',
+                        'facturas_impagas');
                 },
                 error => console.error(error)
             );
