@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
+    public certifiedUser = false;
     protected userModel: UserModel = new UserModel();
 
     constructor(protected navbarSrv: NavbarService,
@@ -22,6 +23,7 @@ export class UserComponent implements OnInit {
         const userToken = window.localStorage.getItem('userToken');
         this.expensaSrv.accessCheck(userToken).subscribe(
             () => {
+                this.certifiedUser = true;
             },
             (err) => {
                 console.error(err);

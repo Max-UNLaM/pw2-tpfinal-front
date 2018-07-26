@@ -1,0 +1,13 @@
+<div class="subpage-container-full flex justify-content-around align-content-center">
+    <mat-card class="novecientos margin-auto background-teal-contrast">
+        <mat-card-title>Reclamos</mat-card-title>
+        <ngx-charts-advanced-pie-chart
+            [view]="view"
+            [label]="title"
+            [scheme]="colorScheme"
+            [results]="datos"
+            [animations]="true"
+            (select)="onSelect($event)">
+        </ngx-charts-advanced-pie-chart>
+    </mat-card>
+</div>

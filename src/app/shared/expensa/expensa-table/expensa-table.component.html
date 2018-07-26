@@ -1,6 +1,6 @@
 <div class="container-full flex-column">
     <app-loader-shade [errorMessage]="error" [isLoadingResults]="tableLoading"></app-loader-shade>
-    <table mat-table [dataSource]="data" class="background-amber-contrast">
+    <table mat-table [dataSource]="data" class="background-grey-light">
         <ng-container matColumnDef="unidad_id">
             <th mat-header-cell *matHeaderCellDef>Unidad</th>
             <td mat-cell *matCellDef="let element">

@@ -30,7 +30,7 @@ export class ConsorcioFiltroComponent implements OnInit {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                    return this.consorcioService.page(this.paginator.pageIndex + 1, this.localPageSize);
+                    return this.consorcioService.pageList(this.paginator.pageIndex + 1, this.localPageSize, false);
                 }),
                 map(data => {
                     return data.body;

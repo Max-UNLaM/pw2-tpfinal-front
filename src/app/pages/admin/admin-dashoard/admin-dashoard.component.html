@@ -1,18 +1,19 @@
-<div class="subpage-container-full">
-    <mat-card class="card-medium table-5-rows margin-auto background-amber-contrast">
-        <mat-card-title>Pago de expensas</mat-card-title>
+<div class="subpage-container-full flex justify-content-around align-content-center">
+    <mat-card class="novecientos margin-auto background-teal-contrast">
+        <mat-card-title>Reclamos</mat-card-title>
+        <mat-card-subtitle>Abiertos por consorcios</mat-card-subtitle>
         <ngx-charts-pie-chart
             [view]="view"
+            [labels]="true"
             [scheme]="colorScheme"
-            [results]="single"
-            [legend]="showLegend"
-            [explodeSlices]="explodeSlices"
-            [labels]="showLabels"
-            [doughnut]="doughnut"
+            [results]="datos"
+            [animations]="true"
             (select)="onSelect($event)">
         </ngx-charts-pie-chart>
     </mat-card>
-    <mat-card class="card-medium table-5-rows margin-auto background-amber-contrast">
-        <app-reclamo-table [page-size]="5" [user-admin]="true"></app-reclamo-table>
+    <mat-card class="card-medium table-5-rows margin-auto background-teal-contrast">
+        <mat-card-title>Facturas</mat-card-title>
+        <mat-card-subtitle>Impagas por consorcio</mat-card-subtitle>
+
     </mat-card>
 </div>

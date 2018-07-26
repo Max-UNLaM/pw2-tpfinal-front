@@ -1,0 +1,12 @@
+<form>
+    <mat-form-field>
+        <mat-select [(value)]="consorcioElegido" placeholder="Elija un consorcio" (selectionChange)="emitConsorcio()">
+            <mat-option [value]="allConsorcios">
+                Todos
+            </mat-option>
+            <mat-option *ngFor="let consorcio of consorcios" [value]="consorcio">
+                <span>{{consorcio.id}}</span> | {{consorcio.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>

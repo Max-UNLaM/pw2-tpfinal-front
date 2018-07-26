@@ -7,6 +7,8 @@ import {ExpensaTableModule} from '../../shared/expensa/expensa-table/expensa-tab
 import { AdminDashoardComponent } from './admin-dashoard/admin-dashoard.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-table.module';
+import {ConsorcioAutocompleteModule} from '../../shared/consorcio/consorcio-select/consorcio-autocomplete.module';
+import {EstadisticasService} from '../../providers/consorcio/estadisticas/estadisticas.service';
 
 @NgModule({
     imports: [
@@ -16,9 +18,11 @@ import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-tab
         ConsorcioTablaModule,
         ExpensaTableModule,
         NgxChartsModule,
-        ReclamoTableModule
+        ReclamoTableModule,
+        ConsorcioAutocompleteModule
     ],
     declarations: [...routedComponents],
+    providers:[EstadisticasService]
 })
 export class AdminModule {
 }

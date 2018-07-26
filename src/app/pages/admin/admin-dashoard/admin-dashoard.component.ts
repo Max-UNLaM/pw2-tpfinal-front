@@ -1,4 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {PieChart} from '../../../shared/model/charts.interface';
+import {EstadisticasService} from '../../../providers/consorcio/estadisticas/estadisticas.service';
+import {ConsorcioStatsResponse} from '../../../providers/consorcio/estadisticas/estadisticas.interface';
+import {ChartsHelperService} from '../../../shared/ui/charts-helper/charts-helper.service';
+import {ChartsPalletes} from '../../../shared/ui/charts-helper/charts.model';
 
 @Component({
     selector: 'app-admin-dashoard',
@@ -7,25 +12,21 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdminDashoardComponent implements OnInit {
 
-    single: any[];
-    multi: any[];
-
-    view: any[] = [700, 400];
-
-    // options
-    showLegend = true;
 
     colorScheme = {
-        domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+        domain: ChartsPalletes.deepPurple
     };
-
-    // pie
+    title = `Reclamos sin responder`;
+    datos: PieChart[];
+    view: any[] = [400, 300];
+    showLegend = true;
     showLabels = true;
     explodeSlices = false;
     doughnut = false;
+    gradient = false;
 
+    constructor(private _estadisticasService: EstadisticasService) {
 
-    constructor() {
     }
 
     onSelect(event) {
@@ -33,6 +34,14 @@ export class AdminDashoardComponent implements OnInit {
     }
 
     ngOnInit() {
+        this._estadisticasService.list(true)
+            .subscribe(
+                (data) => {
+                    const stats = data.body as ConsorcioStatsResponse[];
+                    this.datos = ChartsHelperService.pieChartBuilder(stats, 'consorcio_nombre', 'reclamos_esperando_respuesta');
+                },
+                error => console.error(error)
+            );
     }
 
 }

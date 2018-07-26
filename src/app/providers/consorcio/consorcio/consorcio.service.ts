@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {ConsorcioConsorcioRutas} from '../consorcio.routes';
+import {ConsorcioConsorcioRutasAdmin, ConsorcioConsorcioRutasUser} from '../consorcio.routes';
 import {LoginStorageService} from '../../local/login/login-storage.service';
 import {Observable} from 'rxjs';
 import {ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interface';
@@ -17,9 +17,10 @@ export class ConsorcioService {
         this.userToken = this.loginStorage.getToken();
     }
 
-    public list(): Observable<HttpResponse<ConsorcioResponse[]>> {
+    public list(isAdmin?: boolean): Observable<HttpResponse<ConsorcioResponse[]>> {
+        const root = isAdmin ? ConsorcioConsorcioRutasAdmin.list : ConsorcioConsorcioRutasUser.list;
         return this._httpClient.get<ConsorcioResponse[]>(
-            ConsorcioConsorcioRutas.list,
+            root,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
@@ -30,9 +31,10 @@ export class ConsorcioService {
         );
     }
 
-    public page(pageNumber: number, pageSize: number): Observable<HttpResponse<ConsorcioPaginatorResponse>> {
+    public pageList(pageNumber: number, pageSize: number, isAdmin?: boolean): Observable<HttpResponse<ConsorcioPaginatorResponse>> {
+        const root = isAdmin ? ConsorcioConsorcioRutasAdmin.page : ConsorcioConsorcioRutasUser.page;
         return this._httpClient.get<ConsorcioPaginatorResponse>(
-            `${ConsorcioConsorcioRutas.page}${pageNumber}&size=${pageSize}`,
+            `${root}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({

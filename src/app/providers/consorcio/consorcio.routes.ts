@@ -26,9 +26,18 @@ export const ConsorcioUsuarioRutas = {
 };
 
 // CONSORCIO
-export const ConsorcioConsorcioRutas = {
-    list: `${ConsorcioApiRutas.v1}/consorcio`,
-    page: `${ConsorcioApiRutas.v1}/consorcio?page=`
+// admin
+export const ConsorcioConsorcioRutasAdmin = {
+    list: `${ConsorcioApiRutas.v1}/admin/consorcio`,
+    page: `${ConsorcioApiRutas.v1}/admin/consorcio?page=`
+};
+
+
+// CONSORCIO
+// user
+export const ConsorcioConsorcioRutasUser = {
+    list: `${ConsorcioApiRutas.v1}/user/consorcio`,
+    page: `${ConsorcioApiRutas.v1}/user/consorcio?page=`
 };
 
 // UNIDAD
@@ -97,4 +106,15 @@ export const ConsorcioFacturaRutasUser = {
 export const ConsorcioFacturaRutasAdmin = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura?page=`
+};
+
+// ESTADÍSTICAS
+// admin
+export const ConsorcioConsorcioStatsRutasAdmin = {
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/estadistica`
+};
+
+
+export const ConsorcioConsorcioStatsRutasUser = {
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/estadistica`
 };

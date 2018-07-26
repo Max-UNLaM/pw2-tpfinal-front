@@ -29,7 +29,7 @@ export class ConsorcioTablaComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.loadingTabla = true;
-                    return this.consorcioService.page(this.paginator.pageIndex + 1, this.localPageSize);
+                    return this.consorcioService.pageList(this.paginator.pageIndex + 1, this.localPageSize, false);
                 }),
                 map(data => {
                     this.loadingTabla = false;

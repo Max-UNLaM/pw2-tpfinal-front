@@ -17,3 +17,14 @@ export interface ConsorcioResponse extends ConsorcioCreate {
 export interface ConsorcioPaginatorResponse extends PaginatorResponse {
     data: ConsorcioResponse[];
 }
+
+export interface ConsorcioUserResponse {
+    id: number;
+    nombre: string;
+    direccion: string;
+    localidad: string;
+}
+
+export interface ConsorcioUserPaginatorResponse extends PaginatorResponse {
+    data: ConsorcioUserResponse[];
+}

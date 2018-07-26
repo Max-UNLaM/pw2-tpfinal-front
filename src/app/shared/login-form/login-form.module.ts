@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {LoginFormRoutingModule} from './login-form-routing.module';
 import {LoginFormComponent} from './login-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {LoginService} from '../../providers/consorcio/login/login.service';
 import {LoginStorageService} from '../../providers/local/login/login-storage.service';
 
@@ -15,7 +15,8 @@ import {LoginStorageService} from '../../providers/local/login/login-storage.ser
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        MatCardModule
     ],
     declarations: [LoginFormComponent],
     exports: [LoginFormComponent],

@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserModel} from '../user/user.model';
 import {NavbarService} from '../../shared/navbar/navbar.service';
+import {ExpensaService} from '../../providers/consorcio/expensa/expensa.service';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-admin',
@@ -9,14 +12,31 @@ import {NavbarService} from '../../shared/navbar/navbar.service';
 })
 export class AdminComponent implements OnInit {
 
-
+    public certifiedAdmin = false;
     protected userModel: UserModel = new UserModel();
 
-    constructor(protected navbarSrv: NavbarService) {
+    constructor(protected navbarSrv: NavbarService,
+                protected expensaSrv: ExpensaService,
+                private _router: Router,
+                private _location: Location) {
         this.navbarSrv.set(this.userModel.adminMenuAdmin);
     }
 
     ngOnInit() {
+        const userToken = window.localStorage.getItem('userToken');
+        this.expensaSrv.adminAccessCheck(userToken).subscribe(
+            () => {
+                this.certifiedAdmin = true;
+            },
+            (err) => {
+                console.error(err);
+                this._location.replaceState('/');
+                window.localStorage.clear();
+                this._router.navigate(['portal/login'], {
+                    replaceUrl: true
+                });
+            }
+        );
     }
 
 }

@@ -15,8 +15,11 @@
             Tu contraseña debe ser superior a 6 caracteres
         </mat-error>
     </mat-form-field>
-    <button mat-raised-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()">Iniciar Sesión</button>
-    <button mat-button (click)="redirect('portal/register')">Crear una cuenta</button>
+    <mat-card-actions class="flex space-between container-full">
+        <button mat-flat-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()" class="margin-auto">Iniciar Sesión
+        </button>
+        <button mat-flat-button (click)="redirect('portal/register')" class="margin-auto">Crear una cuenta</button>
+    </mat-card-actions>
     <mat-error *ngIf="accessError">{{accessErrorText}}
     </mat-error>
 </form>
