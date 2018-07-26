@@ -3,6 +3,8 @@ import {PaginatorResponse} from '../paginator.interface';
 
 export interface ExpensaCreate {
     unidad_id: number;
+    consorcio_nombre: string;
+    unidad_nombre: string;
     anio: number;
     mes: number;
     estado: string;
