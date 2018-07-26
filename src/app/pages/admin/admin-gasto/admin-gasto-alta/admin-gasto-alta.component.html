@@ -12,16 +12,17 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field>
-        <mat-select [value]="elegirConsorcio" placeholder="Elija un consorcio">
+        <mat-select [(value)]="consorcioElegido" placeholder="Elija un consorcio" (selectionChange)="eligeConsorcio(this)">
             <mat-option *ngFor="let consorcio of consorcios" [value]="consorcio.id">
                 <span>{{consorcio.id}}</span> | {{consorcio.nombre}}
             </mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <mat-select [value]="elegirConsorcio" placeholder="Elija un consorcio">
-            <mat-option *ngFor="let consorcio of consorcios" [value]="consorcio.id">
-                <span>{{consorcio.id}}</span> | {{consorcio.nombre}}
+        <mat-select [(value)]="proveedorElegido" placeholder="Elija un proveedor">
+            <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor.id">
+                <span>{{proveedor.id}}</span> | {{proveedor.nombre}}
+                <small>{{proveedor.rubro}}</small>
             </mat-option>
         </mat-select>
     </mat-form-field>

@@ -129,6 +129,7 @@ export const ConsorcioPagoRutasUser = {
 // admin
 export const ConsorcioGastoRutasAdmin = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto`,
+    create: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto?page=`
 };
 
@@ -140,6 +141,12 @@ export const ConsorcioGastoRutasUser = {
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto?page=`
 };
 
+// PROVEEDEOR
+// admin
+export const ConsorcioGastoProveedorAdmin = {
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor`,
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?page=`
+};
 
 
 // ESTADÍSTICAS
