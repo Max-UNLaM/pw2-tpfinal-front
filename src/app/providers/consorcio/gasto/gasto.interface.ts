@@ -1,3 +1,5 @@
+import {PaginatorResponse} from '../paginator.interface';
+
 export interface GastoResponse {
     id: number;
     nombre: string;
@@ -9,5 +11,9 @@ export interface GastoResponse {
     consorcio_id: number;
     created_at: string;
     updated_at: string;
+}
+
+export interface GastoPaginatorResponse extends PaginatorResponse {
+    data: GastoResponse[];
 }
 

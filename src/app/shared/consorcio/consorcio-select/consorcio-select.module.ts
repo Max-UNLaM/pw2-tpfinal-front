@@ -19,5 +19,5 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     exports: [ConsorcioSelectComponent],
     providers: [ConsorcioService]
 })
-export class ConsorcioAutocompleteModule {
+export class ConsorcioSelectModule {
 }

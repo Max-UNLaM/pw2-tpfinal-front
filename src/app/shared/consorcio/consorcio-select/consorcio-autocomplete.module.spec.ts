@@ -1,10 +1,10 @@
-import { ConsorcioAutocompleteModule } from './consorcio-autocomplete.module';
+import { ConsorcioSelectModule } from './consorcio-select.module';
 
-describe('ConsorcioAutocompleteModule', () => {
-  let consorcioAutocompleteModule: ConsorcioAutocompleteModule;
+describe('ConsorcioSelectModule', () => {
+  let consorcioAutocompleteModule: ConsorcioSelectModule;
 
   beforeEach(() => {
-    consorcioAutocompleteModule = new ConsorcioAutocompleteModule();
+    consorcioAutocompleteModule = new ConsorcioSelectModule();
   });
 
   it('should create an instance', () => {

@@ -1,0 +1,34 @@
+<mat-card-actions>
+    <button mat-flat-button routerLink="/admin/gasto">VOLVER</button>
+</mat-card-actions>
+<mat-card-title>Gasto</mat-card-title>
+<form [formGroup]="gastoForm" *ngIf="gastoForm" class="flex flex-column">
+    <mat-form-field>
+        <mat-label>Precio</mat-label>
+        <input matInput placeholder="Valor" formControlName="valor" type="number">
+        <mat-error
+            *ngIf="!gastoForm.get('valor').valid && (gastoForm.get('valor').dirty || gastoForm.get('valor').touched)">
+            Debes escribir un precio
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [value]="elegirConsorcio" placeholder="Elija un consorcio">
+            <mat-option *ngFor="let consorcio of consorcios" [value]="consorcio.id">
+                <span>{{consorcio.id}}</span> | {{consorcio.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [value]="elegirConsorcio" placeholder="Elija un consorcio">
+            <mat-option *ngFor="let consorcio of consorcios" [value]="consorcio.id">
+                <span>{{consorcio.id}}</span> | {{consorcio.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-card-actions>
+        <button mat-raised-button [disabled]="!gastoForm.get('valor').valid" color="primary" (click)="crearGasto()">Crear
+        </button>
+    </mat-card-actions>
+    <mat-error *ngIf="accessError">{{accessErrorText}}
+    </mat-error>
+</form>
