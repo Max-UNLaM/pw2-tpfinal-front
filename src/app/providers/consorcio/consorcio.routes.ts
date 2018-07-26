@@ -73,6 +73,7 @@ export const ConsorcioExpensaRutasUser = {
     check: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?puerta=hola`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?page=`,
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa`,
+    show: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?id=`,
     listByUnidad: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/expensa?unidad_id=`
 };
 

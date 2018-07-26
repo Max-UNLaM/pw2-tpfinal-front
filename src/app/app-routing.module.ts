@@ -20,7 +20,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/portal',
+        redirectTo: 'user',
         pathMatch: 'full',
         data: {
             preload: true

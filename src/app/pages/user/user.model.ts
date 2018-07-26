@@ -1,6 +1,7 @@
 import {ToolbarItem} from '../../shared/navbar/navbar.interface';
 
 export class UserModel {
+    empty = [];
     menu: ToolbarItem[] = [
         {
             link: 'user',

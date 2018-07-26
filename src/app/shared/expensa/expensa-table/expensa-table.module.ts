@@ -6,18 +6,20 @@ import {
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInputModule, MatListModule,
     MatPaginatorModule,
     MatTableModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {LoaderShadeModule} from '../../ui/loader-shade/loader-shade.module';
+import {ExpensaDialogComponent} from '../expensa-dialog/expensa-dialog.component';
 
 @NgModule({
     imports: [
         CommonModule,
         MatTableModule,
         MatCardModule,
+        MatListModule,
         MatButtonModule,
         MatDialogModule,
         ReactiveFormsModule,
@@ -26,8 +28,9 @@ import {LoaderShadeModule} from '../../ui/loader-shade/loader-shade.module';
         MatPaginatorModule,
         LoaderShadeModule
     ],
-    declarations: [ExpensaTableComponent],
-    exports: [ExpensaTableComponent]
+    declarations: [ExpensaTableComponent, ExpensaDialogComponent],
+    exports: [ExpensaTableComponent, ExpensaDialogComponent],
+    entryComponents: [ExpensaDialogComponent]
 })
 export class ExpensaTableModule {
 }

@@ -44,11 +44,13 @@ export class LoginFormComponent implements OnInit {
                 (token) => {
                     const logIn = token.body as OauthLoginSuccess;
                     window.localStorage.setItem('userToken', logIn.success.token);
-                    this.redirect('/user');
                 },
                 error => {
                     this.accessError = true;
                     this.accessErrorText = error.statusText;
+                },
+                () => {
+                    this.redirect('/user');
                 }
             );
     }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavbarService} from '../../shared/navbar/navbar.service';
 import {UserModel} from './user.model';
 import {ExpensaService} from '../../providers/consorcio/expensa/expensa.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-user',
@@ -14,16 +15,29 @@ export class UserComponent implements OnInit {
     protected userModel: UserModel = new UserModel();
 
     constructor(protected navbarSrv: NavbarService,
-                protected expensaSrv: ExpensaService) {
-        console.error('entre a user');
+                protected expensaSrv: ExpensaService,
+                private _router: Router) {
         this.navbarSrv.set(this.userModel.menu);
         const userToken = window.localStorage.getItem('userToken');
         this.certifiedUser = !!userToken;
+        this.expensaSrv.accessCheck(userToken).subscribe(
+            () => this.certifiedUser = true,
+            () => {
+                this.certifiedUser = false;
+                this.logout();
+            }
+        );
         this.expensaSrv.adminAccessCheck(userToken).subscribe(
             () => {
                 this.navbarSrv.set(this.userModel.adminMenu);
             }
         );
+    }
+
+    logout(): void {
+        this.navbarSrv.set(this.userModel.empty);
+        window.localStorage.clear();
+        this._router.navigate(['/portal/login']);
     }
 
     ngOnInit() {

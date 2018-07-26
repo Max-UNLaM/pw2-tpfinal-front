@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+.clickable {
+    transition-duration: 0.4s;
+    cursor: pointer !important;
+    td {
+        transition-duration: 0.4s;
+    }
+}
+
+.clickable:hover {
+    td {
+        color: #311b92;
+    }
+}

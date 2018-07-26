@@ -4,6 +4,7 @@ import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
 import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/expensa/expensa.interface';
 import {ExpensaService} from '../../../providers/consorcio/expensa/expensa.service';
+import {ExpensaDialogComponent} from '../expensa-dialog/expensa-dialog.component';
 
 @Component({
     selector: 'app-expensa-table',
@@ -14,7 +15,7 @@ export class ExpensaTableComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @Input('page-size') pageSize = 10;
-    @Input('user-type') userType = 'user';
+    @Input('user-admin') isAdmin = false;
 
     data: ExpensaResponse[] = [];
     resultLenght = 0;
@@ -23,22 +24,17 @@ export class ExpensaTableComponent implements OnInit {
     tableLoading: boolean;
     userToken: string;
 
-    constructor(public dialog: MatDialog, protected unidadService: ExpensaService) {
+    constructor(public dialog: MatDialog, protected expensaService: ExpensaService) {
         this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
-        console.log(this.userType);
-        let listaExpensas = this.unidadService.pageUser(this.paginator.pageIndex + 1, this.userToken, this.pageSize);
-        if (this.userType === 'admin') {
-            listaExpensas = this.unidadService.pageAdmin(this.paginator.pageIndex + 1, this.userToken, this.pageSize);
-        }
         merge(this.paginator.page)
             .pipe(
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return listaExpensas;
+                    return this.expensaService.page(this.paginator.pageIndex + 1, this.pageSize, this.isAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;
@@ -58,6 +54,19 @@ export class ExpensaTableComponent implements OnInit {
                     this.data = data.data;
                 }
             );
+    }
+
+    show(expensa: ExpensaResponse) {
+        this.expensaService.show(expensa.id, this.isAdmin)
+            .subscribe(
+                (data) => {
+                    this.dialog.open(ExpensaDialogComponent, {
+                        width: '400px',
+                        data: data.body
+                    });
+                }
+            );
+
     }
 
 }
