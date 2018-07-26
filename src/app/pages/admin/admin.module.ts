@@ -6,7 +6,7 @@ import {ConsorcioTablaModule} from '../../shared/consorcio/consorcio-tabla/conso
 import {ExpensaTableModule} from '../../shared/expensa/expensa-table/expensa-table.module';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-table.module';
-import {ConsorcioAutocompleteModule} from '../../shared/consorcio/consorcio-select/consorcio-autocomplete.module';
+import {ConsorcioSelectModule} from '../../shared/consorcio/consorcio-select/consorcio-select.module';
 import {EstadisticasService} from '../../providers/consorcio/estadisticas/estadisticas.service';
 
 @NgModule({
@@ -18,7 +18,7 @@ import {EstadisticasService} from '../../providers/consorcio/estadisticas/estadi
         ExpensaTableModule,
         NgxChartsModule,
         ReclamoTableModule,
-        ConsorcioAutocompleteModule
+        ConsorcioSelectModule
     ],
     declarations: [...routedComponents],
     providers: [EstadisticasService]

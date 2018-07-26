@@ -1,9 +1,33 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {ConsorcioGastoRutasAdmin, ConsorcioGastoRutasUser} from '../consorcio.routes';
+import {GastoPaginatorResponse} from './gasto.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class GastoService {
 
-  constructor() { }
+    protected userToken: string;
+
+    constructor(private _httpClient: HttpClient) {
+        this.userToken = window.localStorage.getItem('userToken');
+    }
+
+
+    public page(pageNumber: number, pageSize: number, isAdmin = false): Observable<HttpResponse<GastoPaginatorResponse>> {
+        const root = isAdmin ? ConsorcioGastoRutasAdmin.page : ConsorcioGastoRutasUser.page;
+        return this._httpClient.get<GastoPaginatorResponse>(
+            `${root}${pageNumber}&size=${pageSize}`,
+            {
+                observe: 'response',
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.userToken}`
+                })
+            }
+        );
+    }
+
 }

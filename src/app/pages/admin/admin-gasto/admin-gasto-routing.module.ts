@@ -16,6 +16,13 @@ const routes: Routes = [
             {
                 path: 'lista',
                 component: AdminGastoListaComponent
+            },
+            {
+                path: 'alta',
+                loadChildren: './admin-gasto-alta/admin-gasto-alta.module#AdminGastoAltaModule',
+                data: {
+                    preload: true
+                }
             }
         ]
     }
