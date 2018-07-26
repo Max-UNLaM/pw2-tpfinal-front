@@ -18,7 +18,8 @@ import {FacturaFiltroModule} from '../../shared/factura/factura-filtro/factura-f
         ReclamoTableModule,
         FacturaFiltroModule
     ],
-    declarations: [...routedComponents]
+    declarations: [...routedComponents],
+    exports: [...routedComponents]
 })
 export class UserModule {
 }

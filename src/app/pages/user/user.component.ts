@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
         console.error('entre a user');
         this.navbarSrv.set(this.userModel.menu);
         const userToken = window.localStorage.getItem('userToken');
+        this.certifiedUser = !!userToken;
         this.expensaSrv.adminAccessCheck(userToken).subscribe(
             () => {
                 this.navbarSrv.set(this.userModel.adminMenu);
