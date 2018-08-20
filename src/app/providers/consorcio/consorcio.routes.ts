@@ -106,7 +106,8 @@ export const ConsorcioFacturaRutasUser = {
 
 export const ConsorcioFacturaRutasAdmin = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura?page=`
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura?page=`,
+    masa: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`
 };
 
 

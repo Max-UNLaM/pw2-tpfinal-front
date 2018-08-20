@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ConsorcioGastoProveedorAdmin, ConsorcioReclamoRutasUser} from '../consorcio.routes';
-import {ReclamoCreate, ReclamoCreateResponse} from '../reclamo/reclamo.interface.';
+import {ReclamoCreateResponse} from '../reclamo/reclamo.interface.';
 
 @Injectable({
     providedIn: 'root'
@@ -42,3 +42,4 @@ export class ProveedorService {
             }
         );
     }
+}

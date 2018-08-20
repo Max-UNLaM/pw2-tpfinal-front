@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ConsorcioFacturaRutasAdmin, ConsorcioFacturaRutasUser} from '../consorcio.routes';
+import {ConsorcioFacturaRutasAdmin, ConsorcioFacturaRutasUser, ConsorcioGastoRutasAdmin} from '../consorcio.routes';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {FacturaPaginatorResponse, FacturaResponse} from './factura.interface';
@@ -9,7 +9,10 @@ import {FacturaPaginatorResponse, FacturaResponse} from './factura.interface';
 })
 export class FacturaService {
 
+    userToken;
+
     constructor(private _httpClient: HttpClient) {
+        this.userToken = window.localStorage.getItem('userToken');
     }
 
     public pageList(userToken: string, pageNumber, size = 10, admin?: boolean): Observable<HttpResponse<FacturaPaginatorResponse>> {
@@ -38,5 +41,20 @@ export class FacturaService {
             }
         );
     }
+
+    public create(lele: any): Observable<HttpResponse<any>> {
+        return this._httpClient.post<any>(
+            ConsorcioFacturaRutasAdmin.masa,
+            lele,
+            {
+                observe: 'response',
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.userToken}`
+                })
+            }
+        );
+    }
+
 
 }
