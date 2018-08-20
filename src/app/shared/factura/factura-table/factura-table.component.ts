@@ -13,8 +13,8 @@ import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/cons
 export class FacturaTableComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @Input('page-size') pageSize = 10;
-    @Input('user-type') userType = false;
+    @Input() pageSize = 10;
+    @Input() userAdmin = false;
     data: FacturaResponse[] = [];
     resultLenght = 0;
     error: string;
@@ -34,7 +34,7 @@ export class FacturaTableComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.facturaService.pageList(this.userToken, this.paginator.pageIndex, this.pageSize, this.userType);
+                    return this.facturaService.pageList(this.userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;
@@ -54,6 +54,4 @@ export class FacturaTableComponent implements OnInit {
                 }
             );
     }
-
-
 }

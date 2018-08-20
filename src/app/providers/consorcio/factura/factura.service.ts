@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ConsorcioFacturaRutasAdmin, ConsorcioFacturaRutasUser, ConsorcioGastoRutasAdmin} from '../consorcio.routes';
+import {ConsorcioFacturaRutasAdmin, ConsorcioFacturaRutasUser} from '../consorcio.routes';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {FacturaPaginatorResponse, FacturaResponse} from './factura.interface';
@@ -55,6 +55,4 @@ export class FacturaService {
             }
         );
     }
-
-
 }
