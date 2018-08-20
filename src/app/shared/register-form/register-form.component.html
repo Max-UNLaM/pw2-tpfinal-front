@@ -1,0 +1,43 @@
+<mat-horizontal-stepper [linear]="true">
+    <mat-step [stepControl]="usuarioMail">
+        <form [formGroup]="usuarioMail">
+            <ng-template matStepLabel>Nombre, apellido y mail</ng-template>
+            <div class="flex space-between">
+                <mat-form-field class="margin-auto">
+                    <input matInput placeholder="Nombre y apellido" formControlName="nya">
+                </mat-form-field>
+                <div *ngIf="errores && errores.name">
+                    <mat-error *ngFor="let error of errores.name">{{error}}</mat-error>
+                </div>
+                <mat-form-field class="margin-auto">
+                    <input matInput placeholder="Email" formControlName="email" type="email">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button matStepperNext [disabled]="!usuarioMail.valid">siguiente</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="passwordForm">
+        <form [formGroup]="passwordForm">
+            <ng-template matStepLabel>Contraseña</ng-template>
+            <div class="flex">
+                <mat-form-field class="margin-auto">
+                    <input matInput placeholder="Contraseña" formControlName="password" type="password">
+                </mat-form-field>
+                <mat-form-field class="margin-auto">
+                    <input matInput placeholder="Repetir contraseña" formControlName="password_confirmation"
+                           type="password">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>volver</button>
+                <button mat-button
+                        (click)="registrar()"
+                        [disabled]="!usuarioMail.valid || !passwordForm.valid || (passwordForm.getRawValue().password !== passwordForm.getRawValue().password_confirmation)">
+                    enviar
+                </button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>

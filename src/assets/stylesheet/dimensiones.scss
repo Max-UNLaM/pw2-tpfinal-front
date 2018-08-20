@@ -1,0 +1,65 @@
+.container-full {
+    width: 100%;
+}
+
+.subpage-container-full {
+    position: fixed;
+    padding-top: 64px;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+
+table {
+    width: 100%
+}
+
+.table-5-rows {
+    height: 505px;
+    max-height: 505px;
+}
+
+
+.table-10-rows {
+    min-height: 500px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.card-medium {
+    width: 500px
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.bastante-grande {
+    max-width: 1300px
+}
+
+.bastante-grande-posta {
+    min-width: 900px;
+    max-width: 1300px
+}
+
+.novecientos {
+    max-width: 900px;
+}
+
+.novecientos-posta {
+    width: 900px;
+    max-width: 900px;
+}
+
+.cuatrocientoscincuenta {
+    max-width: 450px;
+}
+
+
+.overflow-auto {
+    overflow: auto;
+}

@@ -1,0 +1,32 @@
+<div class="subpage-container-full flex justify-content-around align-content-center background-grey-light">
+    <mat-card class="novecientos margin-auto background-gray-light-contrast">
+        <mat-card-title>Reclamos</mat-card-title>
+        <mat-card-subtitle>Abiertos por consorcios</mat-card-subtitle>
+        <ngx-charts-pie-chart
+            [view]="chartsView"
+            [labels]="chartsLabels"
+            [scheme]="colorScheme"
+            [results]="reclamosChartsDatos"
+            (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+    </mat-card>
+    <mat-card class="card-medium margin-auto background-gray-light-contrast">
+        <mat-card-title>Facturas</mat-card-title>
+        <mat-card-subtitle>Impagas por consorcio</mat-card-subtitle>
+        <ngx-charts-pie-chart
+            [view]="chartsView"
+            [labels]="chartsLabels"
+            [scheme]="colorScheme"
+            [results]="facturasChartsDatos"
+            (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+    </mat-card>
+    <mat-card class="card-medium margin-auto background-gray-light-contrast">
+        <mat-card-title>Facturar</mat-card-title>
+        <form [formGroup]="gastoForm">
+            <input type="text" id="mes" placeholder="Mes"> <br/><br/>
+            <input type="text" id="anio" placeholder="Año"> <br/><br/>
+            <button mat-flat-button (click)="masa()">Generar facturas</button>
+        </form>
+    </mat-card>
+</div>

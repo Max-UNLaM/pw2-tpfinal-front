@@ -1,0 +1,26 @@
+<mat-card-title>Alta de Unidad</mat-card-title>
+<form [formGroup]="unidadForm" *ngIf="unidadForm" class="flex flex-column">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="deep-purple">Consorcio</mat-panel-title>
+                <mat-panel-description class="deep-purple-a">Consorcio {{consorcio.nombre}}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list>
+                <mat-list-item><span class="deep-purple">Ubicación: </span> {{consorcio.direccion}}</mat-list-item>
+                <mat-list-item><span class="deep-purple">Localidad: </span> {{consorcio.localidad}}</mat-list-item>
+            </mat-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="nombre">
+        <mat-error
+            *ngIf="!unidadForm.get('nombre').valid && (unidadForm.get('nombre').dirty || unidadForm.get('nombre').touched)">
+            Debes escribir un nombre ejemplo: "1°B" o "Unidad 25"
+        </mat-error>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="!unidadForm.valid" color="primary" (click)="crearUnidad()">Crear</button>
+    <mat-error *ngIf="accessError">{{accessErrorText}}
+    </mat-error>
+</form>

@@ -1,0 +1,47 @@
+@import '~@angular/material/theming';
+
+.background-teal-light {
+    background-color: map_get($mat-teal, 50);
+}
+
+
+.background-grey-light {
+    background-color: map_get($mat-blue-grey, 50);
+}
+
+.background-gray-light-contrast {
+    color: map_get($mat-deep-purple, 900);
+    background-color: #E8DAEF;
+    table {
+        background-color: map_get($mat-blue-grey, 50);
+    }
+}
+
+.background-blue-light-contrast {
+    color: map_get($mat-gray, 900);
+    background-color: map_get($mat-blue-grey, 50);
+    table {
+        background-color: map_get($mat-blue-grey, A100);
+    }
+}
+
+.background-amber-contrast-null {
+    color: map_get($mat-deep-purple, 900);
+    background-color: map_get($mat-amber, 100);
+    table {
+        background-color: map_get($mat-deep-purple, A100);
+    }
+}
+
+.danger {
+    color: map_get($mat-red, 500);
+}
+
+
+.deep-purple {
+    color: map_get($mat-deep-purple, 900)
+}
+
+.deep-purple-a {
+    color: map_get($mat-deep-purple, A700)
+}
