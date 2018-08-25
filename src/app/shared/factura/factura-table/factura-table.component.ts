@@ -4,6 +4,7 @@ import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
 import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.interface';
+import {FacturacionText} from '../../../../assets/text/textos';
 
 @Component({
     selector: 'app-factura-table',
@@ -15,6 +16,7 @@ export class FacturaTableComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @Input() pageSize = 10;
     @Input() userAdmin = false;
+    @Input() pay = false;
     data: FacturaResponse[] = [];
     resultLenght = 0;
     error: string;
@@ -23,12 +25,17 @@ export class FacturaTableComponent implements OnInit {
     columnas: string[] = [
         'emision', 'vencimiento', 'periodo', 'pago_parcial', 'adeudada', 'total'
     ];
+    textoPagar = FacturacionText.pagar;
+    textoPagado = FacturacionText.pagado;
 
     constructor(public dialog: MatDialog, protected facturaService: FacturaService) {
         this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
+        if (this.pay) {
+            this.columnas.push('pagar');
+        }
         merge(this.paginator.page)
             .pipe(
                 startWith({}),
@@ -54,4 +61,9 @@ export class FacturaTableComponent implements OnInit {
                 }
             );
     }
+
+    poniendoEstabaLaGansa(esto) {
+        console.log(esto);
+    }
+
 }

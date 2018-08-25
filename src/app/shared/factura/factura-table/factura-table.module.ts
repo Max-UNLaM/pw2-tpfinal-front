@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FacturaTableComponent} from './factura-table.component';
 import {LoaderShadeModule} from '../../ui/loader-shade/loader-shade.module';
-import {MatPaginatorModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatPaginatorModule, MatTableModule} from '@angular/material';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
 
 @NgModule({
@@ -10,7 +10,8 @@ import {FacturaService} from '../../../providers/consorcio/factura/factura.servi
         CommonModule,
         LoaderShadeModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatButtonModule
     ],
     declarations: [FacturaTableComponent],
     exports: [FacturaTableComponent],
