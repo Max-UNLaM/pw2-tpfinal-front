@@ -5,6 +5,7 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
 import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.interface';
 import {FacturacionText} from '../../../../assets/text/textos';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
     selector: 'app-factura-table',
@@ -28,7 +29,7 @@ export class FacturaTableComponent implements OnInit {
     textoPagar = FacturacionText.pagar;
     textoPagado = FacturacionText.pagado;
 
-    constructor(public dialog: MatDialog, protected facturaService: FacturaService) {
+    constructor(public dialog: MatDialog, protected facturaService: FacturaService, public router: Router) {
         this.userToken = window.localStorage.getItem('userToken');
     }
 
@@ -62,8 +63,8 @@ export class FacturaTableComponent implements OnInit {
             );
     }
 
-    poniendoEstabaLaGansa(esto) {
-        console.log(esto);
+    poniendoEstabaLaGansa(factura) {
+        this.router.navigate(['user/factura/pago', factura.id]);
     }
 
 }

@@ -19,7 +19,7 @@ export class UserReclamoUnidadesComponent implements OnInit {
     errorMessage: string;
     columnas = ['nombre', 'direccion'];
 
-    constructor(public dialogRef: MatDialogRef<UserReclamoUnidadesComponent>,protected unidadService: UnidadService) {
+    constructor(public dialogRef: MatDialogRef<UserReclamoUnidadesComponent>, protected unidadService: UnidadService) {
     }
 
     ngOnInit() {

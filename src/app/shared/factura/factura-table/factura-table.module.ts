@@ -4,6 +4,7 @@ import {FacturaTableComponent} from './factura-table.component';
 import {LoaderShadeModule} from '../../ui/loader-shade/loader-shade.module';
 import {MatButtonModule, MatPaginatorModule, MatTableModule} from '@angular/material';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
@@ -11,7 +12,8 @@ import {FacturaService} from '../../../providers/consorcio/factura/factura.servi
         LoaderShadeModule,
         MatTableModule,
         MatPaginatorModule,
-        MatButtonModule
+        MatButtonModule,
+        RouterModule
     ],
     declarations: [FacturaTableComponent],
     exports: [FacturaTableComponent],
