@@ -1,4 +1,4 @@
-import {PaginatorResponse} from '../paginator.interface';
+import {PaginatorResponse} from '../api.model';
 
 
 export interface ExpensaCreate {
@@ -24,7 +24,7 @@ export interface ExpensaPaginatorResponse extends PaginatorResponse {
     data: ExpensaResponse[];
 }
 
-export interface ExpensaConceptoResponse {
+export interface ExpensaConcepto {
     unidad: string;
     concepto: string;
     valor_total: number;

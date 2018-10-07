@@ -4,6 +4,8 @@ import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
 import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.interface';
+import {FacturacionText} from '../../../../assets/text/textos';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
     selector: 'app-factura-table',
@@ -13,8 +15,9 @@ import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/cons
 export class FacturaTableComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @Input('page-size') pageSize = 10;
-    @Input('user-type') userType = false;
+    @Input() pageSize = 10;
+    @Input() userAdmin = false;
+    @Input() pay = false;
     data: FacturaResponse[] = [];
     resultLenght = 0;
     error: string;
@@ -23,18 +26,23 @@ export class FacturaTableComponent implements OnInit {
     columnas: string[] = [
         'emision', 'vencimiento', 'periodo', 'pago_parcial', 'adeudada', 'total'
     ];
+    textoPagar = FacturacionText.pagar;
+    textoPagado = FacturacionText.pagado;
 
-    constructor(public dialog: MatDialog, protected facturaService: FacturaService) {
+    constructor(public dialog: MatDialog, protected facturaService: FacturaService, public router: Router) {
         this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
+        if (this.pay) {
+            this.columnas.push('pagar');
+        }
         merge(this.paginator.page)
             .pipe(
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.facturaService.pageList(this.userToken, this.paginator.pageIndex, this.pageSize, this.userType);
+                    return this.facturaService.pageList(this.userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;
@@ -55,5 +63,8 @@ export class FacturaTableComponent implements OnInit {
             );
     }
 
+    poniendoEstabaLaGansa(factura) {
+        this.router.navigate(['user/factura/pago', factura.id]);
+    }
 
 }

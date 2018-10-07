@@ -6,12 +6,15 @@
     <mat-card class="card-medium table-5-rows margin-auto background-gray-light-contrast">
         <mat-card-title>Lista de facturas</mat-card-title>
         <app-factura-filtro [page-size]="5"></app-factura-filtro>
+        <mat-card-actions>
+            <button mat-flat-button routerLink="/user/pago">Ver facturas</button>
+        </mat-card-actions>
     </mat-card>
     <mat-card class="card-medium table-5-rows margin-auto background-gray-light-contrast">
         <mat-card-title>Lista de reclamos</mat-card-title>
         <app-reclamo-table [page-size]="5"></app-reclamo-table>
         <mat-card-actions>
-            <button mat-flat-button routerLink="/reclamo">Nuevo reclamo</button>
+            <button mat-flat-button routerLink="/user/reclamo">Nuevo reclamo</button>
         </mat-card-actions>
     </mat-card>
 </div>

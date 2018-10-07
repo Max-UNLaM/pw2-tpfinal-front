@@ -12,3 +12,8 @@ export interface PaginatorResponse {
     to: number;
     total: number;
 }
+
+export class ApiResponse {
+    created_at: string;
+    updated_at: string;
+}

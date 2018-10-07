@@ -1,4 +1,4 @@
-import {PaginatorResponse} from '../paginator.interface';
+import {PaginatorResponse} from '../api.model';
 
 export interface ReclamoCreate {
     unidad_id: number;

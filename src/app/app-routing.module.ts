@@ -19,6 +19,14 @@ const routes: Routes = [
         canLoad: [AuthGuardService],
     },
     {
+        path: '**',
+        redirectTo: 'user',
+        pathMatch: 'full',
+        data: {
+            preload: true
+        }
+    },
+    {
         path: '',
         redirectTo: 'user',
         pathMatch: 'full',
@@ -30,8 +38,8 @@ const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(routes, {
-      //  enableTracing: true,
-        preloadingStrategy: SelectivePreloadingStrategy
+        enableTracing: true,
+        preloadingStrategy: SelectivePreloadingStrategy,
     })],
     exports: [RouterModule],
     providers: [SelectivePreloadingStrategy]

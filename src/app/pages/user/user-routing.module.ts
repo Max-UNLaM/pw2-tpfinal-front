@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: UserDashboardComponent,
+                component: UserDashboardComponent
             },
             {
                 path: 'dashboard',
@@ -21,6 +21,14 @@ const routes: Routes = [
             {
                 path: 'reclamo',
                 loadChildren: './user-reclamo/user-reclamo.module#UserReclamoModule'
+            },
+            {
+                path: 'pago',
+                loadChildren: './user-pago/user-pago.module#UserPagoModule'
+            },
+            {
+                path: 'factura',
+                loadChildren: './user-factura/user-factura.module#UserFacturaModule'
             }
         ]
     }
