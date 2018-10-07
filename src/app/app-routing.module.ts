@@ -21,18 +21,12 @@ const routes: Routes = [
     {
         path: '**',
         redirectTo: 'user',
-        pathMatch: 'full',
-        data: {
-            preload: true
-        }
+        pathMatch: 'full'
     },
     {
         path: '',
         redirectTo: 'user',
-        pathMatch: 'full',
-        data: {
-            preload: true
-        }
+        pathMatch: 'full'
     }
 ];
 

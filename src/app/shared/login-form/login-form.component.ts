@@ -4,7 +4,6 @@ import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../providers/consorcio/login/login.service';
 import {OauthLoginSuccess} from '../../providers/consorcio/login/login.interface';
-import {LoginStorageService} from '../../providers/local/login/login-storage.service';
 
 @Component({
     selector: 'app-login-form',
@@ -20,8 +19,7 @@ export class LoginFormComponent implements OnInit {
     constructor(private _router: Router,
                 private _location: Location,
                 protected formBuilder: FormBuilder,
-                protected loginSrv: LoginService,
-                protected loginStorageSrv: LoginStorageService) {
+                protected loginSrv: LoginService) {
         this.createForm();
     }
 
@@ -44,6 +42,7 @@ export class LoginFormComponent implements OnInit {
                 (token) => {
                     const logIn = token.body as OauthLoginSuccess;
                     window.localStorage.setItem('userToken', logIn.success.token);
+                    this.redirect('/user');
                 },
                 error => {
                     this.accessError = true;
