@@ -1,5 +1,17 @@
+@import '~@angular/material/theming';
+
 .navbar-container {
-  z-index: 1000;
-  position: absolute;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 16px;
+    background:  map_get($mat-teal, 800);;
+
+    > .mat-button {
+        color: white;
+        font-weight: 500;
+        &:last-child {
+            margin-left: auto;
+        }
+    }
 }

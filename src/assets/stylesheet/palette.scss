@@ -4,16 +4,15 @@
     background-color: map_get($mat-teal, 50);
 }
 
-
 .background-grey-light {
     background-color: map_get($mat-blue-grey, 50);
 }
 
 .background-gray-light-contrast {
-    color: map_get($mat-deep-purple, 900);
-    background-color: #E8DAEF;
+    color: map_get($mat-teal, 900);
+    background-color: map_get($mat-teal, 50);
     table {
-        background-color: map_get($mat-blue-grey, 50);
+        background-color: white
     }
 }
 
@@ -36,7 +35,6 @@
 .danger {
     color: map_get($mat-red, 500);
 }
-
 
 .deep-purple {
     color: map_get($mat-deep-purple, 900)

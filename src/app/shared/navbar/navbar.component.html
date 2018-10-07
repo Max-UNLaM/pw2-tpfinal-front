@@ -1,9 +1,5 @@
 <nav class="navbar-container">
-    <mat-toolbar color="primary">
-        <a mat-button routerLink="/">Consorcio Loco</a>
-        <div *ngIf="toolbarItems">
-            <a *ngFor="let item of toolbarItems" mat-button routerLink="{{item.link}}">{{item.text}}</a>
-        </div>
-        <button mat-button *ngIf="loggedIn" (click)="logout()" class="float-right">EXIT</button>
-    </mat-toolbar>
+    <button mat-button routerLink="/">Consorcio Loco</button>
+    <button *ngFor="let item of toolbarItems" mat-button routerLink="{{item.link}}">{{item.text}}</button>
+    <button mat-button *ngIf="loggedIn" (click)="logout()" class="float-right">Exit</button>
 </nav>

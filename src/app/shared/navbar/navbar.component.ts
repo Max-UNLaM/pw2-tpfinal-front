@@ -1,5 +1,4 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {NavbarService} from './navbar.service';
 import {ToolbarItem} from './navbar.interface';
@@ -18,7 +17,7 @@ export class NavbarComponent implements OnInit, AfterContentInit {
     userModel: UserModel = new UserModel();
     protected loggedIn: boolean;
 
-    constructor(private _router: Router, private _location: Location,
+    constructor(private _router: Router,
                 protected loginStorage: LoginStorageService,
                 protected navbarSrv: NavbarService,
                 protected authSrv: AuthService) {

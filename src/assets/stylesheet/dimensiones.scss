@@ -29,8 +29,15 @@ table {
     overflow-y: auto;
 }
 
+.card-small {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+}
+
 .card-medium {
-    width: 500px
+    width: 500px;
+    margin: 10px;
 }
 
 .card-big {
