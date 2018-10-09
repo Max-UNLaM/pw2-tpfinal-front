@@ -6,6 +6,8 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
 import {LoaderShadeModule} from '../../shared/ui/loader-shade/loader-shade.module';
 import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-table.module';
 import {FacturaFiltroModule} from '../../shared/factura/factura-filtro/factura-filtro.module';
+import {MenuCardModule} from '../../shared/menu-card/menu-card.module';
+import {TitlebarModule} from '../../shared/titlebar/titlebar.module';
 
 @NgModule({
     imports: [
@@ -16,7 +18,9 @@ import {FacturaFiltroModule} from '../../shared/factura/factura-filtro/factura-f
         MatButtonModule,
         LoaderShadeModule,
         ReclamoTableModule,
-        FacturaFiltroModule
+        FacturaFiltroModule,
+        TitlebarModule,
+        MenuCardModule
     ],
     declarations: [...routedComponents],
     exports: [...routedComponents]

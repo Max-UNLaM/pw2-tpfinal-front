@@ -1,11 +1,16 @@
 .flex {
-  display: flex;
+    display: flex;
 }
 
 .space-between {
-  align-content: space-between;
+    align-content: space-between;
 }
 
 .margin-auto {
-  margin: auto;
+    margin: auto;
+}
+
+.flex-flow-row {
+    display: flex;
+    flex-flow: row wrap;
 }
