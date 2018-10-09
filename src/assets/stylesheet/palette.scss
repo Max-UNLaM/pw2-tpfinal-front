@@ -15,6 +15,9 @@
 .background-gray-light-contrast {
     color: map_get($mat-teal, 900);
     background-color: map_get($mat-teal, 50);
+    input {
+        color: map_get($mat-teal, 900) !important;
+    }
     table {
         background-color: white
     }
