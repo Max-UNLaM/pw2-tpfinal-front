@@ -12,7 +12,7 @@ export class UserDashboardComponent implements OnInit {
 
     menuItems: MenuCard[] = [];
     columnas: MaterialColumns;
-    title: 'Dashboard';
+    title = 'Dashboard';
 
     constructor() {
         const mainMenu = new MainMenu();
