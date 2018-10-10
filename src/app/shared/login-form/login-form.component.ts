@@ -32,7 +32,8 @@ export class LoginFormComponent implements OnInit {
         );
     }
 
-    public setLogin() {
+    public setLogin(button) {
+        this.waitForIt(button);
         this.accessError = !this.accessError;
         this.loginSrv.login({
             email: this.loginForm.get('usuario').value,
@@ -42,24 +43,31 @@ export class LoginFormComponent implements OnInit {
                 (token) => {
                     const logIn = token.body as OauthLoginSuccess;
                     window.localStorage.setItem('userToken', logIn.success.token);
-                    this.redirect('/user');
+                    this.redirect('user');
                 },
                 error => {
                     this.accessError = true;
                     this.accessErrorText = error.statusText;
-                },
-                () => {
-                    this.redirect('/user');
                 }
             );
     }
 
-    redirect(address: string) {
-        this._location.replaceState('/');
-        this._router.navigate([address]);
+    ngOnInit() {
     }
 
-    ngOnInit() {
+    private redirect(address: string) {
+        this._router.navigate(['/', address]).then(
+            navegacion => {
+                console.log(navegacion);
+            }, error => {
+                console.error(error);
+            }
+        );
+    }
+
+    private waitForIt(button) {
+        button.disabled = true;
+        setTimeout(() => button.disabled = false, 4000);
     }
 
 }

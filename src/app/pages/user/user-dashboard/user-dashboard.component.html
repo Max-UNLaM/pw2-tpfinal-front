@@ -1,20 +1,7 @@
-<div class="subpage-container-full flex justify-content-around align-content-center">
-    <mat-card class="card-medium table-5-rows margin-auto background-gray-light-contrast">
-        <mat-card-title>Lista de expensas</mat-card-title>
-        <app-expensa-table [page-size]="5"></app-expensa-table>
-    </mat-card>
-    <mat-card class="card-medium table-5-rows margin-auto background-gray-light-contrast">
-        <mat-card-title>Lista de facturas</mat-card-title>
-        <app-factura-filtro [page-size]="5"></app-factura-filtro>
-        <mat-card-actions>
-            <button mat-flat-button routerLink="/user/pago">Ver facturas</button>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="card-medium table-5-rows margin-auto background-gray-light-contrast">
-        <mat-card-title>Lista de reclamos</mat-card-title>
-        <app-reclamo-table [page-size]="5"></app-reclamo-table>
-        <mat-card-actions>
-            <button mat-flat-button routerLink="/user/reclamo">Nuevo reclamo</button>
-        </mat-card-actions>
-    </mat-card>
+<div class="subpage-container-full flex-flow-row">
+        <app-titlebar class="container-full" [title]="title"></app-titlebar>
+        <div *ngFor="let item of menuItems">
+            <app-menu-card class="table-5-rows margin-auto background-gray-light-contrast mat-elevation-z5"
+                           [menuItem]="item"></app-menu-card>
+        </div>
 </div>

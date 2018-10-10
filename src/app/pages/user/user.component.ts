@@ -37,7 +37,13 @@ export class UserComponent implements OnInit {
     logout(): void {
         this.navbarSrv.set(this.userModel.empty);
         window.localStorage.clear();
-        this._router.navigate(['/portal/login']);
+        this._router.navigate(['/', 'portal']).then(
+            navegacion => {
+                console.log(navegacion);
+            }, error => {
+                console.error(error);
+            }
+        );
     }
 
     ngOnInit() {

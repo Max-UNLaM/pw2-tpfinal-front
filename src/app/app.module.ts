@@ -8,6 +8,7 @@ import {MatButtonModule, MatMenuModule, MatToolbarModule} from '@angular/materia
 import {HttpClientModule} from '@angular/common/http';
 import {NavbarService} from './shared/navbar/navbar.service';
 import {PortalModule} from './pages/portal/portal.module';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import {PortalModule} from './pages/portal/portal.module';
         AppRoutingModule,
         BrowserAnimationsModule,
         PortalModule,
+        FontAwesomeModule,
         HttpClientModule,
         MatToolbarModule,
         MatButtonModule,

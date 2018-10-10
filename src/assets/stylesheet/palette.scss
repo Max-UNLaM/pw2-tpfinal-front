@@ -4,16 +4,22 @@
     background-color: map_get($mat-teal, 50);
 }
 
+.primary-color {
+    color: map_get($mat-teal, 900);
+}
 
 .background-grey-light {
     background-color: map_get($mat-blue-grey, 50);
 }
 
 .background-gray-light-contrast {
-    color: map_get($mat-deep-purple, 900);
-    background-color: #E8DAEF;
+    color: map_get($mat-teal, 900);
+    background-color: map_get($mat-teal, 50);
+    input {
+        color: map_get($mat-teal, 900) !important;
+    }
     table {
-        background-color: map_get($mat-blue-grey, 50);
+        background-color: white
     }
 }
 
@@ -23,6 +29,11 @@
     table {
         background-color: map_get($mat-blue-grey, A100);
     }
+}
+
+.background-teal-dark-contrast {
+    color: white;
+    background:  map_get($mat-teal, 800);
 }
 
 .background-amber-contrast-null {
@@ -36,7 +47,6 @@
 .danger {
     color: map_get($mat-red, 500);
 }
-
 
 .deep-purple {
     color: map_get($mat-deep-purple, 900)

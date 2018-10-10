@@ -14,11 +14,12 @@ export class AuthService {
         this.login();
     }
 
-    login(): boolean {
+    static getLogStatus(): boolean {
+        return !!window.localStorage.getItem('userToken');
+    }
+
+    login(): void {
         this.loginToken = window.localStorage.getItem('userToken');
-        if (this.loginToken) {
-            return this.isLoggedIn = true;
-        }
     }
 
     logout(): void {
