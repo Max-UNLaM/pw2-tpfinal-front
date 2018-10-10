@@ -16,7 +16,7 @@
         </mat-error>
     </mat-form-field>
     <div class="button-row">
-        <button mat-flat-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()"
+        <button mat-flat-button #iniciarSesion [disabled]="!loginForm.valid" color="primary" (click)="setLogin(iniciarSesion)"
                 class="inline-buttons">
             Iniciar Sesión
         </button>

@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import {AfterContentInit, Component, DoCheck, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NavbarService} from './navbar.service';
 import {ToolbarItem} from './navbar.interface';
@@ -11,7 +11,7 @@ import {UserModel} from '../../pages/user/user.model';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, AfterContentInit {
+export class NavbarComponent implements OnInit, AfterContentInit, DoCheck {
 
     toolbarItems: ToolbarItem[];
     userModel: UserModel = new UserModel();
@@ -19,21 +19,31 @@ export class NavbarComponent implements OnInit, AfterContentInit {
 
     constructor(private _router: Router,
                 protected loginStorage: LoginStorageService,
-                protected navbarSrv: NavbarService,
-                protected authSrv: AuthService) {
+                protected navbarSrv: NavbarService) {
         this.navbarSrv.toolBar$.subscribe(
             items => this.toolbarItems = items
         );
-        this.loggedIn = this.authSrv.isLoggedIn;
+    }
+
+    ngDoCheck() {
+        this.loggedIn = AuthService.getLogStatus();
     }
 
     logout(): void {
         this.navbarSrv.set(this.userModel.empty);
         this.loginStorage.deleteToken();
-        this._router.navigate(['/portal/login']);
+        this.loggedIn = false;
+        this._router.navigate(['/', 'portal']).then(
+            navegacion => {
+                console.log(navegacion);
+            }, error => {
+                console.error(error);
+            }
+        );
     }
 
     ngOnInit() {
+        this.loggedIn = AuthService.getLogStatus();
     }
 
     ngAfterContentInit() {
