@@ -20,3 +20,25 @@
         margin-right: 8px;
     }
 }
+
+.mat-horizontal-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .row {
+        margin: 0;
+        width: 100%;
+        min-height: 50px;
+        padding: 0;
+    }
+    .row-main {
+        margin: 10px 0;
+    }
+    .bloque {
+        text-align: left;
+        margin: auto;
+    }
+    mat-divider {
+        margin-bottom: 10px !important;
+    }
+}

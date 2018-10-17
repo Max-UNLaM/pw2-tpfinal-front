@@ -29,6 +29,10 @@ const routes: Routes = [
             {
                 path: 'factura',
                 loadChildren: './user-factura/user-factura.module#UserFacturaModule'
+            },
+            {
+                path: 'gasto',
+                loadChildren: './user-gasto/user-gasto.module#UserGastoModule'
             }
         ]
     }

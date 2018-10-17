@@ -17,7 +17,6 @@
     max-height: 100%;
 }
 
-
 table {
     width: 100%
 }
@@ -26,7 +25,6 @@ table {
     height: 505px;
     max-height: 505px;
 }
-
 
 .table-10-rows {
     min-height: 500px;
@@ -48,7 +46,13 @@ table {
 }
 
 .card-big {
-    width: 750px
+    width: 750px;
+    margin: 10px;
+}
+
+.card-full {
+    width: 100%;
+    margin: 10px;
 }
 
 .margin-auto {
@@ -76,7 +80,6 @@ table {
 .cuatrocientoscincuenta {
     max-width: 450px;
 }
-
 
 .overflow-auto {
     overflow: auto;

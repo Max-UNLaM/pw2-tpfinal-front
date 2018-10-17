@@ -1,30 +1,34 @@
 import {PaginatorResponse} from '../api.model';
 
-
-export interface ExpensaCreate {
-    unidad_id: number;
-    consorcio_nombre: string;
-    unidad_nombre: string;
-    anio: number;
-    mes: number;
-    estado: string;
-    vencimiento: string;
+export class Expensa {
+    id: number;
+    anio: string;
+    mes: string;
+    pago: string;
     emision: string;
+    vencimiento: string;
     importe: number;
 }
 
-export interface ExpensaResponse extends ExpensaCreate {
+export class ExpensaCreate extends Expensa {
+    unidad_id: number;
+    consorcio_nombre: string;
+    unidad_nombre: string;
+    estado: string;
+}
+
+export class ExpensaResponse extends ExpensaCreate {
     id: number;
     created_at: string;
     updated_at: string;
     pago: string;
 }
 
-export interface ExpensaPaginatorResponse extends PaginatorResponse {
+export class ExpensaPaginatorResponse extends PaginatorResponse {
     data: ExpensaResponse[];
 }
 
-export interface ExpensaConcepto {
+export class ExpensaConcepto {
     unidad: string;
     concepto: string;
     valor_total: number;

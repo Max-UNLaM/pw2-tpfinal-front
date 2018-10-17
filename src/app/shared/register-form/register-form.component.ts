@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UsuarioService} from '../../providers/consorcio/usuario/usuario.service';
-import {UserCreateError, UserNew} from '../../providers/consorcio/usuario/usuario.interface';
+import {UserCreateError, UserNew} from '../../providers/consorcio/usuario/usuario.model';
 
 @Component({
     selector: 'app-register-form',

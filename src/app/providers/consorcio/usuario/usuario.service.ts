@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {UserCreate, UserCreateResponse} from './usuario.interface';
+import {UserCreate, UserCreateResponse} from './usuario.model';
 import {Observable} from 'rxjs';
 import {ConsorcioUsuarioRutas} from '../consorcio.routes';
 

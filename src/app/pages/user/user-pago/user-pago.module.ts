@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material';
 import {routedComponents, UserPagoRoutingModule} from './user-pago-routing.module';
 import {FacturaTableModule} from '../../../shared/factura/factura-table/factura-table.module';
+import { UserPagoFormComponent } from './user-pago-form/user-pago-form.component';
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import {FacturaTableModule} from '../../../shared/factura/factura-table/factura-
         MatCardModule,
         FacturaTableModule
     ],
-    declarations: [...routedComponents]
+    declarations: [...routedComponents, UserPagoFormComponent]
 })
 export class UserPagoModule {
 }

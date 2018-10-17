@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ConsorcioGastoRutasAdmin, ConsorcioGastoRutasUser} from '../consorcio.routes';
-import {GastoPaginatorResponse} from './gasto.interface';
+import {GastoPaginatorResponse} from './gasto.model';
 
 @Injectable({
     providedIn: 'root'

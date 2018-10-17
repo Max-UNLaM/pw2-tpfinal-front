@@ -1,5 +1,5 @@
 import {MenuCard} from '../../../shared/menu-card/menu-card.model';
-import {faFileInvoiceDollar, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import {faFileInvoiceDollar, faMoneyBill, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 
 export class MainMenu {
     items: MenuCard[] = [
@@ -14,6 +14,12 @@ export class MainMenu {
             icon: faPaperPlane,
             route: ['/user/reclamo'],
             content: 'Realizar un reclamo y ver el estado de los reclamos actuales.'
+        },
+        {
+            title: 'Gastos',
+            icon: faMoneyBill,
+            route: ['/user/gasto'],
+            content: 'Ver el listado de todos los gastos'
         }
     ];
 }

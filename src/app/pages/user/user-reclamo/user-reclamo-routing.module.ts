@@ -2,12 +2,19 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from '../../../auth-guard.service';
 import {UserReclamoComponent} from './user-reclamo.component';
+import {UserReclamoDashboardComponent} from './user-reclamo-dashboard/user-reclamo-dashboard.component';
 
 const routes: Routes = [
     {
         path: '',
         component: UserReclamoComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        children: [
+            {
+                path: '',
+                component: UserReclamoDashboardComponent
+            }
+        ]
     }
 ];
 

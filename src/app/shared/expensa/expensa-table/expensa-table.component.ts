@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
-import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/expensa/expensa.interface';
+import {ExpensaPaginatorResponse, ExpensaResponse} from '../../../providers/consorcio/expensa/expensa.model';
 import {ExpensaService} from '../../../providers/consorcio/expensa/expensa.service';
 import {ExpensaDialogComponent} from '../expensa-dialog/expensa-dialog.component';
 
