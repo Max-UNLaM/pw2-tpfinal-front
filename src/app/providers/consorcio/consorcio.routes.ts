@@ -160,3 +160,8 @@ export const ConsorcioConsorcioStatsRutasAdmin = {
 export const ConsorcioConsorcioStatsRutasUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/estadistica`
 };
+
+// MINUTA
+export const ConsorcioMinutaUser = {
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/informe`
+};
