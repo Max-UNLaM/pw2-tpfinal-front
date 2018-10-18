@@ -21,7 +21,7 @@ export class UserMinutaComponent implements OnInit {
               (resp: any) => {
                   console.log('data.body');
                   console.log(resp.body);
-                  this.minutas = resp.body.data;
+                  this.minutas = resp.body.data.reverse();
                   console.log('minutas');
                   console.log(this.minutas);
               },

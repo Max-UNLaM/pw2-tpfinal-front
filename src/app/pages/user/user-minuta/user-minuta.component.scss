@@ -1,3 +1,38 @@
 .minuta{
-    width: 100%;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    margin: 25px 6%;
+    font-size: 18px;
+    font-family: Arial;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+}
+
+.minuta-titulo-principal{
+    font-weight: bold;
+    font-size: 28px;
+    background-color: #08695C;
+    color: white;
+    padding: 20px;
+}
+
+.minuta-contenido{
+    .minuta-contenido-titulo{
+        padding: 20px;
+        background-color: #EEE;
+        font-size: 24px;
+    }
+    .minuta-contenido-item{
+        color: #666;
+        margin: 10px 0;
+        table{
+            text-align: left;
+            padding: 25px;
+        }
+        th, td{
+            border: 1px solid #DDD;
+            padding: 10px;
+        }
+    }
 }
