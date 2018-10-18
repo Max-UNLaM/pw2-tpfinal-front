@@ -84,8 +84,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let deuda of minuta.deudas">
-                            <td>NOMBRE_USUARIO</td>
-                            <td>NOMBRE_UNIDAD</td>
+                            <td>{{deuda.name}}</td>
+                            <td>{{deuda.nombre}}</td>
                             <td>$ {{deuda.total_factura | number : '1.2-2'}}</td>
                             <td>$ {{deuda.pago_parcial | number : '1.2-2'}}</td>
                             <td>$ {{deuda.adeuda | number : '1.2-2'}}</td>
