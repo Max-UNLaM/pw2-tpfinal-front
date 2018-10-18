@@ -1,4 +1,12 @@
 <div class="subpage-container-full flex-flow-row">
     <app-titlebar class="container-full" [title]="title"></app-titlebar>
+    <mat-card class="card-medium margin-auto" *ngFor="let minuta of minutas">
+        <mat-card-title>{{meses[(minuta.mes-1)]}} {{minuta.anio}}</mat-card-title>
+        <mat-card-content>Usuarios con deuda: {{minuta.deudas.length}}</mat-card-content>
+        <mat-card-content>Gastos del consorcio: {{minuta.gastos_del_periodo.length}}</mat-card-content>
+        <mat-card-content>Pagos: {{minuta.pagos_del_periodo.length}}</mat-card-content>
+        <button mat-button routerLink="/">Ver detalle</button>
+    </mat-card>
+
     <router-outlet></router-outlet>
 </div>
