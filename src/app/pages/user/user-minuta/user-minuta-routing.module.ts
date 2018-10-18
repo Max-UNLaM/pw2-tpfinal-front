@@ -12,6 +12,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: UserMinutaComponent
+            },
+            {
+                path: '/:id',
+                component: UserMinutaComponent
             }
         ]
     }
