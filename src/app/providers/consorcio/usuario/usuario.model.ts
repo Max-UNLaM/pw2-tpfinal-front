@@ -25,8 +25,9 @@ export class UserCreateError {
 
 export class User {
     id: number;
-    nombre: string;
+    name: string;
     rol_id: number;
+    email: string;
     administra_consorcio?: any;
     dni: number;
     estado: string;

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PieChart} from '../../../shared/model/charts.interface';
+import {PieChart} from '../../../shared/model/charts.model';
 import {EstadisticasService} from '../../../providers/consorcio/estadisticas/estadisticas.service';
 import {ConsorcioStatsResponse} from '../../../providers/consorcio/estadisticas/estadisticas.interface';
 import {ChartsHelperService} from '../../../shared/ui/charts-helper/charts-helper.service';

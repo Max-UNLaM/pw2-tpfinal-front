@@ -1,0 +1,42 @@
+<mat-card class="card-big">
+    <mat-horizontal-stepper [linear]="true">
+        <mat-step [stepControl]="usuarioForm">
+            <form [formGroup]="usuarioForm">
+                <ng-template matStepLabel>Datos del usuario</ng-template>
+                <div class="flex flex-flow-row space-between">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Nombre y apellido" formControlName="nya">
+                    </mat-form-field>
+                    <div *ngIf="error && error.factura">
+                        <mat-error>{{error.factura}}</mat-error>
+                    </div>
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Email" formControlName="email" type="email">
+                    </mat-form-field>
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="DNI" formControlName="dni" type="number">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select [(value)]="medioDePago" formControlName="medio">
+                            <mat-option value="transferencia">Transferencia</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-button matStepperNext [disabled]="!usuarioForm.valid" (click)="selectMedioDePago()">siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="usuarioForm">
+            <form [formGroup]="usuarioForm" *ngIf="enableTransferencia">
+                <mat-form-field class="margin-auto">
+                    <input matInput placeholder="Banco" formControlName="banco">
+                </mat-form-field>
+                <mat-form-field class="margin-auto">
+                    <input matInput placeholder="Comprobante" formControlName="comprobante">
+                </mat-form-field>
+                <button mat-button matStepperNext [disabled]="!usuarioForm.valid" (click)="pagar()">siguiente</button>
+            </form>
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-card>

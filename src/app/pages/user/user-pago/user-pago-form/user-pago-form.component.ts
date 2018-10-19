@@ -20,11 +20,15 @@ export class UserPagoFormComponent implements OnInit {
     ngOnInit() {
         this._route.data
             .subscribe((data: { factura: Factura }) => {
+                console.log(data);
                 this.factura = data.factura as Factura;
             });
         this._userService.read()
             .subscribe(
-                value => this.user = value.body as User,
+                value => {
+                    this.user = value.body as User;
+                    console.log(value.body);
+                },
                 error => console.error(error)
             );
     }
