@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserModel} from '../user/user.model';
+import {UserViewModel} from '../user/userViewModel';
 import {NavbarService} from '../../shared/navbar/navbar.service';
 import {ExpensaService} from '../../providers/consorcio/expensa/expensa.service';
 import {Router} from '@angular/router';
@@ -13,7 +13,7 @@ import {Location} from '@angular/common';
 export class AdminComponent implements OnInit {
 
     public certifiedAdmin = false;
-    protected userModel: UserModel = new UserModel();
+    protected userModel: UserViewModel = new UserViewModel();
 
     constructor(protected navbarSrv: NavbarService,
                 protected expensaSrv: ExpensaService,

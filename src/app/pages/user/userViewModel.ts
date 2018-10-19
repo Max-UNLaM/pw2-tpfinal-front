@@ -1,6 +1,6 @@
 import {ToolbarItem} from '../../shared/navbar/navbar.interface';
 
-export class UserModel {
+export class UserViewModel {
     empty = [];
     menu: ToolbarItem[] = [
         {

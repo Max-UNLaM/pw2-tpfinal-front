@@ -37,7 +37,8 @@ export const ConsorcioConsorcioRutasAdmin = {
 // user
 export const ConsorcioConsorcioRutasUser = {
     list: `${ConsorcioApiRutas.v1}/user/consorcio`,
-    page: `${ConsorcioApiRutas.v1}/user/consorcio?page=`
+    page: `${ConsorcioApiRutas.v1}/user/consorcio?page=`,
+    read: `${ConsorcioApiRutas.v1}/user/user`
 };
 
 // UNIDAD

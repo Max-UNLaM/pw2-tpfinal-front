@@ -3,6 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from '../../../auth-guard.service';
 import {UserPagoComponent} from './user-pago.component';
 import {UserPagoDashboardComponent} from './user-pago-dashboard/user-pago-dashboard.component';
+import {UserPagoFormComponent} from './user-pago-form/user-pago-form.component';
+import {Factura} from '../../../providers/consorcio/factura/factura.model';
 
 const routes: Routes = [
     {
@@ -17,6 +19,11 @@ const routes: Routes = [
             {
                 path: 'dashboard',
                 component: UserPagoDashboardComponent
+            },
+            {
+                path: 'emitir/:id',
+                component: UserPagoFormComponent,
+
             }
         ]
     }
