@@ -3,6 +3,7 @@ import {Factura} from '../../../providers/consorcio/factura/factura.model';
 import {User} from '../../../providers/consorcio/usuario/usuario.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PagoError} from '../../../providers/consorcio/pago/pago.model';
+import {PagoService} from '../../../providers/consorcio/pago/pago.service';
 
 @Component({
     selector: 'app-pago-form',
@@ -20,10 +21,11 @@ export class PagoFormComponent implements OnInit {
     error: PagoError;
     enableTransferencia = false;
 
-    constructor(private _formBuilder: FormBuilder) {
+    constructor(private _formBuilder: FormBuilder, private _pagoService: PagoService) {
     }
 
     ngOnInit() {
+        console.log(this.factura);
         this.usuarioForm = this._formBuilder.group({
                 nya: [this.user.name, Validators.required],
                 email: [this.user.email, [Validators.email, Validators.required]],
@@ -34,24 +36,45 @@ export class PagoFormComponent implements OnInit {
     }
 
     selectMedioDePago() {
-        console.log(this.medioDePago);
         if (this.medioDePago === 'transferencia') {
-            this.createTransferenciaForm();
-            this.enableTransferencia = true;
+            this.createTransferenciaForm().then(
+                () => {
+                    this.enableTransferencia = true;
+                    console.log();
+                },
+                err => console.log(err)
+            );
         }
     }
 
+
     createTransferenciaForm() {
-        this.medioPagoForm = this._formBuilder.group({
-            banco: ['', Validators.required],
-            comprobante: ['', Validators.required]
+        return new Promise((resolve, reject) => {
+            console.log('1');
+            this.medioPagoForm = this._formBuilder.group({
+                banco: ['', Validators.required],
+                comprobante: ['', Validators.required],
+                monto: [this.factura.adeuda, Validators.required]
+            });
+            console.log('2');
+            resolve();
         });
     }
 
     pagar() {
-        console.log(this.usuarioForm.getRawValue());
-        console.log(this.medioPagoForm.getRawValue());
-        console.log(this.factura);
+        const usuario = this.usuarioForm.getRawValue();
+        const medioPago = this.medioPagoForm.getRawValue();
+        const factura = this.factura;
+        this._pagoService.create({
+            factura_id: factura.id,
+            monto: medioPago.monto,
+            codigo_comprobante: medioPago.comprobante,
+            medio_de_pago: this.medioDePago
+        }).subscribe(
+            ok => {
+                console.log(ok);
+            }
+        );
     }
 
 }

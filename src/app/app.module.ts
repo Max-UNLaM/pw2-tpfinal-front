@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NavbarService} from './shared/navbar/navbar.service';
 import {PortalModule} from './pages/portal/portal.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
         HttpClientModule,
         MatToolbarModule,
         MatButtonModule,
-        MatMenuModule
+        MatMenuModule,
+        AngularSvgIconModule
     ],
     providers: [NavbarService],
     bootstrap: [AppComponent]

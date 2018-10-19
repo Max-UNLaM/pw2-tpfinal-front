@@ -1,7 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PagoFormComponent} from './pago-form.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatStepperModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule,
+    MatSelectModule,
+    MatStepperModule
+} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -13,7 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatSelectModule
+        MatSelectModule,
+        MatListModule
     ],
     declarations: [PagoFormComponent],
     exports: [PagoFormComponent]
