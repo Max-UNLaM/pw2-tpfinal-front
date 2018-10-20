@@ -34,7 +34,7 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="pagar" *ngIf="pay">
-            <th mat-header-cell *matHeaderCellDef>Taca taca</th>
+            <th mat-header-cell *matHeaderCellDef>Pagar</th>
             <td mat-cell *matCellDef="let element">
                 <button mat-flat-button color="primary" (click)="poniendoEstabaLaGansa(element)"
                         [disabled]="element.adeuda == 0">

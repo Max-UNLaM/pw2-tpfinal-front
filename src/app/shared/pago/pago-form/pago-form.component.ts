@@ -4,6 +4,7 @@ import {User} from '../../../providers/consorcio/usuario/usuario.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PagoError} from '../../../providers/consorcio/pago/pago.model';
 import {PagoService} from '../../../providers/consorcio/pago/pago.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-pago-form',
@@ -21,7 +22,7 @@ export class PagoFormComponent implements OnInit {
     error: PagoError;
     enableTransferencia = false;
 
-    constructor(private _formBuilder: FormBuilder, private _pagoService: PagoService) {
+    constructor(private _formBuilder: FormBuilder, private _pagoService: PagoService, protected snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -42,18 +43,18 @@ export class PagoFormComponent implements OnInit {
                     this.enableTransferencia = true;
                     console.log();
                 },
-                err => console.log(err)
+                err => console.log('Error loco', err)
             );
         }
     }
 
 
     createTransferenciaForm() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             console.log('1');
             this.medioPagoForm = this._formBuilder.group({
                 banco: ['', Validators.required],
-                comprobante: ['', Validators.required],
+                comprobante: ['', [Validators.required, Validators.minLength(4)]],
                 monto: [this.factura.adeuda, Validators.required]
             });
             console.log('2');
@@ -62,7 +63,6 @@ export class PagoFormComponent implements OnInit {
     }
 
     pagar() {
-        const usuario = this.usuarioForm.getRawValue();
         const medioPago = this.medioPagoForm.getRawValue();
         const factura = this.factura;
         this._pagoService.create({
@@ -73,6 +73,10 @@ export class PagoFormComponent implements OnInit {
         }).subscribe(
             ok => {
                 console.log(ok);
+                this.snackBar.open(`Adeuda: ${ok.body.factura.adeuda}`, 'OK', {duration: 3000});
+            }, error => {
+                console.error(error);
+                this.snackBar.open(`Error al enviar su pago: ${error.error}`, 'OK', {duration: 5000});
             }
         );
     }

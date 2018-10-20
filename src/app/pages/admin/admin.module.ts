@@ -10,6 +10,8 @@ import {ConsorcioSelectModule} from '../../shared/consorcio/consorcio-select/con
 import {EstadisticasService} from '../../providers/consorcio/estadisticas/estadisticas.service';
 import {FacturaService} from '../../providers/consorcio/factura/factura.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TitlebarModule} from '../../shared/titlebar/titlebar.module';
+import {MenuCardModule} from '../../shared/menu-card/menu-card.module';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         ConsorcioSelectModule,
         MatSnackBarModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TitlebarModule,
+        MenuCardModule
     ],
     declarations: [...routedComponents],
     providers: [EstadisticasService, FacturaService]

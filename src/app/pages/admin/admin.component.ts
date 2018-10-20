@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {UserViewModel} from '../user/userViewModel';
 import {NavbarService} from '../../shared/navbar/navbar.service';
 import {ExpensaService} from '../../providers/consorcio/expensa/expensa.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {AdminViewmodel} from './admin.viewmodel';
 
 @Component({
     selector: 'app-admin',
@@ -13,14 +13,12 @@ import {Location} from '@angular/common';
 export class AdminComponent implements OnInit {
 
     public certifiedAdmin = false;
-    protected userModel: UserViewModel = new UserViewModel();
 
     constructor(protected navbarSrv: NavbarService,
                 protected expensaSrv: ExpensaService,
                 private _router: Router,
                 private _location: Location) {
-        this.navbarSrv.set(this.userModel.adminMenuAdmin);
-        console.error('entre a admin');
+        this.navbarSrv.set(AdminViewmodel.menu);
     }
 
     ngOnInit() {

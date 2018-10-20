@@ -15,11 +15,11 @@ export class UserDashboardComponent implements OnInit {
     title = 'Dashboard';
 
     constructor() {
-        const mainMenu = new MainMenu();
-        this.menuItems = mainMenu.items;
     }
 
     ngOnInit() {
+        const mainMenu = new MainMenu();
+        this.menuItems = mainMenu.items;
     }
 
 }

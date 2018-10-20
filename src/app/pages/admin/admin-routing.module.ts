@@ -25,6 +25,13 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'estadisticas',
+                loadChildren: './admin-statistics/admin-statistics.module#AdminStatisticsModule',
+                data: {
+                    preload: true
+                }
+            },
+            {
                 path: 'gasto',
                 loadChildren: './admin-gasto/admin-gasto.module#AdminGastoModule',
                 data: {

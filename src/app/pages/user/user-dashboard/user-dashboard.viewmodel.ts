@@ -1,5 +1,5 @@
 import {MenuCard} from '../../../shared/menu-card/menu-card.model';
-import {faFileInvoiceDollar, faMoneyBill, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import {faFileInvoiceDollar, faPaperPlane, faMoneyBill, faFileAlt} from '@fortawesome/free-solid-svg-icons';
 
 export class MainMenu {
     items: MenuCard[] = [
@@ -16,10 +16,16 @@ export class MainMenu {
             content: 'Realizar un reclamo y ver el estado de los reclamos actuales.'
         },
         {
-            title: 'Gastos',
+            title: 'Resúmenes',
+            icon: faFileAlt,
+            route: ['/user/resumen'],
+            content: 'Ver los resúmenes mensuales de su consorcio.'
+        },
+	{
+	    title: 'Gastos',
             icon: faMoneyBill,
             route: ['/user/gasto'],
             content: 'Ver el listado de todos los gastos'
-        }
+	}
     ];
 }

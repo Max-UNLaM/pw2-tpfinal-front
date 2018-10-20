@@ -7,7 +7,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatSelectModule,
+    MatSelectModule, MatSnackBarModule,
     MatStepperModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -22,7 +22,8 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatInputModule,
         MatButtonModule,
         MatSelectModule,
-        MatListModule
+        MatListModule,
+        MatSnackBarModule
     ],
     declarations: [PagoFormComponent],
     exports: [PagoFormComponent]

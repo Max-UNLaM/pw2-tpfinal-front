@@ -31,6 +31,10 @@ const routes: Routes = [
                 loadChildren: './user-factura/user-factura.module#UserFacturaModule'
             },
             {
+                path: 'resumen',
+                loadChildren: './user-minuta/user-minuta.module#UserMinutaModule'
+            },
+            {
                 path: 'gasto',
                 loadChildren: './user-gasto/user-gasto.module#UserGastoModule'
             }
