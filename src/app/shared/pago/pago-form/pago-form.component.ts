@@ -4,7 +4,9 @@ import {User} from '../../../providers/consorcio/usuario/usuario.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PagoError} from '../../../providers/consorcio/pago/pago.model';
 import {PagoService} from '../../../providers/consorcio/pago/pago.service';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {MessageModalComponent} from '../../ui/message-modal/message-modal.component';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-pago-form',
@@ -21,8 +23,13 @@ export class PagoFormComponent implements OnInit {
     medioPagoForm: FormGroup;
     error: PagoError;
     enableTransferencia = false;
+    afterPagarAction: () => void;
 
-    constructor(private _formBuilder: FormBuilder, private _pagoService: PagoService, protected snackBar: MatSnackBar) {
+    constructor(private _router: Router,
+                private _formBuilder: FormBuilder,
+                private _pagoService: PagoService,
+                protected snackBar: MatSnackBar,
+                public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -62,18 +69,44 @@ export class PagoFormComponent implements OnInit {
         });
     }
 
+    afterPagar(titulo: string, mensaje: string): void {
+        const mensajeModal = this.dialog.open(MessageModalComponent, {
+            width: '500px',
+            data: {
+                title: titulo,
+                message: mensaje,
+                buttons: [
+                    {
+                        title: 'ACEPTAR',
+                        action: this.afterPagarAction
+                    }
+                ]
+            }
+        });
+        mensajeModal.afterClosed().subscribe(() => {
+            this._router.navigate(['/user/pago']).then(
+                navegacion => {
+                    console.log(navegacion);
+                }, error => {
+                    console.error(error);
+                }
+            );
+        });
+    }
+
     pagar() {
         const medioPago = this.medioPagoForm.getRawValue();
         const factura = this.factura;
         this._pagoService.create({
             factura_id: factura.id,
             monto: medioPago.monto,
+            banco: medioPago.banco,
             codigo_comprobante: medioPago.comprobante,
             medio_de_pago: this.medioDePago
         }).subscribe(
             ok => {
                 console.log(ok);
-                this.snackBar.open(`Adeuda: ${ok.body.factura.adeuda}`, 'OK', {duration: 3000});
+                this.afterPagar('Éxito!', ok.body.mensaje);
             }, error => {
                 console.error(error);
                 this.snackBar.open(`Error al enviar su pago: ${error.error}`, 'OK', {duration: 5000});

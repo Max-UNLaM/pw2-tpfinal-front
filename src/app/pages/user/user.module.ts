@@ -7,7 +7,7 @@ import {LoaderShadeModule} from '../../shared/ui/loader-shade/loader-shade.modul
 import {ReclamoTableModule} from '../../shared/reclamo/reclamo-table/reclamo-table.module';
 import {FacturaFiltroModule} from '../../shared/factura/factura-filtro/factura-filtro.module';
 import {MenuCardModule} from '../../shared/menu-card/menu-card.module';
-import {TitlebarModule} from '../../shared/titlebar/titlebar.module';
+import {TitlebarModule} from '../../shared/ui/titlebar/titlebar.module';
 
 @NgModule({
     imports: [
