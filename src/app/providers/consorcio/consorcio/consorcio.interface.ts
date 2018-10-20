@@ -8,8 +8,7 @@ export interface ConsorcioCreate {
     telefono: string;
 }
 
-export interface ConsorcioResponse extends ConsorcioCreate {
-    id: number;
+export interface ConsorcioResponse extends Consorcio {
     created_at: string;
     updated_at: string;
 }
@@ -23,6 +22,27 @@ export interface ConsorcioUserResponse {
     nombre: string;
     direccion: string;
     localidad: string;
+    provincia: string;
+    telefono: number;
+    email: string;
+    codigo_postal: number;
+    cuit: string;
+    cantidad_de_pisos: number;
+    departamentos_por_piso: number;
+}
+
+export class Consorcio {
+    id: number;
+    nombre: string;
+    direccion: string;
+    localidad: string;
+    provincia: string;
+    telefono: number;
+    email: string;
+    codigo_postal: number;
+    cuit: string;
+    cantidad_de_pisos: number;
+    departamentos_por_piso: number;
 }
 
 export interface ConsorcioUserPaginatorResponse extends PaginatorResponse {

@@ -1,5 +1,9 @@
 import {PaginatorResponse} from '../api.model';
 
+export class Unidad {
+
+}
+
 
 export interface UnidadCreate {
     nombre: string;

@@ -1,0 +1,105 @@
+<div *ngIf="factura">
+    <mat-card class="card-big">
+        <mat-card-header>
+            <mat-card-title><h1>Factura</h1></mat-card-title>
+            <mat-card-subtitle>{{factura.anio}} / {{factura.mes}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="mat-horizontal-list">
+                <div class="row row-main">
+                    <div class="row-title">
+                        <h2>Consorcio</h2>
+                    </div>
+                    <div class="row flex">
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Nombre</h3>
+                            <p mat-line>{{consorcio.nombre}}</p>
+                        </div>
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Dirección</h3>
+                            <p mat-line>{{consorcio.direccion}}</p>
+                        </div>
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Localidad</h3>
+                            <p mat-line>{{consorcio.localidad}}</p>
+                        </div>
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Provincia</h3>
+                            <p mat-line>{{consorcio.provincia}}</p>
+                        </div>
+                    </div>
+                    <div class="row flex">
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Teléfono</h3>
+                            <p mat-line>{{consorcio.telefono}}</p>
+                        </div>
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Email</h3>
+                            <p mat-line>{{consorcio.email}}</p>
+                        </div>
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>Código Postal</h3>
+                            <p mat-line>{{consorcio.codigo_postal}}</p>
+                        </div>
+                        <div class="bloque flex-grow-1">
+                            <h3 mat-line>CUIT</h3>
+                            <p mat-line>{{consorcio.cuit}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-main">
+                    <mat-divider></mat-divider>
+                    <div class="row-title">
+                        <h2>Expensa</h2>
+                    </div>
+                    <div class="row">
+                        <div class="bloque">
+                            <h3 mat-line>Importe</h3>
+                            <p mat-line>{{factura.expensa.importe}}</p>
+                        </div>
+                        <div class="bloque">
+                            <h3 mat-line>Emisión</h3>
+                            <p mat-line>{{factura.expensa.emision}}</p>
+                        </div>
+                        <div class="bloque">
+                            <h3 mat-line>Vencimiento</h3>
+                            <p mat-line>{{factura.expensa.vencimiento}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-main">
+                    <mat-divider></mat-divider>
+                    <div class="row-title">
+                        <h2>Gastos</h2>
+                    </div>
+                    <div class="row">
+                        <table mat-table [dataSource]="gastos">
+                            <ng-container matColumnDef="nombre">
+                                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                                <td mat-cell *matCellDef="let element"> {{element.nombre}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="valor">
+                                <th mat-header-cell *matHeaderCellDef>Valor</th>
+                                <td mat-cell *matCellDef="let element"> {{element.valor}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="anio">
+                                <th mat-header-cell *matHeaderCellDef>Año</th>
+                                <td mat-cell *matCellDef="let element"> {{element.anio}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="mes">
+                                <th mat-header-cell *matHeaderCellDef>Mes</th>
+                                <td mat-cell *matCellDef="let element"> {{element.mes}}</td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                        </table>
+                    </div>
+                </div>
+                <mat-card-actions class="row">
+                    <button mat-flat-button (click)="back()">Volver</button>
+                    <button mat-flat-button (click)="pay()">Pagar</button>
+                </mat-card-actions>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

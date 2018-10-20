@@ -1,5 +1,5 @@
 import {MenuCard} from '../../../shared/menu-card/menu-card.model';
-import {faFileInvoiceDollar, faPaperPlane, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import {faFileInvoiceDollar, faPaperPlane, faMoneyBill, faFileAlt} from '@fortawesome/free-solid-svg-icons';
 
 export class MainMenu {
     items: MenuCard[] = [
@@ -20,6 +20,12 @@ export class MainMenu {
             icon: faFileAlt,
             route: ['/user/resumen'],
             content: 'Ver los resúmenes mensuales de su consorcio.'
-        }
+        },
+	{
+	    title: 'Gastos',
+            icon: faMoneyBill,
+            route: ['/user/gasto'],
+            content: 'Ver el listado de todos los gastos'
+	}
     ];
 }

@@ -14,6 +14,9 @@ import {
 import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service';
 import { UserReclamoUnidadesComponent } from './user-reclamo-unidades/user-reclamo-unidades.component';
 import {LoaderShadeModule} from '../../../shared/ui/loader-shade/loader-shade.module';
+import { UserReclamoCreateComponent } from './user-reclamo-create/user-reclamo-create.component';
+import { UserReclamoDashboardComponent } from './user-reclamo-dashboard/user-reclamo-dashboard.component';
+import {ReclamoTableModule} from '../../../shared/reclamo/reclamo-table/reclamo-table.module';
 
 
 @NgModule({
@@ -30,9 +33,10 @@ import {LoaderShadeModule} from '../../../shared/ui/loader-shade/loader-shade.mo
         MatPaginatorModule,
         MatListModule,
         MatSnackBarModule,
-        LoaderShadeModule
+        LoaderShadeModule,
+        ReclamoTableModule
     ],
-    declarations: [...routedComponents, UserReclamoUnidadesComponent],
+    declarations: [...routedComponents, UserReclamoUnidadesComponent, UserReclamoCreateComponent, UserReclamoDashboardComponent],
     providers: [UnidadService],
     entryComponents: [UserReclamoUnidadesComponent]
 })

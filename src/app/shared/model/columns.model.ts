@@ -1,10 +1,10 @@
-export interface ColumnsInterface {
+export interface ColumnsModel {
     def: string;
     property: string;
     name: string;
 }
 
 export interface MaterialColumns {
-    columnas: ColumnsInterface[];
+    columnas: ColumnsModel[];
     cols: string[];
 }

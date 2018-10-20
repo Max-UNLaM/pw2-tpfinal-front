@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {PieChart} from '../../../shared/model/charts.interface';
-import {EstadisticasService} from '../../../providers/consorcio/estadisticas/estadisticas.service';
-import {ConsorcioStatsResponse} from '../../../providers/consorcio/estadisticas/estadisticas.interface';
-import {ChartsHelperService} from '../../../shared/ui/charts-helper/charts-helper.service';
-import {ChartsPalletes} from '../../../shared/ui/charts-helper/charts.model';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
 import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MainMenu} from '../../user/user-dashboard/user-dashboard.viewmodel';
+import {MenuCard} from '../../../shared/menu-card/menu-card.model';
+import {AdminMainMenu} from './admin-dashboard.viewmodel';
 
 @Component({
     selector: 'app-admin-dashoard',
@@ -15,30 +13,16 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AdminDashoardComponent implements OnInit {
 
-
-    colorScheme = {
-        domain: ChartsPalletes.deepPurple
-    };
+    menuItems: MenuCard[] = [];
+    title = 'Dashboard';
     gastoForm: FormGroup;
-    reclamosTitle = `Reclamos sin responder`;
-    reclamosChartsDatos: PieChart[];
-    facturasChartsTitle = `Reclamos sin responder`;
-    facturasChartsDatos: PieChart[];
-    chartsView: any[] = [400, 300];
-    chartsShowLegend = true;
-    chartsLabels = true;
-    chartsShowLabels = true;
-    chartsExplodeSlices = false;
     mes;
     anio;
 
     constructor(
         protected formBuilder: FormBuilder,
-        private _estadisticasService: EstadisticasService,
         public facturaService: FacturaService,
         protected snackBar: MatSnackBar) {
-        this.createForm();
-
     }
 
     createForm() {
@@ -55,19 +39,8 @@ export class AdminDashoardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._estadisticasService.list(true)
-            .subscribe(
-                (data) => {
-                    const stats = data.body as ConsorcioStatsResponse[];
-                    this.reclamosChartsDatos = ChartsHelperService.pieChartBuilder(stats,
-                        'consorcio_nombre',
-                        'reclamos_esperando_respuesta');
-                    this.facturasChartsDatos = ChartsHelperService.pieChartBuilder(stats,
-                        'consorcio_nombre',
-                        'facturas_impagas');
-                },
-                error => console.error(error)
-            );
+        this.menuItems = AdminMainMenu.items;
+        this.createForm();
     }
 
     masa() {

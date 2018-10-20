@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MaterialColumns} from '../../../shared/model/columns.interface';
+import {MaterialColumns} from '../../../shared/model/columns.model';
 import {MenuCard} from '../../../shared/menu-card/menu-card.model';
 import {MainMenu} from './user-dashboard.viewmodel';
 
@@ -15,11 +15,11 @@ export class UserDashboardComponent implements OnInit {
     title = 'Dashboard';
 
     constructor() {
-        const mainMenu = new MainMenu();
-        this.menuItems = mainMenu.items;
     }
 
     ngOnInit() {
+        const mainMenu = new MainMenu();
+        this.menuItems = mainMenu.items;
     }
 
 }

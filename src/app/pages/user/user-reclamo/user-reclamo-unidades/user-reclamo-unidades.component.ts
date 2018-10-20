@@ -3,7 +3,7 @@ import {UnidadService} from '../../../../providers/consorcio/unidad/unidad.servi
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {merge, of} from 'rxjs';
 import {MatDialogRef, MatPaginator} from '@angular/material';
-import {UnidadPaginatorResponse, UnidadResponse} from '../../../../providers/consorcio/unidad/unidad.interface';
+import {UnidadPaginatorResponse, UnidadResponse} from '../../../../providers/consorcio/unidad/unidad.model';
 
 @Component({
     selector: 'app-user-reclamo-unidades',

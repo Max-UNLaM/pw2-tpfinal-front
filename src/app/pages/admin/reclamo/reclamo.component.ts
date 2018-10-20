@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConsorcioStatsResponse} from '../../../providers/consorcio/estadisticas/estadisticas.interface';
 import {ChartsHelperService} from '../../../shared/ui/charts-helper/charts-helper.service';
 import {EstadisticasService} from '../../../providers/consorcio/estadisticas/estadisticas.service';
-import {PieChart} from '../../../shared/model/charts.interface';
+import {PieChart} from '../../../shared/model/charts.model';
 
 @Component({
     selector: 'app-reclamo',

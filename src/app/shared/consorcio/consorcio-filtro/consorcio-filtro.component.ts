@@ -5,7 +5,7 @@ import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {UnidadFormComponent} from '../../unidad/unidad-form/unidad-form.component';
-import {UnidadCreate} from '../../../providers/consorcio/unidad/unidad.interface';
+import {UnidadCreate} from '../../../providers/consorcio/unidad/unidad.model';
 
 @Component({
     selector: 'app-consorcio-filtro',

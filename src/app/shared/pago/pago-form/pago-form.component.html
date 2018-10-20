@@ -1,3 +1,75 @@
-<p>
-  pago-form works!
-</p>
+<mat-card class="card-big">
+    <mat-horizontal-stepper [linear]="true">
+        <mat-step>
+            <ng-template matStepLabel>Datos de la factura</ng-template>
+            <mat-list class="align-content-center">
+                <mat-list-item role="listitem">Factura: {{factura.id}}</mat-list-item>
+                <mat-list-item role="listitem">Total: ${{factura.total}}</mat-list-item>
+                <mat-list-item role="listitem">Pagado: ${{factura.pago_parcial}}</mat-list-item>
+                <mat-list-item role="listitem">Pendiente: ${{factura.adeuda}}</mat-list-item>
+                <mat-list-item role="listitem">Vencimiento: {{factura.vencimiento}}</mat-list-item>
+                <mat-list-item role="listitem">Unidad: {{factura.unidad.nombre}}</mat-list-item>
+            </mat-list>
+            <div>
+                <button mat-flat-button matStepperNext>Siguiente</button>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="usuarioForm">
+            <form [formGroup]="usuarioForm">
+                <ng-template matStepLabel>Datos del usuario</ng-template>
+                <div class="flex flex-flow-row justify-content-around">
+                    <div class="block">
+                        <mat-form-field class="margin-auto">
+                            <input matInput placeholder="Nombre y apellido" formControlName="nya">
+                        </mat-form-field>
+                        <div *ngIf="error && error.factura">
+                            <mat-error>{{error.factura}}</mat-error>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <mat-form-field class="margin-auto">
+                            <input matInput placeholder="Email" formControlName="email" type="email">
+                        </mat-form-field>
+                    </div>
+                    <div class="block">
+                        <mat-form-field class="margin-auto">
+                            <input matInput placeholder="DNI" formControlName="dni" type="number">
+                        </mat-form-field>
+                    </div>
+                    <div class="block">
+                        <mat-form-field>
+                            <mat-select [(value)]="medioDePago" formControlName="medio" placeholder="Forma de pago">
+                                <mat-option value="transferencia" (click)="selectMedioDePago()">Transferencia
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <button mat-flat-button matStepperNext [disabled]="!usuarioForm.valid">Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="medioPagoForm">
+            <form [formGroup]="medioPagoForm" *ngIf="enableTransferencia">
+                <ng-template matStepLabel>Datos de transferencia</ng-template>
+                <mat-list class="align-content-center">
+                    <mat-list-item role="listitem">Pendiente: ${{factura.adeuda}}</mat-list-item>
+                </mat-list>
+                <div class="flex flex-flow-row justify-content-around">
+                    <mat-form-field>
+                        <input matInput placeholder="Monto" formControlName="monto">
+                    </mat-form-field>
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Banco" formControlName="banco">
+                    </mat-form-field>
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Comprobante" formControlName="comprobante">
+                    </mat-form-field>
+                </div>
+                <button mat-flat-button matStepperNext [disabled]="!medioPagoForm.valid" (click)="pagar()">Siguiente
+                </button>
+            </form>
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-card>

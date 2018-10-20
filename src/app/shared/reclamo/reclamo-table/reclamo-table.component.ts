@@ -12,10 +12,9 @@ import {ReclamoPaginatorResponse, ReclamoResponse} from '../../../providers/cons
 })
 export class ReclamoTableComponent implements OnInit {
 
-
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @Input('page-size') localPageSize: number;
-    @Input('user-admin') userAdmin = false;
+    @Input() pageSize = 10;
+    @Input() userAdmin = false;
 
 
     data: ReclamoResponse[] = [];
@@ -35,8 +34,8 @@ export class ReclamoTableComponent implements OnInit {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                     this.tableLoading = true;
-                    return this.reclamo.pageList(userToken, this.paginator.pageIndex + 1, this.localPageSize, this.userAdmin);
+                    this.tableLoading = true;
+                    return this.reclamo.pageList(userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;

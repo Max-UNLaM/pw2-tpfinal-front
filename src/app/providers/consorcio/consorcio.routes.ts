@@ -37,7 +37,8 @@ export const ConsorcioConsorcioRutasAdmin = {
 // user
 export const ConsorcioConsorcioRutasUser = {
     list: `${ConsorcioApiRutas.v1}/user/consorcio`,
-    page: `${ConsorcioApiRutas.v1}/user/consorcio?page=`
+    page: `${ConsorcioApiRutas.v1}/user/consorcio?page=`,
+    read: `${ConsorcioApiRutas.v1}/user/user`
 };
 
 // UNIDAD
@@ -97,7 +98,8 @@ export const ConsorcioReclamoRutasAdmin = {
 // user
 export const ConsorcioFacturaRutasUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/factura`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/factura?page=`
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/factura?page=`,
+    read: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/factura?id=`
 };
 
 
@@ -122,11 +124,12 @@ export const ConsorcioPagoRutasAdmin = {
 // PAGO
 // user
 export const ConsorcioPagoRutasUser = {
-    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago?page=`
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/pago`,
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/pago?page=`,
+    create: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/pago`,
 };
 
-// PAGO
+// GASTO
 // admin
 export const ConsorcioGastoRutasAdmin = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto`,
@@ -135,7 +138,7 @@ export const ConsorcioGastoRutasAdmin = {
 };
 
 
-// PAGO
+// GASTO
 // user
 export const ConsorcioGastoRutasUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto`,

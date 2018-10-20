@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarService} from '../../shared/navbar/navbar.service';
-import {UserModel} from './user.model';
+import {UserViewModel} from './userViewModel';
 import {ExpensaService} from '../../providers/consorcio/expensa/expensa.service';
 import {Router} from '@angular/router';
 
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 export class UserComponent implements OnInit {
 
     public certifiedUser = false;
-    protected userModel: UserModel = new UserModel();
+    protected userModel: UserViewModel = new UserViewModel();
 
     constructor(protected navbarSrv: NavbarService,
                 protected expensaSrv: ExpensaService,

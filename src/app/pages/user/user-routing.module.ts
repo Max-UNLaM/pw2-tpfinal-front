@@ -33,6 +33,10 @@ const routes: Routes = [
             {
                 path: 'resumen',
                 loadChildren: './user-minuta/user-minuta.module#UserMinutaModule'
+            },
+            {
+                path: 'gasto',
+                loadChildren: './user-gasto/user-gasto.module#UserGastoModule'
             }
         ]
     }

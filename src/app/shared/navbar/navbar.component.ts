@@ -4,7 +4,7 @@ import {NavbarService} from './navbar.service';
 import {ToolbarItem} from './navbar.interface';
 import {AuthService} from '../../auth.service';
 import {LoginStorageService} from '../../providers/local/login/login-storage.service';
-import {UserModel} from '../../pages/user/user.model';
+import {UserViewModel} from '../../pages/user/userViewModel';
 
 @Component({
     selector: 'app-navbar',
@@ -14,7 +14,7 @@ import {UserModel} from '../../pages/user/user.model';
 export class NavbarComponent implements OnInit, AfterContentInit, DoCheck {
 
     toolbarItems: ToolbarItem[];
-    userModel: UserModel = new UserModel();
+    userModel: UserViewModel = new UserViewModel();
     protected loggedIn: boolean;
 
     constructor(private _router: Router,

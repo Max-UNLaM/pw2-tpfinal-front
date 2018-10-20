@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ConsorcioExpensaRutasAdmin, ConsorcioExpensaRutasUser} from '../consorcio.routes';
-import {ExpensaPaginatorResponse, ExpensaResponse} from './expensa.interface';
+import {ExpensaPaginatorResponse, ExpensaResponse} from './expensa.model';
 
 @Injectable({
     providedIn: 'root'
