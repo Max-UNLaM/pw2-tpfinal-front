@@ -81,3 +81,7 @@ table {
 .overflow-auto {
     overflow: auto;
 }
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
+    padding: 42px!important;
+}
