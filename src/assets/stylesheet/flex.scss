@@ -1,11 +1,44 @@
 .flex {
-  display: flex;
+    display: flex;
 }
 
 .space-between {
-  align-content: space-between;
+    align-content: space-between;
 }
 
 .margin-auto {
-  margin: auto;
+    margin: auto;
+}
+
+.flex-flow-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.button-row {
+    button, a {
+        margin-right: 8px;
+    }
+}
+
+.mat-horizontal-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .row {
+        margin: 0;
+        width: 100%;
+        min-height: 50px;
+        padding: 0;
+    }
+    .row-main {
+        margin: 10px 0;
+    }
+    .bloque {
+        text-align: left;
+        margin: auto;
+    }
+    mat-divider {
+        margin-bottom: 10px !important;
+    }
 }

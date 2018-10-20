@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ConsorcioUnidadRutasAdmin} from '../consorcio.routes';
 import {Observable} from 'rxjs';
-import {UnidadCreate, UnidadPaginatorResponse, UnidadResponse} from './unidad.interface';
+import {UnidadCreate, UnidadPaginatorResponse, UnidadResponse} from './unidad.model';
 import {LoginStorageService} from '../../local/login/login-storage.service';
 
 @Injectable({

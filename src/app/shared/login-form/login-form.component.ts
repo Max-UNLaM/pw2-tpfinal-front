@@ -4,7 +4,6 @@ import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../providers/consorcio/login/login.service';
 import {OauthLoginSuccess} from '../../providers/consorcio/login/login.interface';
-import {LoginStorageService} from '../../providers/local/login/login-storage.service';
 
 @Component({
     selector: 'app-login-form',
@@ -20,8 +19,7 @@ export class LoginFormComponent implements OnInit {
     constructor(private _router: Router,
                 private _location: Location,
                 protected formBuilder: FormBuilder,
-                protected loginSrv: LoginService,
-                protected loginStorageSrv: LoginStorageService) {
+                protected loginSrv: LoginService) {
         this.createForm();
     }
 
@@ -34,7 +32,8 @@ export class LoginFormComponent implements OnInit {
         );
     }
 
-    public setLogin() {
+    public setLogin(button) {
+        this.waitForIt(button);
         this.accessError = !this.accessError;
         this.loginSrv.login({
             email: this.loginForm.get('usuario').value,
@@ -44,23 +43,31 @@ export class LoginFormComponent implements OnInit {
                 (token) => {
                     const logIn = token.body as OauthLoginSuccess;
                     window.localStorage.setItem('userToken', logIn.success.token);
+                    this.redirect('user');
                 },
                 error => {
                     this.accessError = true;
                     this.accessErrorText = error.statusText;
-                },
-                () => {
-                    this.redirect('/user');
                 }
             );
     }
 
-    redirect(address: string) {
-        this._location.replaceState('/');
-        this._router.navigate([address]);
+    ngOnInit() {
     }
 
-    ngOnInit() {
+    private redirect(address: string) {
+        this._router.navigate(['/', address]).then(
+            navegacion => {
+                console.log(navegacion);
+            }, error => {
+                console.error(error);
+            }
+        );
+    }
+
+    private waitForIt(button) {
+        button.disabled = true;
+        setTimeout(() => button.disabled = false, 4000);
     }
 
 }

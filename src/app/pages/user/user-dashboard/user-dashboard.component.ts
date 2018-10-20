@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MaterialColumns} from '../../../shared/model/columns.interface';
+import {MaterialColumns} from '../../../shared/model/columns.model';
+import {MenuCard} from '../../../shared/menu-card/menu-card.model';
+import {MainMenu} from './user-dashboard.viewmodel';
 
 @Component({
     selector: 'app-user-dashboard',
@@ -8,32 +10,16 @@ import {MaterialColumns} from '../../../shared/model/columns.interface';
 })
 export class UserDashboardComponent implements OnInit {
 
-    columnas: MaterialColumns = {
-        columnas: [
-            {
-                def: 'vencimiento',
-                name: 'Vencimiento',
-                property: 'vencimiento'
-            },
-            {
-                def: 'adeuda',
-                name: 'Debe',
-                property: 'adeuda'
-            },
-            {
-                def: 'total',
-                name: 'Total',
-                property: 'total'
-            }
-        ],
-        cols: ['vencimiento', 'adeuda', 'total']
-    };
+    menuItems: MenuCard[] = [];
+    columnas: MaterialColumns;
+    title = 'Dashboard';
 
     constructor() {
-        console.error('entre a user-dashboard');
     }
 
     ngOnInit() {
+        const mainMenu = new MainMenu();
+        this.menuItems = mainMenu.items;
     }
 
 }

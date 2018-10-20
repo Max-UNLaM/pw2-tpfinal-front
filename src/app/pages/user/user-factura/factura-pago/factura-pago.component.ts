@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Factura} from '../../../../providers/consorcio/factura/factura.interface';
+import {Factura} from '../../../../providers/consorcio/factura/factura.model';
 
 @Component({
     selector: 'app-factura-pago',
@@ -11,13 +11,14 @@ export class FacturaPagoComponent implements OnInit {
 
     factura: Factura;
 
-    constructor(private route: ActivatedRoute,) {
+    constructor(private _route: ActivatedRoute) {
     }
 
+    // Recibe el objeto buscado en el servicio "resolver"
     ngOnInit() {
-        this.route.data
+        this._route.data
             .subscribe((data: { factura: Factura }) => {
-                this.factura = data.factura;
+                this.factura = data.factura as Factura;
             });
     }
 

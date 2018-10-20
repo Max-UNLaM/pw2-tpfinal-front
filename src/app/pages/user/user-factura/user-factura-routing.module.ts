@@ -4,6 +4,7 @@ import {AuthGuardService} from '../../../auth-guard.service';
 import {FacturaPagoComponent} from './factura-pago/factura-pago.component';
 import {UserFacturaComponent} from './user-factura.component';
 import {FacturaPagoResolverService} from './factura-pago/factura-pago-resolver.service';
+import {UserFacturaDashboardComponent} from './user-factura-dashboard/user-factura-dashboard.component';
 const routes: Routes = [
     {
         path: '',
@@ -12,7 +13,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: UserFacturaComponent
+                component: UserFacturaDashboardComponent
             },
             {
                 path: 'pago/:id',

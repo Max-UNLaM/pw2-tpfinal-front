@@ -3,9 +3,9 @@ import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
-import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.interface';
+import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.model';
 import {FacturacionText} from '../../../../assets/text/textos';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-factura-table',
@@ -64,7 +64,9 @@ export class FacturaTableComponent implements OnInit {
     }
 
     poniendoEstabaLaGansa(factura) {
-        this.router.navigate(['user/factura/pago', factura.id]);
+        this.router.navigate(['user/factura/pago', factura.id]).catch(
+            error  => console.error(error)
+        );
     }
 
 }

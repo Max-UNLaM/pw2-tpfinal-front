@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator} from '@angular/material';
-import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.interface';
+import {FacturaPaginatorResponse, FacturaResponse} from '../../../providers/consorcio/factura/factura.model';
 import {FacturaService} from '../../../providers/consorcio/factura/factura.service';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';

@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" *ngIf="loginForm" class="flex flex-column">
+<form [formGroup]="loginForm" *ngIf="loginForm" class="flex flex-column background-gray-light-contrast">
     <mat-form-field>
         <mat-label>Usuario</mat-label>
         <input matInput placeholder="Email" formControlName="usuario">
@@ -15,11 +15,13 @@
             Tu contraseña debe ser superior a 6 caracteres
         </mat-error>
     </mat-form-field>
-    <mat-card-actions class="flex space-between container-full">
-        <button mat-flat-button [disabled]="!loginForm.valid" color="primary" (click)="setLogin()" class="margin-auto">Iniciar Sesión
+    <div class="button-row">
+        <button mat-flat-button #iniciarSesion [disabled]="!loginForm.valid" color="primary" (click)="setLogin(iniciarSesion)"
+                class="inline-buttons">
+            Iniciar Sesión
         </button>
-        <button mat-flat-button (click)="redirect('portal/register')" class="margin-auto">Crear una cuenta</button>
-    </mat-card-actions>
+        <button mat-flat-button (click)="redirect('portal/register')" class="inline-buttons">Crear una cuenta</button>
+    </div>
     <mat-error *ngIf="accessError">{{accessErrorText}}
     </mat-error>
 </form>

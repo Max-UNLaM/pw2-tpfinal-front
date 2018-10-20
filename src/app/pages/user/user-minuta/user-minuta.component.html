@@ -1,0 +1,100 @@
+<div class="subpage-container-full flex-flow-row">
+    <app-titlebar class="container-full" [title]="title"></app-titlebar>
+    <div class="minuta" *ngFor="let minuta of minutas">
+
+        <div class="minuta-titulo-principal">{{meses[(minuta.mes-1)]}} {{minuta.anio}}</div>
+        <div class="minuta-contenido">
+            <div class="minuta-contenido-titulo">Gastos del consorcio ({{minuta.gastos_del_periodo.length}})</div>
+            <div class="minuta-contenido-item">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Concepto</th>
+                            <th>Valor</th>
+                            <th>Proveedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let gasto of minuta.gastos_del_periodo">
+                            <td>{{gasto.gasto_fecha}}</td>
+                            <td>{{gasto.gasto_nombre}}</td>
+                            <td>$ {{gasto.gasto_valor | number : '1.2-2'}}</td>
+                            <td>{{gasto.proveedor_nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="minuta-contenido-titulo">Detalles de la liquidacion</div>
+            <div class="minuta-contenido-item">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Suma de gastos</th>
+                            <th>Total liquidación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$ {{minuta.liquidacion.valor_sin_coeficiente | number : '1.2-2'}}</td>
+                            <td>$ {{minuta.liquidacion.valor | number : '1.2-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="minuta-contenido-titulo">Pagos ({{minuta.pagos_del_periodo.length}})</div>
+            <div class="minuta-contenido-item">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Propietario</th>
+                            <th>Monto</th>
+                            <th>Medio de pago</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pago of minuta.pagos_del_periodo">
+                            <td>{{pago.fecha}}</td>
+                            <td>{{pago.propietario_nombre}}</td>
+                            <td>$ {{pago.monto | number : '1.2-2'}}</td>
+                            <td>{{pago.medio_de_pago}}</td>
+                            <td>{{pago.estado}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="minuta-contenido-titulo">Usuarios con deuda ({{minuta.deudas.length}})</div>
+            <div class="minuta-contenido-item">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Propietario</th>
+                            <th>Unidad</th>
+                            <th>Total factura</th>
+                            <th>Pagó</th>
+                            <th>Debe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let deuda of minuta.deudas">
+                            <td>{{deuda.name}}</td>
+                            <td>{{deuda.nombre}}</td>
+                            <td>$ {{deuda.total_factura | number : '1.2-2'}}</td>
+                            <td>$ {{deuda.pago_parcial | number : '1.2-2'}}</td>
+                            <td>$ {{deuda.adeuda | number : '1.2-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <router-outlet></router-outlet>
+</div>

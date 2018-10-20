@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ExpensaResponse} from '../../../providers/consorcio/expensa/expensa.interface';
+import {ExpensaResponse} from '../../../providers/consorcio/expensa/expensa.model';
 
 @Component({
     selector: 'app-expensa-dialog',

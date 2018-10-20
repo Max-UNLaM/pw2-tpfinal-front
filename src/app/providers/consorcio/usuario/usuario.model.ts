@@ -1,4 +1,4 @@
-export interface UserNew {
+export class UserNew {
     name: string;
     email: string;
     updated_at: string;
@@ -6,19 +6,29 @@ export interface UserNew {
     id: number;
 }
 
-export interface UserCreate {
+export class UserCreate {
     name: string;
     email: string;
     password: string;
     password_confirmation: string;
 }
 
-export interface UserCreateResponse {
+export class UserCreateResponse {
     user: UserNew;
 }
 
-export interface UserCreateError {
+export class UserCreateError {
     name?: string[];
     mail?: string[];
     password?: string[];
+}
+
+export class User {
+    id: number;
+    name: string;
+    rol_id: number;
+    email: string;
+    administra_consorcio?: any;
+    dni: number;
+    estado: string;
 }

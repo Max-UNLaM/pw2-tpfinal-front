@@ -1,4 +1,4 @@
-export interface PaginatorResponse {
+export class PaginatorResponse {
     current_page: number;
     data: object | object[];
     fist_page_url: string;
@@ -13,7 +13,7 @@ export interface PaginatorResponse {
     total: number;
 }
 
-export class ApiResponse {
+export interface ApiResponse {
     created_at: string;
     updated_at: string;
 }

@@ -3,7 +3,7 @@ import {UnidadService} from '../../../providers/consorcio/unidad/unidad.service'
 import {MatDialog, MatPaginator} from '@angular/material';
 import {merge, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {UnidadPaginatorResponse, UnidadResponse} from '../../../providers/consorcio/unidad/unidad.interface';
+import {UnidadPaginatorResponse, UnidadResponse} from '../../../providers/consorcio/unidad/unidad.model';
 
 @Component({
     selector: 'app-unidad-tabla',

@@ -1,29 +1,3 @@
 <div class="subpage-container-full flex justify-content-center align-content-center">
-    <mat-card class="card-medium margin-auto">
-        <mat-card-title>Crear Reclamo</mat-card-title>
-        <form [formGroup]="reclamoForm" *ngIf="reclamoForm" class="flex flex-column">
-            <mat-form-field>
-                <mat-label>Motivo</mat-label>
-                <input matInput placeholder="Motivo" formControlName="motivo" type="text">
-                <mat-error
-                    *ngIf="!reclamoForm.get('motivo').valid && (reclamoForm.get('motivo').dirty || reclamoForm.get('motivo').touched)">
-                    Debes escribir un reclamo
-                </mat-error>
-            </mat-form-field>
-            <div *ngIf="unidadSeleccionada">
-                <mat-list>
-                    <mat-list-item>Unidad Elegida</mat-list-item>
-                    <mat-list-item>Nombre: {{unidadSeleccionada.nombre}}</mat-list-item>
-                    <mat-list-item>Localidad: {{unidadSeleccionada.localidad}}</mat-list-item>
-                </mat-list>
-            </div>
-            <mat-card-actions>
-                <button mat-raised-button (click)="elegirUnidad()">Elegir una unidad</button>
-                <button mat-raised-button [disabled]="!reclamoForm.get('motivo').valid || !unidadSeleccionada" color="primary" (click)="crearReclamo()">Crear
-                </button>
-            </mat-card-actions>
-            <mat-error *ngIf="accessError">{{accessErrorText}}
-            </mat-error>
-        </form>
-    </mat-card>
+    <router-outlet></router-outlet>
 </div>

@@ -1,26 +1,26 @@
 <div class="container-full flex-column table-10-rows background-gray-light-contrast">
-    <app-loader-shade [errorMessage]="error" [isLoadingResults]="tableLoading"  ></app-loader-shade>
+    <app-loader-shade [errorMessage]="error" [isLoadingResults]="tableLoading"></app-loader-shade>
     <table mat-table [dataSource]="data">
         <ng-container matColumnDef="nombre">
             <th mat-header-cell *matHeaderCellDef>Nombre</th>
             <td mat-cell *matCellDef="let element"> {{element.nombre}}</td>
         </ng-container>
-        <ng-container matColumnDef="proveedor_id">
+        <ng-container matColumnDef="proveedor_nombre">
             <th mat-header-cell *matHeaderCellDef>Proveedor</th>
             <td mat-cell *matCellDef="let element">
-                {{element.proveedor_id}}
+                {{element.proveedor.nombre}}
             </td>
         </ng-container>
-        <ng-container matColumnDef="consorcio_id">
+        <ng-container matColumnDef="consorcio_nombre">
             <th mat-header-cell *matHeaderCellDef>Consorcio</th>
             <td mat-cell *matCellDef="let element">
-                {{element.consorcio_id}}
+                {{element.consorcio.nombre}}
             </td>
         </ng-container>
         <ng-container matColumnDef="valor">
-            <th mat-header-cell *matHeaderCellDef>Consorcio</th>
+            <th mat-header-cell *matHeaderCellDef>Valor</th>
             <td mat-cell *matCellDef="let element">
-                {{element.valor}}
+                $ {{element.valor | number : '1.2-2'}}
             </td>
         </ng-container>
         <ng-container matColumnDef="fecha">
