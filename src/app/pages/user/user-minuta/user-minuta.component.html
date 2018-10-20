@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let gasto of minuta.gastos_del_periodo">
-                            <td>{{gasto.gasto_fecha}}</td>
+                            <td>{{gasto.gasto_fecha | date: 'dd-MM-yyyy'}}</td>
                             <td>{{gasto.gasto_nombre}}</td>
                             <td>$ {{gasto.gasto_valor | number : '1.2-2'}}</td>
                             <td>{{gasto.proveedor_nombre}}</td>
@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let pago of minuta.pagos_del_periodo">
-                            <td>{{pago.fecha}}</td>
+                            <td>{{pago.fecha | date: 'dd-MM-yyyy'}}</td>
                             <td>{{pago.propietario_nombre}}</td>
                             <td>$ {{pago.monto | number : '1.2-2'}}</td>
                             <td>{{pago.medio_de_pago}}</td>
@@ -70,7 +70,7 @@
 
             </div>
 
-            <div class="minuta-contenido-titulo">Usuarios con deuda al momento de la liquidación ({{minuta.deudas.length}})</div>
+            <div class="minuta-contenido-titulo">Usuarios con deuda al momento de la liquidación (01-{{minuta.liquidacion.mes | number : '2.0'}}-{{minuta.liquidacion.anio}}) ({{minuta.deudas.length}})</div>
             <div class="minuta-contenido-item">
                 <table>
                     <thead>
