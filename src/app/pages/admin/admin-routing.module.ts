@@ -33,10 +33,11 @@ const routes: Routes = [
             },
             {
                 path: 'gasto',
-                loadChildren: './admin-gasto/admin-gasto.module#AdminGastoModule',
-                data: {
-                    preload: true
-                }
+                loadChildren: './admin-gasto/admin-gasto.module#AdminGastoModule'
+            },
+            {
+                path: 'pago',
+                loadChildren: './admin-pago/admin-pago.module#AdminPagoModule',
             },
             {
                 path: 'consorcio',

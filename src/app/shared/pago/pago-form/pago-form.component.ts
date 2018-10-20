@@ -98,7 +98,7 @@ export class PagoFormComponent implements OnInit {
         const medioPago = this.medioPagoForm.getRawValue();
         const factura = this.factura;
         this._pagoService.create({
-            factura_id: factura.id,
+            id: factura.id,
             monto: medioPago.monto,
             banco: medioPago.banco,
             codigo_comprobante: medioPago.comprobante,
