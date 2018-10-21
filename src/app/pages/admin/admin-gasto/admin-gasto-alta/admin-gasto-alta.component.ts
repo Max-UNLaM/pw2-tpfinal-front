@@ -80,8 +80,8 @@ export class AdminGastoAltaComponent implements OnInit {
     ngOnInit() {
         this.consorcioService.list(true)
             .subscribe(
-                (data) => {
-                    this.consorcios = data.body;
+                (data: any) => {
+                    this.consorcios = data.body.data;
                 },
                 (error) => {
                     console.error(error);
