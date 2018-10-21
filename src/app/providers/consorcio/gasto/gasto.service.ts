@@ -9,28 +9,27 @@ import {GastoPaginatorResponse} from './gasto.model';
 })
 export class GastoService {
 
-    protected userToken: string;
-
     constructor(private _httpClient: HttpClient) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
 
     public page(pageNumber: number, pageSize: number, isAdmin = false): Observable<HttpResponse<GastoPaginatorResponse>> {
         const root = isAdmin ? ConsorcioGastoRutasAdmin.page : ConsorcioGastoRutasUser.page;
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<GastoPaginatorResponse>(
             `${root}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
     }
 
     public create(gasto: any): Observable<HttpResponse<any>> {
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.post<any>(
             ConsorcioGastoRutasAdmin.create,
             gasto,
@@ -38,7 +37,7 @@ export class GastoService {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );

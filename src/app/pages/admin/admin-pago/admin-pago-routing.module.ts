@@ -3,6 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from '../../../auth-guard.service';
 import {AdminPagoComponent} from './admin-pago.component';
 import {AdmPagoDashboardComponent} from './adm-pago-dashboard/adm-pago-dashboard.component';
+import {AdmPagoListComponent} from './adm-pago-list/adm-pago-list.component';
+import {AdmPagoPendienteComponent} from './adm-pago-pendiente/adm-pago-pendiente.component';
 const routes: Routes = [
     {
         path: '',
@@ -12,6 +14,14 @@ const routes: Routes = [
             {
                 path: '',
                 component: AdmPagoDashboardComponent
+            },
+            {
+                path: 'listar',
+                component: AdmPagoListComponent
+            },
+            {
+                path: 'pendientes',
+                component: AdmPagoPendienteComponent
             }
         ]
     }

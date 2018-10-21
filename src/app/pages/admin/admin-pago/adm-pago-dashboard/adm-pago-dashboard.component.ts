@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AdmPagoDashboardViewmodel} from './adm-pago-dashboard.viewmodel';
 
 @Component({
-  selector: 'app-adm-pago-dashboard',
-  templateUrl: './adm-pago-dashboard.component.html',
-  styleUrls: ['./adm-pago-dashboard.component.scss']
+    selector: 'app-adm-pago-dashboard',
+    templateUrl: './adm-pago-dashboard.component.html',
+    styleUrls: ['./adm-pago-dashboard.component.scss']
 })
 export class AdmPagoDashboardComponent implements OnInit {
 
-  constructor() { }
+    title = 'Dashboard';
+    menuItems = AdmPagoDashboardViewmodel.items;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 
 }

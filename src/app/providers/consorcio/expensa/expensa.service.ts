@@ -9,23 +9,19 @@ import {ExpensaPaginatorResponse, ExpensaResponse} from './expensa.model';
 })
 export class ExpensaService {
 
-    protected userToken: String;
-
     constructor(private _httpClient: HttpClient) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
 
     public list(): Observable<HttpResponse<ExpensaResponse[]>> {
-        this.userToken = window.localStorage.getItem('userToken');
-        console.log(this.userToken);
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<ExpensaResponse[]>(
             ConsorcioExpensaRutasAdmin.list,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
@@ -73,13 +69,14 @@ export class ExpensaService {
 
     public show(id: number, isAdmin = false): Observable<HttpResponse<ExpensaResponse>> {
         const root = isAdmin ? ConsorcioExpensaRutasAdmin.show : ConsorcioExpensaRutasUser.show;
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<ExpensaResponse>(
             `${root}${id}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
@@ -87,13 +84,14 @@ export class ExpensaService {
 
     public page(pageNumber: number, pageSize: number, isAdmin = false) {
         const root = isAdmin ? ConsorcioExpensaRutasAdmin.page : ConsorcioExpensaRutasUser.page;
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<ExpensaPaginatorResponse>(
             `${root}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );

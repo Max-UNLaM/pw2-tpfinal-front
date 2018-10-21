@@ -4,7 +4,8 @@ import {Gasto} from '../gasto/gasto.model';
 import {PaginatorResponse} from '../api.model';
 
 export class Pago {
-    id: number;
+    factura_id: number;
+    id?: number;
     monto: number;
     banco: string;
     codigo_comprobante: string;
@@ -23,6 +24,6 @@ export class PagoError {
     medioDePago: string;
 }
 
-export class PagoListResponse extends PaginatorResponse{
+export class PagoListResponse extends PaginatorResponse {
     data: Pago[];
 }

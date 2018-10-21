@@ -11,7 +11,6 @@ export class ConsorcioSelectComponent implements OnInit {
 
     @Input() isAdmin = false;
     @Output() consorcioResponse = new EventEmitter<ConsorcioUserResponse | ConsorcioUserResponse[]>();
-    userToken: string;
     consorcios: ConsorcioUserResponse[] = [];
     consorcioElegido: ConsorcioUserResponse;
     allConsorcios: {
@@ -22,7 +21,6 @@ export class ConsorcioSelectComponent implements OnInit {
     };
 
     constructor(protected consorcioService: ConsorcioService) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {

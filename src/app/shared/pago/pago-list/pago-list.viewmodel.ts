@@ -61,6 +61,18 @@ export abstract class PagoListViewmodel {
     ];
 }
 
+export interface PagoListRow {
+    id: number;
+    fecha: string;
+    medio_de_pago: string;
+    propietario_nombre: string;
+    usuario_nombre: string;
+    banco: string;
+    codigo_comprobante: string;
+    monto: number;
+    estado: string;
+}
+
 //
 //         = ['id',
 //         'fecha',

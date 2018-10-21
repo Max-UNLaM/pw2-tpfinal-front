@@ -9,10 +9,7 @@ import {ConsorcioConsorcioRutasUser, ConsorcioUsuarioRutas} from '../consorcio.r
 })
 export class UsuarioService {
 
-    private readonly userToken: string;
-
     constructor(private _httpClient: HttpClient) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     public create(usuario: UserCreate): Observable<HttpResponse<UserCreateResponse>> {
@@ -29,13 +26,14 @@ export class UsuarioService {
     }
 
     public read(): Observable<HttpResponse<User>> {
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<User>(
             ConsorcioConsorcioRutasUser.read,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );

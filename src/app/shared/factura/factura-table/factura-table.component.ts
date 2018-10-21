@@ -22,7 +22,6 @@ export class FacturaTableComponent implements OnInit {
     resultLenght = 0;
     error: string;
     tableLoading: boolean;
-    userToken: string;
     columnas: string[] = [
         'emision', 'vencimiento', 'periodo', 'pago_parcial', 'adeudada', 'total'
     ];
@@ -30,10 +29,10 @@ export class FacturaTableComponent implements OnInit {
     textoPagado = FacturacionText.pagado;
 
     constructor(public dialog: MatDialog, protected facturaService: FacturaService, public router: Router) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
+        const userToken = window.localStorage.getItem('userToken');
         if (this.pay) {
             this.columnas.push('pagar');
         }
@@ -42,7 +41,7 @@ export class FacturaTableComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.facturaService.pageList(this.userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
+                    return this.facturaService.pageList(userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;

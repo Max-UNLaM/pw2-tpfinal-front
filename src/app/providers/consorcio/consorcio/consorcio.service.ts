@@ -9,22 +9,19 @@ import {ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interfa
 })
 export class ConsorcioService {
 
-
-    protected userToken: string;
-
     constructor(private _httpClient: HttpClient) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     public list(isAdmin?: boolean): Observable<HttpResponse<ConsorcioResponse[]>> {
         const root = isAdmin ? ConsorcioConsorcioRutasAdmin.list : ConsorcioConsorcioRutasUser.list;
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<ConsorcioResponse[]>(
             root,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
@@ -32,13 +29,14 @@ export class ConsorcioService {
 
     public pageList(pageNumber: number, pageSize: number, isAdmin?: boolean): Observable<HttpResponse<ConsorcioPaginatorResponse>> {
         const root = isAdmin ? ConsorcioConsorcioRutasAdmin.page : ConsorcioConsorcioRutasUser.page;
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<ConsorcioPaginatorResponse>(
             `${root}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
