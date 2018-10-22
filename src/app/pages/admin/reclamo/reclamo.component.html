@@ -15,18 +15,18 @@
         <table>
             <thead>
                 <tr>
+                    <th>Fecha</th>
                     <th>Usuario</th>
                     <th>Motivo</th>
                     <th>Estado</th>
-                    <th>Resolver</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let reclamo of reclamos">
+                    <td>{{reclamo.fecha_reclamo}}</td>
                     <td>{{reclamo.usuario.name}}</td>
                     <td>{{reclamo.motivo}}</td>
                     <td>{{reclamo.estado_de_reclamo.detalle}}</td>
-                    <td><button>Resolver</button></td>
                 </tr>
             </tbody>
         </table>

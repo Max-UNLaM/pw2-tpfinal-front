@@ -4,6 +4,8 @@ import {ChartsHelperService} from '../../../shared/ui/charts-helper/charts-helpe
 import {EstadisticasService} from '../../../providers/consorcio/estadisticas/estadisticas.service';
 import {PieChart} from '../../../shared/model/charts.model';
 import {ReclamoService} from '../../../providers/consorcio/reclamo/reclamo.service';
+import {MatDialog} from '@angular/material';
+import {ReclamoResolverComponent} from '../reclamo-resolver/reclamo-resolver.component';
 
 @Component({
     selector: 'app-reclamo',
@@ -20,7 +22,16 @@ export class ReclamoComponent implements OnInit {
     reclamos: any[];
     userToken = window.localStorage.getItem('userToken');
 
-    constructor(private _estadisticasService: EstadisticasService, private _reclamoService: ReclamoService) {
+    constructor(private _estadisticasService: EstadisticasService, private _reclamoService: ReclamoService, public dialog: MatDialog) {
+    }
+
+    resolve(reclamo) {
+        this.dialog.open(
+            ReclamoResolverComponent, {
+                width: '500px',
+                data: reclamo
+            }
+        );
     }
 
     ngOnInit() {
@@ -33,13 +44,13 @@ export class ReclamoComponent implements OnInit {
                 error => console.error(error)
             );
 
-        this._reclamoService.pageList(this.userToken, 1, 1000)
+        this._reclamoService.pageList(this.userToken, 1, 1000, true)
             .subscribe(
                 (data: any) => {
                     this.reclamos = data.body.data.filter(obj => obj.estado_de_reclamo.id === 4);
                     console.log(this.reclamos);
                 },
-                    error1 => console.error(error1)
+                error1 => console.error(error1)
             );
     }
 

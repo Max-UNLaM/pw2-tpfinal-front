@@ -88,7 +88,8 @@ export const ConsorcioReclamoRutasUser = {
 // admin
 export const ConsorcioReclamoRutasAdmin = {
     create: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo?page=`
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo?page=`,
+    editar: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo/estado` // PUT
 };
 
 // FACTURA
