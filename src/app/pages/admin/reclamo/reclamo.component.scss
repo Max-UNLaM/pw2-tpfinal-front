@@ -1,0 +1,15 @@
+.cont{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+
+    table{
+        text-align: left;
+        padding: 25px;
+    }
+    th, td{
+        border: 1px solid #DDD;
+        padding: 10px;
+    }
+
+}

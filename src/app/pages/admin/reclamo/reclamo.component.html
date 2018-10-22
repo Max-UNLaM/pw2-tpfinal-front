@@ -1,13 +1,34 @@
 <div class="subpage-container-full flex justify-content-around align-content-center">
-    <mat-card class="novecientos margin-auto background-gray-light-contrast">
-        <mat-card-title>Reclamos</mat-card-title>
-        <ngx-charts-advanced-pie-chart
-            [view]="view"
-            [label]="title"
-            [scheme]="colorScheme"
-            [results]="datos"
-            [animations]="true"
-            (select)="onSelect($event)">
-        </ngx-charts-advanced-pie-chart>
-    </mat-card>
+    <div class="cont">
+        <mat-card class="novecientos margin-auto background-gray-light-contrast">
+            <mat-card-title>Reclamos</mat-card-title>
+            <ngx-charts-advanced-pie-chart
+                [view]="view"
+                [label]="title"
+                [scheme]="colorScheme"
+                [results]="datos"
+                [animations]="true"
+                (select)="onSelect($event)">
+            </ngx-charts-advanced-pie-chart>
+        </mat-card>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Motivo</th>
+                    <th>Estado</th>
+                    <th>Resolver</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reclamo of reclamos">
+                    <td>{{reclamo.usuario.name}}</td>
+                    <td>{{reclamo.motivo}}</td>
+                    <td>{{reclamo.estado_de_reclamo.detalle}}</td>
+                    <td><button>Resolver</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
