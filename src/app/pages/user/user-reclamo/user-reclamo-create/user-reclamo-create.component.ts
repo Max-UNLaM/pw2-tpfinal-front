@@ -5,6 +5,7 @@ import {UnidadResponse} from '../../../../providers/consorcio/unidad/unidad.mode
 import {stringify} from 'querystring';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ReclamoService} from '../../../../providers/consorcio/reclamo/reclamo.service';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-user-reclamo-create',
@@ -16,10 +17,16 @@ export class UserReclamoCreateComponent implements OnInit {
     reclamoForm: FormGroup;
     unidadSeleccionada: UnidadResponse;
 
-    constructor(protected formBuilder: FormBuilder,
-                public dialog: MatDialog,
-                protected reclamoService: ReclamoService,
-                public snackBar: MatSnackBar) {
+    constructor(
+        private _location: Location,
+        protected formBuilder: FormBuilder,
+        public dialog: MatDialog,
+        protected reclamoService: ReclamoService,
+        public snackBar: MatSnackBar) {
+    }
+
+    back() {
+        this._location.back();
     }
 
     ngOnInit() {
@@ -67,7 +74,8 @@ export class UserReclamoCreateComponent implements OnInit {
             width: '600px'
         });
         dialogRef.afterClosed().subscribe(
-            (res: UnidadResponse) => {
+            (res: any) => {
+                console.log(res);
                 this.unidadSeleccionada = res;
                 this.reclamoForm.patchValue({
                     unidad_id: stringify(res.id)

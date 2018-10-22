@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Procesar pago recibido</h1>
+<div mat-dialog-content>
+    <mat-list>
+        <mat-list-item>
+            Id: {{data.id}}
+        </mat-list-item>
+        <mat-list-item>
+            Usuario: {{data.usuario_nombre}}
+        </mat-list-item>
+        <mat-list-item>
+            Monto: {{data.monto}}
+        </mat-list-item>
+        <mat-list-item>
+            Banco: {{data.banco}}
+        </mat-list-item>
+        <mat-list-item>
+            Comprobante: {{data.codigo_comprobante}}
+        </mat-list-item>
+    </mat-list>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="procesar(true)">Aprobar</button>
+    <button mat-raised-button (click)="procesar(false)">Rechazar</button>
+</div>

@@ -32,7 +32,6 @@ export const ConsorcioConsorcioRutasAdmin = {
     page: `${ConsorcioApiRutas.v1}/admin/consorcio?page=`
 };
 
-
 // CONSORCIO
 // user
 export const ConsorcioConsorcioRutasUser = {
@@ -48,7 +47,6 @@ export const ConsorcioUnidadRutasUser = {
     page: `${ConsorcioApiRutas.v1}/page/unidad?page=`
 };
 
-
 // UNIDAD
 // admin
 export const ConsorcioUnidadRutasAdmin = {
@@ -56,7 +54,6 @@ export const ConsorcioUnidadRutasAdmin = {
     create: `${ConsorcioApiRutas.v1}/admin`,
     page: `${ConsorcioApiRutas.v1}/admin/unidad?page=`
 };
-
 
 // EXPENSA
 // admin
@@ -91,7 +88,8 @@ export const ConsorcioReclamoRutasUser = {
 // admin
 export const ConsorcioReclamoRutasAdmin = {
     create: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo?page=`
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo?page=`,
+    editar: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/reclamo/estado` // PUT
 };
 
 // FACTURA
@@ -112,16 +110,22 @@ export const ConsorcioFacturaRutasAdmin = {
     masa: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`
 };
 
+// LIQUIDACIÓN
+// admin
+
+export const ConsorcioLiquidacionRutasAdmin = {
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/liquidacion?page=`,
+};
 
 // PAGO
 // admin
 export const ConsorcioPagoRutasAdmin = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago?page=`
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago?page=`,
+    aprobar: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago/aprobar`,
+    rechazar: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/pago/rechazar`
 };
 
-
-// PAGO
 // user
 export const ConsorcioPagoRutasUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/pago`,
@@ -137,29 +141,25 @@ export const ConsorcioGastoRutasAdmin = {
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto?page=`
 };
 
-
-// GASTO
 // user
 export const ConsorcioGastoRutasUser = {
-    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto`,
-    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/gasto?page=`
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/gasto`,
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/gasto?page=`
 };
 
 // PROVEEDEOR
 // admin
 export const ConsorcioGastoProveedorAdmin = {
-    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor`,
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?sin_paginar=true`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?page=`
 };
-
 
 // ESTADÍSTICAS
 // admin
 export const ConsorcioConsorcioStatsRutasAdmin = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/estadistica`
 };
-
-
+// user
 export const ConsorcioConsorcioStatsRutasUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/estadistica`
 };
@@ -168,3 +168,10 @@ export const ConsorcioConsorcioStatsRutasUser = {
 export const ConsorcioMinutaUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/informe`
 };
+
+export abstract class GeneracionMasivaRoutes {
+    public static factura = `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`;
+    public static liquidacion = `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/liquidacion`;
+    public static expensa = `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa`;
+}
+

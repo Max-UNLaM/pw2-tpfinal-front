@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 export class FacturaCompletaComponent implements OnInit {
 
     @Input() factura: Factura;
+    @Input() pagar = false;
     consorcio: Consorcio;
     gastos: Gasto[];
     columnas = ['nombre', 'valor', 'mes', 'anio'];

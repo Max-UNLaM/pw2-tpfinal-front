@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ConsorcioService} from '../../../../providers/consorcio/consorcio/consorcio.service';
-import {ConsorcioUserResponse} from '../../../../providers/consorcio/consorcio/consorcio.interface';
+import {Consorcio, ConsorcioUserResponse} from '../../../../providers/consorcio/consorcio/consorcio.interface';
 import {ProveedorService} from '../../../../providers/consorcio/proveedor/proveedor.service';
 import {GastoService} from '../../../../providers/consorcio/gasto/gasto.service';
 
@@ -15,7 +15,7 @@ export class AdminGastoAltaComponent implements OnInit {
     gastoForm: FormGroup;
     accessError;
     accessErrorText;
-    consorcios: ConsorcioUserResponse[] = [];
+    consorcios: Consorcio[] = [];
     proveedores: any[];
     proveedorElegido: ConsorcioUserResponse;
     consorcioElegido;
@@ -80,8 +80,8 @@ export class AdminGastoAltaComponent implements OnInit {
     ngOnInit() {
         this.consorcioService.list(true)
             .subscribe(
-                (data) => {
-                    this.consorcios = data.body;
+                (data: any) => {
+                    this.consorcios = data.body.data;
                 },
                 (error) => {
                     console.error(error);

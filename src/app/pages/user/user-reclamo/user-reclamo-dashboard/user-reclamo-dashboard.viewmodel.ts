@@ -1,6 +1,23 @@
 
-import {faFileInvoiceDollar, faMoneyBill, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import {faFileInvoiceDollar, faList, faMoneyBill, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {MenuCard} from '../../../../shared/menu-card/menu-card.model';
+
+export abstract class UserReclamoDashboardViewmodel {
+    public static items: MenuCard[] = [
+        {
+            title: 'Ver Reclamos',
+            icon: faList,
+            route: ['/user/reclamo/list'],
+            content: 'Ver reclamos realizados'
+        },
+        {
+            title: 'Generar Reclamo',
+            icon: faPaperPlane,
+            route: ['/user/reclamo/create'],
+            content: 'Realizar un nuevo reclamo'
+        }
+    ];
+}
 
 export class MainMenu {
     items: MenuCard[] = [

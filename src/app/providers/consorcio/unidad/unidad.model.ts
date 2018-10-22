@@ -22,6 +22,8 @@ export interface UnidadResponse extends UnidadCreate {
     id: number;
     created_at: string;
     updated_at: string;
+    consorcio_nombre: string;
+    usuario_nombre: string;
 }
 
 export interface UnidadPaginatorResponse extends PaginatorResponse {

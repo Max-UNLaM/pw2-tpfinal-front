@@ -17,7 +17,7 @@ export class UserReclamoUnidadesComponent implements OnInit {
     data: UnidadResponse[] = [];
     loadingTabla: boolean;
     errorMessage: string;
-    columnas = ['nombre', 'direccion'];
+    columnas = ['nombre', 'consorcio', 'dueño'];
 
     constructor(public dialogRef: MatDialogRef<UserReclamoUnidadesComponent>, protected unidadService: UnidadService) {
     }

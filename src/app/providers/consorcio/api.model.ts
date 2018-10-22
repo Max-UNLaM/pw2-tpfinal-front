@@ -11,6 +11,17 @@ export class PaginatorResponse {
     prev_page_url: string;
     to: number;
     total: number;
+    meta?: PaginateMeta;
+}
+
+export interface PaginateMeta {
+    current_page: string;
+    from: number;
+    last_page: number;
+    path: string;
+    per_page: number;
+    to: number;
+    total: number;
 }
 
 export interface ApiResponse {

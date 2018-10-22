@@ -1,6 +1,6 @@
 export interface ColumnsModel {
-    def: string;
-    property: string;
+    matColDef: string;
+    property: any;
     name: string;
 }
 
