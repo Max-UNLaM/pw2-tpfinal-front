@@ -4,6 +4,7 @@ import {merge, of} from 'rxjs';
 import {ReclamoService} from '../../../providers/consorcio/reclamo/reclamo.service';
 import {MatPaginator} from '@angular/material';
 import {ReclamoPaginatorResponse, ReclamoResponse} from '../../../providers/consorcio/reclamo/reclamo.interface.';
+import {ReclamoTableViewmodel} from './reclamo-table.viewmodel';
 
 @Component({
     selector: 'app-reclamo-table',
@@ -19,11 +20,16 @@ export class ReclamoTableComponent implements OnInit {
 
     data: ReclamoResponse[] = [];
     resultLenght = 0;
-    columnas = ['motivo', 'conforme'];
+    columnas = ReclamoTableViewmodel.columnasDef;
     error: string;
     tableLoading: boolean;
     userToken: string;
+    columnasModel = ReclamoTableViewmodel.columnasVista;
 
+    getNestedObject(nestedObj, pathArr) {
+        return pathArr.reduce((obj, key) =>
+            (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+    }
 
     constructor(protected reclamo: ReclamoService) {
     }

@@ -5,9 +5,13 @@
             <th mat-header-cell *matHeaderCellDef>Nombre</th>
             <td mat-cell *matCellDef="let element"> {{element.nombre}}</td>
         </ng-container>
-        <ng-container matColumnDef="direccion">
-            <th mat-header-cell *matHeaderCellDef>Dirección</th>
-            <td mat-cell *matCellDef="let element"> {{element.direccion}}</td>
+        <ng-container matColumnDef="consorcio">
+            <th mat-header-cell *matHeaderCellDef>Consorcio</th>
+            <td mat-cell *matCellDef="let element"> {{element.consorcio_nombre}}</td>
+        </ng-container>
+        <ng-container matColumnDef="dueño">
+            <th mat-header-cell *matHeaderCellDef>Dueño</th>
+            <td mat-cell *matCellDef="let element"> {{element.usuario_nombre}}</td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="columnas"></tr>
         <tr mat-row *matRowDef="let row; columns: columnas;" (click)="seleccionar(row)"></tr>
