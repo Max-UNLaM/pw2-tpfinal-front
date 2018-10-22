@@ -5,13 +5,13 @@ export class UserViewModel {
     menu: ToolbarItem[] = [
         {
             link: 'user',
-            text: 'Dashboard'
+            text: 'UserDashboard'
         }
     ];
     adminMenu: ToolbarItem[] = [
         {
             link: 'user',
-            text: 'Dashboard'
+            text: 'UserDashboard'
         },
         {
             link: 'admin',

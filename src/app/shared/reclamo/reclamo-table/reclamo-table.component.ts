@@ -50,7 +50,8 @@ export class ReclamoTableComponent implements OnInit {
             )
             .subscribe(
                 (data: ReclamoPaginatorResponse) => {
-                    this.resultLenght = data.total;
+                    console.log(data);
+                    this.resultLenght = data.meta.total;
                     this.data = data.data;
                 }
             );
