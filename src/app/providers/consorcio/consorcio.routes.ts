@@ -148,7 +148,7 @@ export const ConsorcioGastoRutasUser = {
 // PROVEEDEOR
 // admin
 export const ConsorcioGastoProveedorAdmin = {
-    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor`,
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?sin_paginar=true`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?page=`
 };
 
