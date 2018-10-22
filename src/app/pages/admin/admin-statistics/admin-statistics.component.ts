@@ -42,7 +42,7 @@ export class AdminStatisticsComponent implements OnInit {
                         'reclamos_esperando_respuesta');
                     this.facturasChartsDatos = ChartsHelperService.pieChartBuilder(stats,
                         'consorcio_nombre',
-                        'facturas_impagas');
+                        'facturas_con_pago_parcial');
                 },
                 error => console.error(error)
             );
