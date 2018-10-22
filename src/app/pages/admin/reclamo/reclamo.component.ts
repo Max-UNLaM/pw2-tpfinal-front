@@ -3,6 +3,7 @@ import {ConsorcioStatsResponse} from '../../../providers/consorcio/estadisticas/
 import {ChartsHelperService} from '../../../shared/ui/charts-helper/charts-helper.service';
 import {EstadisticasService} from '../../../providers/consorcio/estadisticas/estadisticas.service';
 import {PieChart} from '../../../shared/model/charts.model';
+import {ReclamoService} from '../../../providers/consorcio/reclamo/reclamo.service';
 
 @Component({
     selector: 'app-reclamo',
@@ -16,8 +17,10 @@ export class ReclamoComponent implements OnInit {
     };
     title = `Reclamos sin responder`;
     datos: PieChart[];
+    reclamos: any[];
+    userToken = window.localStorage.getItem('userToken');
 
-    constructor(private _estadisticasService: EstadisticasService) {
+    constructor(private _estadisticasService: EstadisticasService, private _reclamoService: ReclamoService) {
     }
 
     ngOnInit() {
@@ -28,6 +31,15 @@ export class ReclamoComponent implements OnInit {
                     this.datos = ChartsHelperService.pieChartBuilder(stats, 'consorcio_nombre', 'reclamos_esperando_respuesta');
                 },
                 error => console.error(error)
+            );
+
+        this._reclamoService.pageList(this.userToken, 1, 1000)
+            .subscribe(
+                (data: any) => {
+                    this.reclamos = data.body.data.filter(obj => obj.estado_de_reclamo.id === 4);
+                    console.log(this.reclamos);
+                },
+                    error1 => console.error(error1)
             );
     }
 
