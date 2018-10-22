@@ -16,6 +16,8 @@ import {
 } from '@angular/material';
 import {ConsorcioSelectModule} from '../../../shared/consorcio/consorcio-select/consorcio-select.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AdmFacturaListComponent } from './adm-factura-list/adm-factura-list.component';
+import {FacturaTableModule} from '../../../shared/factura/factura-table/factura-table.module';
 
 @NgModule({
     imports: [
@@ -31,9 +33,10 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatButtonModule,
         MatSelectModule,
         MatListModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        FacturaTableModule
     ],
-    declarations: [AdminFacturaComponent, AdmFacturaDashboardComponent, AdmFacturaGenerarComponent]
+    declarations: [AdminFacturaComponent, AdmFacturaDashboardComponent, AdmFacturaGenerarComponent, AdmFacturaListComponent]
 })
 export class AdminFacturaModule {
 }

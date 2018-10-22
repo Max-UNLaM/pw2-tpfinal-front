@@ -109,6 +109,13 @@ export const ConsorcioFacturaRutasAdmin = {
     masa: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`
 };
 
+// LIQUIDACIÓN
+// admin
+
+export const ConsorcioLiquidacionRutasAdmin = {
+    page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/liquidacion?page=`,
+};
+
 // PAGO
 // admin
 export const ConsorcioPagoRutasAdmin = {
@@ -142,7 +149,7 @@ export const ConsorcioGastoRutasUser = {
 // PROVEEDEOR
 // admin
 export const ConsorcioGastoProveedorAdmin = {
-    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor`,
+    list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?sin_paginar=true`,
     page: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/proveedor?page=`
 };
 
@@ -160,3 +167,10 @@ export const ConsorcioConsorcioStatsRutasUser = {
 export const ConsorcioMinutaUser = {
     list: `${ConsorcioApiRutas.v1}${ConsorcioApiRol.user}/informe`
 };
+
+export abstract class GeneracionMasivaRoutes {
+    public static factura = `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/factura`;
+    public static liquidacion = `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/liquidacion`;
+    public static expensa = `${ConsorcioApiRutas.v1}${ConsorcioApiRol.admin}/expensa`;
+}
+

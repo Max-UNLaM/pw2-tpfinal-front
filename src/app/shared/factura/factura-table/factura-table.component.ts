@@ -23,7 +23,7 @@ export class FacturaTableComponent implements OnInit {
     error: string;
     tableLoading: boolean;
     columnas: string[] = [
-        'emision', 'vencimiento', 'periodo', 'pago_parcial', 'adeudada', 'total'
+        'emision', 'vencimiento', 'periodo', 'pago_parcial', 'adeudada', 'total', 'ver'
     ];
     textoPagar = FacturacionText.pagar;
     textoPagado = FacturacionText.pagado;
@@ -31,8 +31,16 @@ export class FacturaTableComponent implements OnInit {
     constructor(public dialog: MatDialog, protected facturaService: FacturaService, public router: Router) {
     }
 
+    getNestedObject(nestedObj, pathArr) {
+        return pathArr.reduce((obj, key) =>
+            (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+    }
+
     ngOnInit() {
         const userToken = window.localStorage.getItem('userToken');
+        if (this.userAdmin) {
+            this.columnas.push('nombre');
+        }
         if (this.pay) {
             this.columnas.push('pagar');
         }
@@ -62,9 +70,16 @@ export class FacturaTableComponent implements OnInit {
             );
     }
 
+    abrir(factura) {
+        console.log(factura);
+        this.router.navigate(['user/factura/open', factura.id]).catch(
+            error => console.error(error)
+        );
+    }
+
     poniendoEstabaLaGansa(factura) {
         this.router.navigate(['user/factura/pago', factura.id]).catch(
-            error  => console.error(error)
+            error => console.error(error)
         );
     }
 

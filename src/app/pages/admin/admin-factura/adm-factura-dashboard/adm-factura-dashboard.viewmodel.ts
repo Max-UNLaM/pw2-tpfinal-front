@@ -8,6 +8,12 @@ export abstract class AdmFacturaDashboardViewmodel {
             icon: faClipboardList,
             content: 'Crear el cierre y la facturación de períodos anteriores',
             route: ['/admin/factura/generar']
+        },
+        {
+            title: 'Ver Facturas',
+            icon: faClipboardList,
+            content: 'Ver todas las facturas',
+            route: ['/admin/factura/list']
         }
     ];
 }

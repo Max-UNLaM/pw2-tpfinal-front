@@ -25,14 +25,15 @@
                     <mat-form-field class="margin-auto">
                         <input matInput placeholder="Año" formControlName="anio" type="number">
                         <mat-error *ngIf="!liquidacionForm.get('anio').valid && (liquidacionForm.get('anio').dirty || liquidacionForm.get('anio').touched)">
-                            Debes escribir un año válido (del 2018 al 2100)
+                            Debes escribir un año válido (del 2015 al 2019)
                         </mat-error>
                     </mat-form-field>
                 </div>
             </div>
         </form>
         <div>
-            <button mat-flat-button matStepperNext [disabled]="!liquidacionForm.valid">Siguiente</button>
+            <button mat-flat-button [disabled]="!liquidacionForm.valid" (click)="liquidar()">Liquidar</button>
+            <button mat-flat-button matStepperNext [disabled]="!liquidacionForm.valid || !liquidacion">Siguiente</button>
         </div>
     </mat-step>
     <mat-step>
@@ -59,7 +60,8 @@
             </div>
         </form>
         <div>
-            <button mat-flat-button matStepperNext [disabled]="!expensaForm.valid">Siguiente</button>
+            <button mat-flat-button [disabled]="!expensaForm.valid" (click)="expensar()">Generar Expensas</button>
+            <button mat-flat-button matStepperNext [disabled]="!expensaForm.valid || !expensa">Siguiente</button>
         </div>
     </mat-step>
     <mat-step>
@@ -86,7 +88,8 @@
             </div>
         </form>
         <div>
-            <button mat-flat-button matStepperNext [disabled]="!facturacionForm.valid">Finalizar</button>
+            <button mat-flat-button [disabled]="!facturacionForm.valid" (click)="facturar()">Facturar</button>
+            <button mat-flat-button matStepperNext [disabled]="!facturacionForm.valid || !factura" (click)="finalizar">Finalizar</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>
