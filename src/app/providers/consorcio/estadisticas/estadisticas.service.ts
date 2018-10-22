@@ -10,13 +10,11 @@ import {ConsorcioStatsResponse} from './estadisticas.interface';
 })
 export class EstadisticasService {
 
-    private userToken: string;
-
     constructor(private _httpClient: HttpClient, protected loginStorage: LoginStorageService) {
-        this.userToken = this.loginStorage.getToken();
     }
 
     public list(isAdmin?: boolean): Observable<HttpResponse<ConsorcioStatsResponse[]>> {
+        const userToken = window.localStorage.getItem('userToken');
         const root = isAdmin ? ConsorcioConsorcioStatsRutasAdmin.list : ConsorcioConsorcioStatsRutasUser.list;
         return this._httpClient.get<ConsorcioStatsResponse[]>(
             root,
@@ -24,7 +22,7 @@ export class EstadisticasService {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );

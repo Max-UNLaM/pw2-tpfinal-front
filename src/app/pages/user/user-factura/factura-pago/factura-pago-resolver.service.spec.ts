@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { FacturaPagoResolverService } from './factura-pago-resolver.service';
 
-describe('FacturaPagoResolverService', () => {
+describe('FacturaVerResolverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [FacturaPagoResolverService]

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ConsorcioCreate, ConsorcioResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
+import {Consorcio, ConsorcioCreate, ConsorcioResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
 
 @Component({
     selector: 'app-unidad-form',
@@ -16,7 +16,7 @@ export class UnidadFormComponent implements OnInit {
     constructor(
         protected formBuilder: FormBuilder,
         public dialogRef: MatDialogRef<UnidadFormComponent>,
-        @Inject(MAT_DIALOG_DATA) public consorcio: ConsorcioResponse
+        @Inject(MAT_DIALOG_DATA) public consorcio: Consorcio
     ) {
         this.createForm();
     }

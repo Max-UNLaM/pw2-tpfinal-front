@@ -3,6 +3,7 @@ import {Expensa, ExpensaConcepto} from '../expensa/expensa.model';
 import {Gasto, GastoResponse} from '../gasto/gasto.model';
 import {Consorcio} from '../consorcio/consorcio.interface';
 import {User} from '../usuario/usuario.model';
+import {GeneracionMasiva} from '../generacion-masiva/generacion-masiva';
 
 export class Factura {
     id: number;
@@ -33,4 +34,17 @@ export class FacturaResponse extends Factura {
 
 export interface FacturaPaginatorResponse extends PaginatorResponse {
     data: FacturaResponse[];
+}
+
+export class Facturar implements GeneracionMasiva {
+    endpoint: string;
+    periodo: {
+        consorcio_id: number;
+        mes: number;
+        anio: number;
+    };
+
+    constructor() {
+        this.endpoint = 'factura';
+    }
 }

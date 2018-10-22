@@ -33,6 +33,20 @@
                 {{element.total | currency}}
             </td>
         </ng-container>
+        <ng-container matColumnDef="nombre" *ngIf="userAdmin">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element">
+                {{getNestedObject(element, ['usuario', 'name'])}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="ver">
+            <th mat-header-cell *matHeaderCellDef>Ver</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-flat-button color="primary" (click)="abrir(element)">
+                    Ver
+                </button>
+            </td>
+        </ng-container>
         <ng-container matColumnDef="pagar" *ngIf="pay">
             <th mat-header-cell *matHeaderCellDef>Pagar</th>
             <td mat-cell *matCellDef="let element">

@@ -1,6 +1,6 @@
 import {MenuCard} from '../../../shared/menu-card/menu-card.model';
 import {faChartPie} from '@fortawesome/free-solid-svg-icons/faChartPie';
-import {faBuilding, faBullhorn, faFileInvoice, faMoneyBill} from '@fortawesome/free-solid-svg-icons';
+import {faBuilding, faBullhorn, faFileInvoice, faFileInvoiceDollar, faHandHoldingUsd, faMoneyBill} from '@fortawesome/free-solid-svg-icons';
 import {faDoorOpen} from '@fortawesome/free-solid-svg-icons/faDoorOpen';
 
 export abstract class AdminMainMenu {
@@ -36,10 +36,22 @@ export abstract class AdminMainMenu {
             content: 'Generación de expensas'
         },
         {
-            title: 'Reclamo',
+            title: 'Reclamos',
             icon: faBullhorn,
             route: ['/admin/reclamo'],
             content: 'Vista y control de reclamos'
+        },
+        {
+            title: 'Pagos',
+            icon: faHandHoldingUsd,
+            route: ['/admin/pago'],
+            content: 'Ver y aceptar o rechazar pagos'
+        },
+        {
+            title: 'Facturas',
+            icon: faFileInvoiceDollar,
+            route: ['/admin/factura'],
+            content: 'Ver y generar liquidaciones, expensas y facturas'
         }
     ];
 }

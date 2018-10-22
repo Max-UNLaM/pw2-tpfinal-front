@@ -97,7 +97,7 @@
                 </div>
                 <mat-card-actions class="row">
                     <button mat-flat-button (click)="back()">Volver</button>
-                    <button mat-flat-button (click)="pay()">Pagar</button>
+                    <button mat-flat-button (click)="pay()" *ngIf="pagar">Pagar</button>
                 </mat-card-actions>
             </div>
         </mat-card-content>

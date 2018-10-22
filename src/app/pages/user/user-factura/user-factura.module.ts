@@ -6,6 +6,7 @@ import { UserFacturaDashboardComponent } from './user-factura-dashboard/user-fac
 import {FacturaTableModule} from '../../../shared/factura/factura-table/factura-table.module';
 import {MatCardModule} from '@angular/material';
 import {FacturaCompletaModule} from '../../../shared/factura/factura-completa/factura-completa.module';
+import { FacturaVerComponent } from './factura-ver/factura-ver.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import {FacturaCompletaModule} from '../../../shared/factura/factura-completa/fa
         TitlebarModule,
         FacturaCompletaModule
     ],
-    declarations: [...routedComponents, UserFacturaDashboardComponent]
+    declarations: [...routedComponents, UserFacturaDashboardComponent, FacturaVerComponent]
 })
 export class UserFacturaModule {
 }

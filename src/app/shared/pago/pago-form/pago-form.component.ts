@@ -33,7 +33,6 @@ export class PagoFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.factura);
         this.usuarioForm = this._formBuilder.group({
                 nya: [this.user.name, Validators.required],
                 email: [this.user.email, [Validators.email, Validators.required]],

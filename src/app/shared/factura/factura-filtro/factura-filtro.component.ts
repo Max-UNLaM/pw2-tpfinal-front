@@ -20,19 +20,18 @@ export class FacturaFiltroComponent implements OnInit {
     resultLenght = 0;
     error: string;
     tableLoading: boolean;
-    userToken: string;
 
     constructor(public dialog: MatDialog, protected facturaService: FacturaService) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
+        const userToken = window.localStorage.getItem('userToken');
         merge(this.paginator.page)
             .pipe(
                 startWith({}),
                 switchMap(() => {
                     this.tableLoading = true;
-                    return this.facturaService.pageList(this.userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
+                    return this.facturaService.pageList(userToken, this.paginator.pageIndex + 1, this.pageSize, this.userAdmin);
                 }),
                 map(data => {
                     this.tableLoading = false;

@@ -10,13 +10,12 @@ import {LoginStorageService} from '../../local/login/login-storage.service';
 })
 export class UnidadService {
 
-    protected userToken: string;
 
     constructor(private _httpClient: HttpClient, protected loginStorage: LoginStorageService) {
-        this.userToken = this.loginStorage.getToken();
     }
 
     public list(): Observable<HttpResponse<UnidadResponse[]>> {
+        const userToken = window.localStorage.getItem('userToken');
         console.log(ConsorcioUnidadRutasAdmin.list);
         return this._httpClient.get<UnidadResponse[]>(
             ConsorcioUnidadRutasAdmin.list,
@@ -24,7 +23,7 @@ export class UnidadService {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
@@ -44,19 +43,21 @@ export class UnidadService {
     }
 
     public page(pageNumber: number, pageSize: number): Observable<HttpResponse<UnidadPaginatorResponse>> {
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<UnidadPaginatorResponse>(
             `${ConsorcioUnidadRutasAdmin.page}${pageNumber}&size=${pageSize}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
     }
 
     public create(unidad: UnidadCreate): Observable<HttpResponse<UnidadCreate>> {
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.post<UnidadCreate>(
             ConsorcioUnidadRutasAdmin.create,
             unidad,
@@ -64,7 +65,7 @@ export class UnidadService {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );

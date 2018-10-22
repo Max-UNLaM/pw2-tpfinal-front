@@ -9,20 +9,18 @@ import {ReclamoCreateResponse} from '../reclamo/reclamo.interface.';
 })
 export class ProveedorService {
 
-    userToken: string;
-
     constructor(private _httpClient: HttpClient) {
     }
 
     public list(): Observable<HttpResponse<any[]>> {
-        this.userToken = window.localStorage.getItem('userToken');
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.get<any[]>(
             `${ConsorcioGastoProveedorAdmin.list}`,
             {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );
@@ -30,6 +28,7 @@ export class ProveedorService {
 
 
     public create(reclamo: any): Observable<HttpResponse<ReclamoCreateResponse>> {
+        const userToken = window.localStorage.getItem('userToken');
         return this._httpClient.post<ReclamoCreateResponse>(
             ConsorcioReclamoRutasUser.create,
             reclamo,
@@ -37,7 +36,7 @@ export class ProveedorService {
                 observe: 'response',
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.userToken}`
+                    'Authorization': `Bearer ${userToken}`
                 })
             }
         );

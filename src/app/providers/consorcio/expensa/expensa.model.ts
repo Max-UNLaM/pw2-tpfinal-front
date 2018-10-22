@@ -1,4 +1,5 @@
 import {PaginatorResponse} from '../api.model';
+import {GeneracionMasiva} from '../generacion-masiva/generacion-masiva';
 
 export class Expensa {
     id: number;
@@ -34,4 +35,17 @@ export class ExpensaConcepto {
     valor_total: number;
     participacion: string;
     valor: number;
+}
+
+export class Expensar implements GeneracionMasiva {
+    endpoint: string;
+    periodo: {
+        consorcio_id: number;
+        mes: number;
+        anio: number;
+    };
+
+    constructor() {
+        this.endpoint = 'expensa';
+    }
 }

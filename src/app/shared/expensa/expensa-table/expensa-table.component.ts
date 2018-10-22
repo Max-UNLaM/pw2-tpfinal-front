@@ -22,10 +22,8 @@ export class ExpensaTableComponent implements OnInit {
     columnas = ['unidad_id', 'emision', 'vencimiento', 'estado'];
     error: string;
     tableLoading: boolean;
-    userToken: string;
 
     constructor(public dialog: MatDialog, protected expensaService: ExpensaService) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ConsorcioUserResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
+import {Consorcio, ConsorcioListResponse, ConsorcioUserResponse} from '../../../providers/consorcio/consorcio/consorcio.interface';
 import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio.service';
 
 @Component({
@@ -10,10 +10,10 @@ import {ConsorcioService} from '../../../providers/consorcio/consorcio/consorcio
 export class ConsorcioSelectComponent implements OnInit {
 
     @Input() isAdmin = false;
-    @Output() consorcioResponse = new EventEmitter<ConsorcioUserResponse | ConsorcioUserResponse[]>();
-    userToken: string;
-    consorcios: ConsorcioUserResponse[] = [];
-    consorcioElegido: ConsorcioUserResponse;
+    @Input() todos = false;
+    @Output() consorcioResponse = new EventEmitter<Consorcio | Consorcio []>();
+    consorcios: Consorcio[];
+    consorcioElegido: Consorcio;
     allConsorcios: {
         id: -1,
         nombre: 'all';
@@ -22,15 +22,14 @@ export class ConsorcioSelectComponent implements OnInit {
     };
 
     constructor(protected consorcioService: ConsorcioService) {
-        this.userToken = window.localStorage.getItem('userToken');
     }
 
     ngOnInit() {
         this.consorcioService.list(this.isAdmin)
             .subscribe(
                 (data) => {
-                    this.consorcios = data.body;
-                    this.consorcioResponse.emit(data.body);
+                    console.log(data);
+                    this.consorcios = data.body.data;
                 },
                 (error) => {
                     console.error(error);
