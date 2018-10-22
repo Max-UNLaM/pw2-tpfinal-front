@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ConsorcioConsorcioRutasAdmin, ConsorcioConsorcioRutasUser} from '../consorcio.routes';
 import {Observable} from 'rxjs';
-import {ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interface';
+import {ConsorcioListResponse, ConsorcioPaginatorResponse, ConsorcioResponse} from './consorcio.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -12,10 +12,10 @@ export class ConsorcioService {
     constructor(private _httpClient: HttpClient) {
     }
 
-    public list(isAdmin?: boolean): Observable<HttpResponse<ConsorcioResponse[]>> {
+    public list(isAdmin?: boolean): Observable<HttpResponse<ConsorcioListResponse>> {
         const root = isAdmin ? ConsorcioConsorcioRutasAdmin.list : ConsorcioConsorcioRutasUser.list;
         const userToken = window.localStorage.getItem('userToken');
-        return this._httpClient.get<ConsorcioResponse[]>(
+        return this._httpClient.get<ConsorcioListResponse>(
             root,
             {
                 observe: 'response',

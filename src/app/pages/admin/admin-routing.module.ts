@@ -4,7 +4,7 @@ import {AdminComponent} from './admin.component';
 import {AuthGuardService} from '../../auth-guard.service';
 import {ConsorcioComponent} from './consorcio/consorcio.component';
 import {ExpensaComponent} from './expensa/expensa.component';
-import {AdminDashoardComponent} from './admin-dashoard/admin-dashoard.component';
+import {AdminDashboardComponent} from './admin-dashoard/admin-dashboard.component';
 import {ReclamoComponent} from './reclamo/reclamo.component';
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: AdminDashoardComponent
+                component: AdminDashboardComponent
             },
             {
                 path: 'unidad',
@@ -38,6 +38,10 @@ const routes: Routes = [
             {
                 path: 'pago',
                 loadChildren: './admin-pago/admin-pago.module#AdminPagoModule',
+            },
+            {
+                path: 'factura',
+                loadChildren: './admin-factura/admin-factura.module#AdminFacturaModule',
             },
             {
                 path: 'consorcio',
@@ -66,7 +70,7 @@ export const routedComponents = [
     AdminComponent,
     ConsorcioComponent,
     ExpensaComponent,
-    AdminDashoardComponent,
+    AdminDashboardComponent,
     ReclamoComponent
 ];
 

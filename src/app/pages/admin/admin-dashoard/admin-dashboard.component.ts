@@ -8,10 +8,10 @@ import {AdminMainMenu} from './admin-dashboard.viewmodel';
 
 @Component({
     selector: 'app-admin-dashoard',
-    templateUrl: './admin-dashoard.component.html',
-    styleUrls: ['./admin-dashoard.component.scss']
+    templateUrl: './admin-dashboard.component.html',
+    styleUrls: ['./admin-dashboard.component.scss']
 })
-export class AdminDashoardComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit {
 
     menuItems: MenuCard[] = [];
     title = 'Dashboard';

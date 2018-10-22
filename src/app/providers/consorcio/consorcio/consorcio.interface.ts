@@ -1,4 +1,4 @@
-import {PaginatorResponse} from '../api.model';
+import {ApiResponse, PaginateMeta, PaginatorResponse} from '../api.model';
 
 export interface ConsorcioCreate {
     nombre: string;
@@ -8,9 +8,13 @@ export interface ConsorcioCreate {
     telefono: string;
 }
 
-export interface ConsorcioResponse extends Consorcio {
+export interface ConsorcioResponse extends ApiResponse {
     created_at: string;
     updated_at: string;
+}
+
+export interface ConsorcioListResponse extends PaginateMeta {
+    data: Consorcio[];
 }
 
 export interface ConsorcioPaginatorResponse extends PaginatorResponse {

@@ -1,0 +1,92 @@
+<mat-horizontal-stepper [linear]="true">
+    <mat-step>
+        <ng-template matStepLabel>Seleccionar Consorcio</ng-template>
+        <p>Elija un consorcio para generar sus liquidaciones, expensas y facturaciones</p>
+        <app-consorcio-select [isAdmin]="true" (consorcioResponse)="whenConsorcioSelected($event)"></app-consorcio-select>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!consorcio">Siguiente</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Liquidar período</ng-template>
+        <p>Esto cerrará todos los gastos del períodos seleccionado</p>
+        <p *ngIf="consorcio">Consorcio elegido: {{consorcio.nombre}}</p>
+        <form [formGroup]="liquidacionForm">
+            <div class="flex flex-flow-row justify-content-around">
+                <div class="block">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Mes" formControlName="mes" type="number">
+                        <mat-error *ngIf="!liquidacionForm.get('mes').valid && (liquidacionForm.get('mes').dirty || liquidacionForm.get('mes').touched)">
+                            Debes escribir un mes válido (del 1 al 12)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="block">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Año" formControlName="anio" type="number">
+                        <mat-error *ngIf="!liquidacionForm.get('anio').valid && (liquidacionForm.get('anio').dirty || liquidacionForm.get('anio').touched)">
+                            Debes escribir un año válido (del 2018 al 2100)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!liquidacionForm.valid">Siguiente</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Generar Expensas</ng-template>
+        <p>Esto generará las expensas correspondente en base a las liquidaciones del período</p>
+        <form [formGroup]="expensaForm">
+            <div class="flex flex-flow-row justify-content-around">
+                <div class="block">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Mes" formControlName="mes" type="number">
+                        <mat-error *ngIf="!expensaForm.get('mes').valid && (expensaForm.get('mes').dirty || expensaForm.get('mes').touched)">
+                            Debes escribir un mes válido (del 1 al 12)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="block">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Año" formControlName="anio" type="number">
+                        <mat-error *ngIf="!expensaForm.get('anio').valid && (expensaForm.get('anio').dirty || expensaForm.get('anio').touched)">
+                            Debes escribir un año válido (del 2018 al 2100)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!expensaForm.valid">Siguiente</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Facturación</ng-template>
+        <p>Esto generará las facturas que incluirán expensas con sus respectivos gastos</p>
+        <form [formGroup]="facturacionForm">
+            <div class="flex flex-flow-row justify-content-around">
+                <div class="block">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Mes" formControlName="mes" type="number">
+                        <mat-error *ngIf="!facturacionForm.get('mes').valid && (facturacionForm.get('mes').dirty || facturacionForm.get('mes').touched)">
+                            Debes escribir un mes válido (del 1 al 12)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="block">
+                    <mat-form-field class="margin-auto">
+                        <input matInput placeholder="Año" formControlName="anio" type="number">
+                        <mat-error *ngIf="!facturacionForm.get('anio').valid && (facturacionForm.get('anio').dirty || facturacionForm.get('anio').touched)">
+                            Debes escribir un año válido (del 2018 al 2100)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <div>
+            <button mat-flat-button matStepperNext [disabled]="!facturacionForm.valid">Finalizar</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
